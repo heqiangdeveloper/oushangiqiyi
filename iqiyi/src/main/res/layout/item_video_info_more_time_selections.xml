@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="560px"
+    android:layout_height="@dimen/more_time_slections_albumpic_height"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/video_info_selection_pic"
+        android:layout_width="@dimen/more_time_slections_albumpic_width"
+        android:layout_height="match_parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="parent"
+        android:background="@drawable/video_info_more_time_selections_shape"
+        android:foreground="@drawable/ic_albumpic_timetype_fg"
+        android:scaleType="fitXY"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/video_info_publish_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="@id/video_info_selection_pic"
+        app:layout_constraintRight_toRightOf="@id/video_info_selection_pic"
+        app:layout_constraintBottom_toBottomOf="@id/video_info_selection_pic"
+        android:layout_marginBottom="5px"
+        android:text="2020-06-20"
+        android:textColor="@color/color_white"
+        android:textSize="@dimen/album_publish_time"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/video_info_selection_name"
+        android:layout_width="230px"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@id/video_info_selection_pic"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="15px"
+        android:layout_marginStart="@dimen/margin_42px"
+        android:ellipsize="end"
+        android:maxLength="10"
+        android:maxLines="1"
+        android:text="国民奇探 借酒消愁"
+        android:textColor="@color/color_video_info_text"
+        android:textSize="@dimen/tag_text_size"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/video_info_selection_series"
+        android:layout_width="124px"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@id/video_info_selection_name"
+        app:layout_constraintTop_toTopOf="@id/video_info_selection_name"
+        android:layout_marginStart="47px"
+        android:ellipsize="end"
+        android:maxLength="8"
+        android:maxLines="1"
+        android:textColor="@color/color_video_info_text"
+        android:visibility="visible"
+        android:textSize="@dimen/tag_text_size"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/video_info_selection_details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="@id/video_info_selection_name"
+        app:layout_constraintTop_toBottomOf="@id/video_info_selection_name"
+        android:layout_marginTop="21px"
+        android:text="剧集详情"
+        android:textColor="@color/color_video_details"
+        android:textSize="@dimen/tag_text_size"
+        tools:ignore="MissingConstraints" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

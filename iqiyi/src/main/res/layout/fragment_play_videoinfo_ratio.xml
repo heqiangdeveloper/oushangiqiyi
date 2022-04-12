@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/color_theme_background"
+    android:orientation="vertical">
+
+    <!--返回键-->
+    <LinearLayout
+        android:id="@+id/ratio_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_40px"
+        android:layout_marginStart="@dimen/margin_40px"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints">
+
+        <ImageView
+            android:id="@+id/ratio_back_img"
+            android:layout_width="@dimen/back_width"
+            android:layout_height="@dimen/back_height"
+            android:layout_gravity="center"
+            android:background="@drawable/ic_back_60"
+            android:contentDescription="@string/img_back_defination" />
+
+        <TextView
+            android:id="@+id/ratio_scale_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_9dp"
+            android:text="@string/back_title_ratio"
+            android:textColor="@color/color_video_info_text"
+            android:textSize="@dimen/title_text_size" />
+
+    </LinearLayout>
+
+    <!--画面比例列表-->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/video_scale_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/ratio_back"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="@dimen/margin_40px"
+        tools:ignore="MissingConstraints" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

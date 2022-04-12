@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--返回按钮-->
+    <ImageView
+        android:id="@+id/account_back"
+        android:layout_width="@dimen/account_back_size"
+        android:layout_height="@dimen/account_back_size"
+        android:layout_marginStart="@dimen/margin_20px"
+        android:layout_marginTop="@dimen/margin_20px"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/ic_back_60"
+        tools:ignore="MissingConstraints" />
+
+    <!--欧尚style账、账号已绑定-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/account_login_in_layout_root"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:visibility="visible"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="274px"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:ignore="MissingConstraints">
+        <LinearLayout
+            android:id="@+id/account_login_in_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="visible"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+
+            tools:ignore="MissingConstraints">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/account_portrait"
+                    android:layout_width="@dimen/account_circle_size"
+                    android:layout_height="@dimen/account_circle_size" />
+
+                <ImageView
+                    android:id="@+id/account_vip_remark"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignEnd="@id/account_portrait"
+                    android:src="@drawable/account_vip"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/account_user_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/margin_38px"
+                android:text="KKDLL"
+                android:textColor="@color/color_theme_text"
+                android:textSize="@dimen/title_text_size"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/account_vip_expire_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/margin_40px"
+                android:textColor="@color/color_account_login_qrcode_instruction"
+                android:textSize="@dimen/tag_text_size"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/account_logout_btn"
+                android:layout_width="@dimen/account_logout_button_width"
+                android:layout_height="@dimen/account_logout_button_height"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/margin_107px"
+                android:background="@drawable/account_logout_shape"
+                android:text="@string/account_login_oushangstyle"
+                android:textColor="@color/color_white"
+                android:textAllCaps="false"
+                android:textSize="@dimen/title_text_size" />
+
+
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.wang.avi.AVLoadingIndicatorView
+        android:visibility="gone"
+        app:indicatorName="@string/BallSpinGradientLoaderIndicator"
+        android:id="@+id/page_loading"
+        android:layout_width="@dimen/account_loading_width"
+        android:layout_height="@dimen/account_loading_height"
+        android:layout_marginTop="@dimen/margin_253px"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--登录二维码-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/account_login_qrcode_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/account_login_net_error_layout"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="MissingConstraints">
+
+        <!--二维码加载进度-->
+        <com.wang.avi.AVLoadingIndicatorView
+            android:id="@+id/account_login_loading"
+            android:layout_width="@dimen/account_loading_width"
+            android:layout_height="@dimen/account_loading_height"
+            android:layout_marginTop="@dimen/margin_253px"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!--二维码-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:visibility="gone"
+            android:id="@+id/account_login_qrcode_and_invalid_layout"
+            android:layout_width="@dimen/member_qrcode_width"
+            android:layout_height="@dimen/member_qrcode_height"
+            android:layout_marginTop="@dimen/margin_146px"
+            android:background="@drawable/account_login_qr_bg"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+
+            app:layout_constraintTop_toTopOf="parent">
+
+            <!--二维码-->
+            <ImageView
+                android:id="@+id/account_login_QRCode"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="@dimen/margin_20px"
+                android:scaleType="fitXY"
+                android:visibility="visible" />
+
+            <!--二维码失效-->
+            <RelativeLayout
+                android:id="@+id/account_login_qrcode_invalid_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/account_login_qr_fg"
+                android:visibility="visible">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/margin_84px"
+                    android:gravity="center"
+                    android:text="@string/account_login_qrcode_invalid"
+                    android:textColor="@color/color_theme_text"
+                    android:textSize="@dimen/text_size_30px" />
+
+                <ImageView
+                    android:id="@+id/account_login_qrcode_invalid_fresh"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="@dimen/margin_56px"
+                    android:src="@drawable/ic_qrcode_refresh" />
+
+            </RelativeLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/account_tips"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/margin_201px"
+            android:text="@string/account_login_qrcode_tips"
+            android:textColor="@color/color_theme_text"
+            android:textSize="@dimen/text_size_30px"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <TextView
+            android:id="@+id/account_login_tips"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_145px"
+            android:text="@string/account_login_qrcode_instruction"
+            android:textColor="@color/color_account_login_qrcode_instruction"
+            android:textSize="@dimen/text_size_26px"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/account_login_qrcode_tips"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:constraint_referenced_ids="account_tips,account_login_tips" />
+
+        <TextView
+            android:id="@+id/account_login_cancel_tips"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_170px"
+            android:text="@string/account_login_cancel"
+            android:textColor="@color/color_account_login_qrcode_instruction"
+            android:textSize="@dimen/text_size_30px"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--网络异常-->
+    <LinearLayout
+        android:id="@+id/account_login_net_error_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:orientation="vertical"
+        android:visibility="gone"
+        tools:ignore="MissingConstraints">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/network_error"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/margin_17px"
+            android:textSize="@dimen/text_size_30px"
+            android:textColor="@color/color_theme_text"
+            android:text="@string/account_login_network_error"/>
+
+        <Button
+            android:id="@+id/account_login_refresh_btn"
+            android:layout_width="412px"
+            android:layout_height="72px"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/margin_48px"
+            android:background="@drawable/account_logout_shape"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/text_size_30px"
+            android:text="@string/account_login_network_fresh_button"/>
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

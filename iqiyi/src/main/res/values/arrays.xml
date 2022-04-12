@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="recommend_area_title">
+        <item>电影</item>
+        <item>综艺</item>
+        <item>会员</item>
+        <item>收藏</item>
+        <item>最近</item>
+    </string-array>
+
+    <integer-array name="recommend_area_image">
+        <item>@drawable/movie_icon</item>
+        <item>@drawable/variety_icon</item>
+        <item>@drawable/member_icon</item>
+        <item>@drawable/favorites_icon</item>
+        <item>@drawable/recent_icon</item>
+    </integer-array>
+
+    <string-array name="my_menu">
+        <item>@string/my_tab_text_history</item>
+        <item>@string/my_tab_text_favorite</item>
+        <item>@string/my_tab_text_setting</item>
+    </string-array>
+
+    <string-array name="my_setting_menu">
+        <item>@string/my_setting_item_play_doload</item>
+        <item>@string/my_setting_item_clear_cache</item>
+        <item>@string/my_setting_item_privacy</item>
+    </string-array>
+
+
+</resources>

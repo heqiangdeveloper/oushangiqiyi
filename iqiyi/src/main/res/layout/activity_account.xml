@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--返回按钮-->
+    <ImageView
+        android:id="@+id/account_back"
+        android:layout_width="@dimen/account_back_size"
+        android:layout_height="@dimen/account_back_size"
+        android:layout_marginStart="@dimen/margin_20px"
+        android:layout_marginTop="@dimen/margin_20px"
+        android:background="@drawable/ic_back_60"/>
+
+    <!--授权登录-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/vehicle_account_authorized_login_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_toStartOf="@id/account_separator_view"
+        android:layout_alignParentStart="true"
+        android:visibility="gone">
+
+        <!--车机账号头像-->
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/vehicle_account_portrait"
+            android:layout_width="@dimen/account_circle_size"
+            android:layout_height="@dimen/account_circle_size"
+            android:layout_marginTop="234px"
+            android:src="@drawable/account_portrait_test"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!--车机账号logo-->
+        <ImageView
+            android:layout_width="50px"
+            android:layout_height="50px"
+            app:layout_constraintEnd_toEndOf="@id/vehicle_account_portrait"
+            app:layout_constraintBottom_toBottomOf="@id/vehicle_account_portrait"
+            android:background="@drawable/oushang_vehicle_logo_bg"
+            android:src="@drawable/ic_oushang_vehicle_logo"/>
+
+        <!--车机账号用户名称-->
+        <TextView
+            android:id="@+id/vehicle_account_user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_40px"
+            android:text="KKDLL"
+            android:textColor="@color/color_theme_text"
+            android:textSize="@dimen/title_text_size"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/vehicle_account_portrait" />
+
+        <!--授权登录按钮-->
+        <Button
+            android:id="@+id/vehicle_account_authorized_login_btn"
+            android:layout_width="@dimen/account_logout_button_width"
+            android:layout_height="@dimen/account_logout_button_height"
+            android:layout_marginTop="@dimen/margin_57px"
+            android:layout_marginBottom="@dimen/margin_104px"
+            android:background="@drawable/vehicle_account_authorized_login_bg_shape"
+            android:text="@string/account_login_oushangstyle"
+            android:textAllCaps="false"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/title_text_size"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/vehicle_account_user_name" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--分隔线-->
+    <View
+        android:id="@+id/account_separator_view"
+        android:layout_width="3px"
+        android:layout_height="368px"
+        android:layout_marginBottom="@dimen/margin_4px"
+        android:background="@drawable/account_separator_bg_shape"
+        android:layout_centerInParent="true"
+        android:visibility="gone"/>
+
+    <!--扫码登录-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/account_scan_qrcode_login_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentEnd="true"
+        android:layout_centerInParent="true"
+        android:layout_toEndOf="@id/account_separator_view"
+        android:visibility="visible">
+
+        <!--扫码提示-->
+        <TextView
+            android:id="@+id/account_scan_qrcode_tips"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="137px"
+            android:layout_marginBottom="@dimen/margin_40px"
+            android:text="@string/account_login_qrcode_tips"
+            android:textColor="@color/color_theme_text"
+            android:textSize="@dimen/text_size_30px"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!--二维码加载进度-->
+        <com.wang.avi.AVLoadingIndicatorView
+            android:id="@+id/account_login_loading"
+            android:layout_width="@dimen/account_loading_width"
+            android:layout_height="@dimen/account_loading_height"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!--二维码-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/account_login_qrcode_layout"
+            android:layout_width="@dimen/member_qrcode_width"
+            android:layout_height="@dimen/member_qrcode_height"
+            android:background="@drawable/account_login_qr_bg"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <!--二维码-->
+            <ImageView
+                android:id="@+id/account_login_QRCode"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="@dimen/margin_20px"
+                android:scaleType="fitXY"
+                android:visibility="visible" />
+
+            <!--二维码失效-->
+            <RelativeLayout
+                android:id="@+id/account_login_qrcode_invalid_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/account_login_qr_fg"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/margin_84px"
+                    android:gravity="center"
+                    android:text="@string/account_login_qrcode_invalid"
+                    android:textColor="@color/color_theme_text"
+                    android:textSize="@dimen/text_size_30px" />
+
+                <ImageView
+                    android:id="@+id/account_login_qrcode_invalid_refresh"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="@dimen/margin_56px"
+                    android:src="@drawable/ic_qrcode_refresh" />
+
+            </RelativeLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!--二维码加载动画-->
+        <ImageView
+            android:id="@+id/qrcode_loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!--登录提示-->
+        <TextView
+            android:id="@+id/account_login_tips"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_40px"
+            android:text="@string/account_login_qrcode_instruction"
+            android:textColor="@color/color_account_login_qrcode_instruction"
+            android:textSize="@dimen/text_size_26px"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--账号已登录-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/account_login_in_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:visibility="gone">
+
+        <!--用户头像-->
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/account_portrait"
+            android:layout_width="@dimen/account_circle_size"
+            android:layout_height="@dimen/account_circle_size"
+            android:layout_marginTop="160px"
+            android:src="@drawable/account_portrait_test"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!--vip标识-->
+        <ImageView
+            android:id="@+id/account_vip_remark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/account_vip"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="@+id/account_portrait"
+            app:layout_constraintTop_toTopOf="@+id/account_portrait" />
+
+        <!--用户名称-->
+        <TextView
+            android:id="@+id/account_user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_32px"
+            android:text="KKDLL"
+            android:textColor="@color/color_theme_text"
+            android:textSize="@dimen/title_text_size"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/account_portrait" />
+
+        <!--到期时间-->
+        <TextView
+            android:id="@+id/account_vip_expire_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_40px"
+            android:text="VIP会员2020-7-30到期"
+            android:textColor="@color/color_account_login_qrcode_instruction"
+            android:textSize="@dimen/tag_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/account_user_name" />
+
+        <!--退出登录-->
+        <Button
+            android:id="@+id/account_logout_btn"
+            android:layout_width="@dimen/account_logout_button_width"
+            android:layout_height="@dimen/account_logout_button_height"
+            android:layout_marginTop="114px"
+            android:layout_marginBottom="132px"
+            android:background="@drawable/account_logout_shape"
+            android:text="退出登录"
+            android:textColor="@color/color_account_logout_btn"
+            android:textSize="@dimen/title_text_size"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/account_user_name" />
+
+        <!--是否是vip-->
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/account_is_vip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:constraint_referenced_ids="account_vip_remark,
+            account_vip_expire_time" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--网络异常-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/network_error_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/network_error_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="240px"
+            android:src="@drawable/network_error"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/network_error_tips"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_17px"
+            android:text="@string/account_login_network_error"
+            android:textColor="@color/color_theme_text"
+            android:textSize="@dimen/text_size_30px"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/network_error_img" />
+
+        <Button
+            android:id="@+id/network_refresh_btn"
+            android:layout_width="412px"
+            android:layout_height="72px"
+            android:layout_marginTop="@dimen/margin_48px"
+            android:background="@drawable/account_logout_shape"
+            android:text="@string/account_login_network_fresh_button"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/text_size_30px"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/network_error_tips" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</RelativeLayout>

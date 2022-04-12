@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="124px"
+    android:layout_height="177px">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/actor_pic"
+        android:layout_width="124px"
+        android:layout_height="124px"/>
+
+    <TextView
+        android:id="@+id/actor_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22px"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textSize="@dimen/tag_text_size"
+        android:textColor="@color/color_video_info_text"
+        android:text="胡一天"/>
+
+</LinearLayout>

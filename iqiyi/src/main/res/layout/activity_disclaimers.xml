@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--关闭按钮-->
+    <ImageView
+        android:id="@+id/disclaimer_close"
+        android:layout_width="@dimen/close_width"
+        android:layout_height="@dimen/close_height"
+        android:layout_marginStart="@dimen/margin_20px"
+        android:layout_marginTop="@dimen/margin_20px"
+        android:background="@drawable/ic_close"
+        android:contentDescription="@string/img_disclaimer_close" />
+
+    <!--声明标题-->
+    <TextView
+        android:id="@+id/disclaimer_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/margin_42px"
+        android:textSize="@dimen/text_size_42px"
+        android:textColor="@color/color_theme_text"
+        android:text="@string/user_agreement_and_privacy_protection_title"/>
+
+    <!--声明内容-->
+    <TextView
+        android:id="@+id/disclaimer_content"
+        android:layout_width="@dimen/disclaimer_content_width"
+        android:layout_height="@dimen/disclaimer_content_height"
+        android:layout_below="@id/disclaimer_title"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/margin_37.7px"
+        android:lineSpacingExtra="@dimen/disclaimer_line_space"
+        android:lineSpacingMultiplier="1.1"
+        android:text="@string/user_agreement_and_privacy_protection_content"
+        android:textColor="@color/color_theme_text"
+        android:textSize="@dimen/title_text_size" />
+
+    <!--底部按钮-->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/disclaimer_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/margin_36px"
+        android:orientation="horizontal">
+
+        <!--同意按钮-->
+        <Button
+            android:id="@+id/disclaimer_agree_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="500px"
+            android:background="@drawable/disclaimer_button_bg"
+            android:text="@string/user_agreement_and_privacy_protection_agree_btn"
+            android:textColor="@drawable/disclaimer_button_text_selector"
+            android:textSize="@dimen/title_text_size"
+            style="?android:attr/buttonBarButtonStyle" />
+
+        <!--不同意按钮-->
+        <Button
+            android:id="@+id/disclaimer_disagree_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="188px"
+            android:background="@drawable/disclaimer_button_bg"
+            android:text="@string/user_agreement_and_privacy_protection_disagree_btn"
+            android:textColor="@drawable/disclaimer_button_text_selector"
+            android:textSize="@dimen/title_text_size"
+            style="?android:attr/buttonBarButtonStyle" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="270px"
+    android:layout_height="362px"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/hot_search_album_pic"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:background="@drawable/albumpic_shape"
+        android:foreground="@drawable/ic_album_record_fg"
+        android:src="@drawable/hot_search_albumpic_test" />
+
+    <ImageView
+        android:id="@+id/hot_search_album_exclusive"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="@dimen/margin_20px"
+        android:src="@drawable/hot_search_album_exclusive"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/hot_search_album_vip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="@dimen/margin_20px"
+        android:src="@drawable/hot_search_album_vip"
+        android:visibility="visible" />
+
+    <TextView
+        android:id="@+id/hot_search_album_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/hot_search_album_focus"
+        android:layout_marginStart="@dimen/margin_25px"
+        android:layout_marginBottom="3px"
+        android:text="节目标题"
+        android:textColor="@color/color_white"
+        android:textSize="@dimen/tag_text_size" />
+
+    <TextView
+        android:id="@+id/hot_search_album_focus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="@dimen/margin_25px"
+        android:layout_marginBottom="@dimen/margin_12px"
+        android:text="阿娇复出穿越大剧"
+        android:textColor="@color/color_hot_search_album_focus"
+        android:textSize="@dimen/album_focus_text_size" />
+
+
+</RelativeLayout>

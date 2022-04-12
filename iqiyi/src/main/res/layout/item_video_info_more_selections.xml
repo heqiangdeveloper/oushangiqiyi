@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="90px"
+    android:layout_height="63px">
+
+    <TextView
+        android:id="@+id/video_info_selection"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:background="@drawable/video_info_selection_shape"
+        android:gravity="center"
+        android:textColor="@color/color_video_order_text"
+        android:textSize="@dimen/title_text_size" />
+
+    <com.oushang.iqiyi.ui.LinePulseView
+        android:id="@+id/play_line_pulse"
+        android:layout_width="30.54px"
+        android:layout_height="21.17px"
+        android:layout_centerInParent="true"
+        android:visibility="visible"
+        app:rail_color="@color/color_video_details"
+        app:rail_count="3"
+        app:rail_width="3.52px" />
+
+</RelativeLayout>

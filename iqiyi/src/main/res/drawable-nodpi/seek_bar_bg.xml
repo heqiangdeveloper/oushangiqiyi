@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--背景色-->
+    <item
+        android:id="@android:id/background" android:gravity="fill_horizontal">
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/radius_2px" />
+            <size android:height="@dimen/player_seekbar_height" />
+            <solid android:color="@color/color_seek_bar_bg" />
+        </shape>
+    </item>
+
+    <!--缓冲色-->
+    <item
+        android:id="@+id/secondaryProgress">
+        <clip>
+            <shape android:shape="rectangle">
+                <corners android:radius="@dimen/radius_2dp" />
+                <size android:height="@dimen/player_seekbar_height" />
+                <solid android:color="@color/color_seek_bar_secondaryProgress" />
+            </shape>
+        </clip>
+    </item>
+
+    <!--进度色-->
+    <item android:id="@android:id/progress">
+        <clip>
+            <shape android:shape="rectangle">
+                <corners android:radius="@dimen/radius_2dp" />
+                <size android:height="@dimen/player_seekbar_height" />
+                <gradient
+                    android:angle="45"
+                    android:endColor="@color/color_seek_bar_end"
+                    android:startColor="@color/color_seek_bar_start"
+                    android:type="linear"
+                    android:useLevel="true" />
+            </shape>
+        </clip>
+
+    </item>
+
+</layer-list>

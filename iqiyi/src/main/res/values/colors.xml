@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <!--用户使用协议与隐私政策-->
+    <color name="color_user_agreement_and_privacy_protection_text_link">#0A84FF</color>
+    <color name="color_user_agree_or_disagree_button_selected_bg">#0C84FF</color>
+    <color name="color_user_agree_or_disagree_button_no_selected_bg">#333333</color>
+
+    <!--字体-->
+    <color name="color_seekTime_text_shadowColor">#4d000000</color>
+    <color name="color_text_disable">#999A9B</color>
+
+    <!--纯色-->
+    <color name="color_black">#000000</color>
+    <color name="color_white">#ffffff</color>
+
+    <!--导航栏-->
+    <color name="color_nav_background">#1A1A1A</color>
+    <color name="color_nav_app_name">#ffffff</color>
+    <color name="color_nav_menu_item_default">#ffffff</color>
+    <color name="color_nav_tab_text_no_select">#FFFFFF</color>
+    <color name="color_nav_tab_text_select">#FFFFFF</color>
+
+    <!--搜索-->
+    <color name="color_search_bg">#1C1C1E</color>
+    <color name="color_search_bg_night">#1C1C1E</color>
+    <color name="color_search_history_label_text">#FFFFFF</color>
+    <color name="color_search_history_text">#FFFFFF</color>
+    <color name="color_search_hot_search_label_text">#FFFFFF</color>
+    <color name="color_search_history_text_bg">#333333</color>
+    <color name="color_search_result_type_label_text">#FFFFFF</color>
+    <color name="color_search_result_type_text">#FFFFFF</color>
+    <color name="color_search_result_button_selected">#0BBE06</color>
+    <color name="color_search_result_button_unselected">#ff1a1b1e</color>
+    <color name="color_hot_search_album_focus">#999A9B</color>
+    <color name="color_search_result_empty_tips">#999A9B</color>
+
+    <!--首页-->
+    <color name="color_channel_name">#FFFFFF</color>
+    <color name="color_king_name">#FFFFFF</color>
+    <color name="color_album_name">#FFFFFF</color>
+    <color name="color_focus_name">#999A9B</color>
+    <color name="color_channel_albumpic_skeleton_bg">#801c1c1e</color>
+    <color name="color_channel_albumpic_placeholder">#3a3a3c</color>
+    <color name="color_nav_separate">#3E3E3E</color>
+    <color name="color_search_text">#999A9B</color>
+    <color name="color_normal_banner_indicator">#80FFFFFF</color>
+    <color name="color_skeleton_text_bg">#313131</color>
+
+    <color name="color_video_details">#0BBE06</color>
+    <color name="color_video_details_reverse">#FF9F0A</color>
+    <color name="color_driving_reminder">#F1A33C</color>
+    <color name="color_concurrent_tip">#1A3E3E3E</color>
+
+    <!--分类-->
+    <color name="color_channel_tag_name">#FFFFFF</color>
+    <color name="color_channel_tag_bg">#1A1B1E </color>
+    <color name="color_channel_tag_title">#FFFFFF</color>
+    <color name="color_channel_tag_edit">#FFFFFF</color>
+    <color name="color_channel_edit_bg">#99333333</color>
+    <color name="color_channel_child_tag_text">#FFFFFF</color>
+    <color name="color_common_channel_tag_bg">#66333333</color>
+    <color name="color_channel_child_tag_selected_bg">#373737</color>
+    <color name="color_channel_child_tag_unselect">#ffffff</color>
+    <color name="color_channel_child_tag_selected">#0BBE06</color>
+    <color name="color_channel_chile_tag_text_selected">#0BBE06</color>
+    <color name="color_channel_info_empty_text">#999A9B</color>
+    <color name="color_channel_detail_title">#FFFFFF</color>
+    <color name="color_channel_info_sift_text">#FFFFFF</color>
+    <color name="color_channel_info_album_name_text">#FFFFFF</color>
+    <color name="color_channel_third_tag_bg">#1A1B1E</color>
+    <color name="color_channel_third_tag_text">#FFFFFF</color>
+    <color name="color_common_channel_empty_text">#FFFFFF</color>
+
+    <!--tagView热触区-->
+    <color name="color_tag_bg">#3a3a3c</color>
+    <color name="color_tag_add">#ffffff</color>
+    <color name="color_tag_delete">#ffffff</color>
+    <color name="color_tag_complete">#999a9b</color>
+    <color name="color_tag_delete_stroke">#3A3A3C</color>
+
+
+    <!--播放器-->
+    <color name="color_player_bg">#212121</color>
+    <color name="color_player_video_info_bg">#434343</color>
+    <color name="color_seek_bar_bg">#787880</color>
+    <color name="color_seek_bar_secondaryProgress">#ffffff</color>
+    <color name="color_seek_bar_start">#0BBE06</color>
+    <color name="color_seek_bar_end">#0A84FF</color>
+    <color name="color_seek_bar_thumb_bg">#FFFFFF</color>
+    <color name="color_seek_bar_thumb_disable_bg">#3E3E3E</color>
+    <color name="color_non_member_tip_bg">#3E3E3E</color>
+    <color name="color_non_member_shadowColor">#1E1E1E</color>
+    <color name="color_non_member_tip_click_text">#0BBE06</color>
+    <color name="color_episodes_select_bg">#290BBE06</color>
+    <color name="color_episodes_non_select_bg">#1C1C1E</color>
+    <color name="color_episodes_select_text">#0BBE06</color>
+    <color name="color_player_right_drawlayout_bg">#3E3E3E</color>
+    <color name="color_video_difination_no_selected">#333333</color>
+    <color name="color_video_difination_disable_text">#999A9B</color>
+    <color name="color_video_info_text_no_selected">#FFFFFF</color>
+    <color name="color_video_info_text_selected">#FFFFFF</color>
+    <color name="color_video_info_more">#FFFFFF</color>
+
+    <!--剧集简介-->
+    <color name="color_scroll_thumb_color">#FFFFFF</color>
+    <color name="color_scroll_track_color">#333333</color>
+    <color name="color_video_info_text">#FFFFFF</color>
+    <color name="color_video_relate_text">#FFFFFF</color>
+    <color name="color_video_more_selection">#FFFFFF</color>
+    <color name="color_video_order_text">#FFFFFF</color>
+
+    <!--我的-->
+    <color name="color_my_tab_text">#999A9B</color>
+    <color name="color_my_tab_select_text">#FFFFFF</color>
+    <color name="color_my_history_text_shadow">#000000</color>
+    <color name="color_my_tab_indicator">#0BBE06</color>
+    <color name="color_my_history_button">#0BBE06</color>
+    <color name="color_record_edit_bg">#99333333</color>
+    <color name="color_record_edit_text">#FFFFFF</color>
+    <color name="color_record_album_name">#FFFFFF</color>
+    <color name="color_empty_or_fail_text">#999A9B</color>
+    <color name="color_setting_item_bg">#1C1C1E</color>
+    <color name="color_setting_item_text">#FFFFFF</color>
+    <color name="color_setting_back_text">#FFFFFF</color>
+    <color name="color_my_record_edit_layout_bg">#373737</color>
+    <color name="color_my_record_edit_layout_separator_bg">#1B1B1B</color>
+
+    <!--设置-->
+    <color name="color_my_setting_bg">#1A1A1A</color>
+    <color name="color_my_setting_item_divider">#3D3D41</color>
+    <color name="color_my_setting_item_tips">#999A9B</color>
+    <color name="color_my_setting_switch_track_off">#333333</color>
+    <color name="color_my_setting_switch_track_on">#0983FE</color>
+
+    <!--网络异常-->
+    <color name="color_network_error_refresh_btn_bg">#1EBE06</color>
+
+    <!--账号-->
+    <color name="color_account_login_qrcode_instruction">#999A9B</color>
+    <color name="color_account_login_qrcode_invalid_bg">#E6000000</color>
+    <color name="color_account_separator_bg">#303033</color>
+    <color name="color_vehicle_account_authorized_login_btn_bg">#0BBE06</color>
+    <color name="color_account_logout_btn">#0BBE06</color>
+
+    <!--toast-->
+    <color name="color_toast_bg">#E63E3E3E</color>
+    <color name="color_toast_shadowColor">#1E1E1E</color>
+    <color name="color_toast_shadowColor_networkError">#091B3E</color>
+
+    <!--实名认证-->
+    <color name="color_not_promot_again_bg">#664D4D4D</color>
+
+    <!--白天/夜间主题背景色-->
+    <color name="color_theme_background">#000000</color>
+    <!--白天/夜间主题字体颜色-->
+    <color name="color_theme_text">#FFFFFF</color>
+    <color name="color_theme_tips_text">#999A9B</color>
+
+    <!--dialog-->
+    <color name="color_tips_dialog_bg">#1E1E1E</color>
+    <color name="color_tips_dialog_separate_bg">#6E6E6E</color>
+    <color name="color_flow_dialog_bg">#3E3E3E</color>
+    <color name="color_flow_dialog_separate_bg">#6E6E6E</color>
+
+    <!-- ===========================自定义白天/黑夜模式切换资源==================================  -->
+    <!-- ======黑夜模式资源====== -->
+    <color name="color_skin_background">#000000</color>
+    <color name="color_skin_text">#FFFFFF</color>
+    <!--剧集简介-->
+    <color name="color_skin_synopsis_text">#FFFFFF</color>
+    <color name="color_skin_synopsis_more_text">#FFFFFF</color>
+    <color name="color_skin_synopsis_order_border">#3A3A3C</color>
+    <!--相关推荐-->
+    <color name="color_skin_related_recommend_text">#FFFFFF</color>
+    <!--剧集详情-->
+    <color name="color_skin_synopsis_detail_text">#FFFFFF</color>
+    <!--更多选集-->
+    <color name="color_skin_more_selection_text">#FFFFFF</color>
+    <!--清晰度选择/画面比例-->
+    <color name="color_skin_select_btn_bg">#333333</color>
+    <!--搜索-->
+    <color name="color_skin_search_bar_bg">#1C1C1E</color>
+    <color name="color_skin_search_icon">#999A9B</color>
+    <color name="color_skin_search_hint_text">#999A9B</color>
+    <color name="color_skin_search_text">#FFFFFF</color>
+
+    <!-- =====白天模式资源===== -->
+    <color name="color_skin_background_notnight">#F8F8F8</color>
+    <color name="color_skin_text_notnight">#000000</color>
+    <!--剧集简介-->
+    <color name="color_skin_synopsis_text_notnight">#333333</color>
+    <color name="color_skin_synopsis_more_text_notnight">#8A898D</color>
+    <color name="color_skin_synopsis_order_border_notnight">#E9E9EB</color>
+    <!--相关推荐-->
+    <color name="color_skin_related_recommend_text_notnight">#333333</color>
+    <!--剧集详情-->
+    <color name="color_skin_synopsis_detail_text_notnight">#333333</color>
+    <!--更多选集-->
+    <color name="color_skin_more_selection_text_notnight">#333333</color>
+    <!--清晰度选择/画面比例-->
+    <color name="color_skin_select_btn_bg_notnight">#E6E8EB</color>
+    <!--搜索-->
+    <color name="color_skin_search_bar_bg_notnight">#E9E9EB</color>
+    <color name="color_skin_search_icon_notnight">#8A898D</color>
+    <color name="color_skin_search_hint_text_notnight">#8A898D</color>
+    <color name="color_skin_search_text_notnight">#000000</color>
+
+</resources>

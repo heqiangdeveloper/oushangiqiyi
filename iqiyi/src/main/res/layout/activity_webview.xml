@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--返回按钮-->
+    <ImageView
+        android:id="@+id/webview_back"
+        android:layout_width="@dimen/back_60_width"
+        android:layout_height="@dimen/back_60_height"
+        android:layout_marginStart="@dimen/margin_20px"
+        android:layout_marginTop="@dimen/margin_20px"
+        android:contentDescription="wv_back"
+        android:src="@drawable/ic_back_60" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="@dimen/margin_42px"
+        android:orientation="vertical">
+
+        <!--标题-->
+        <TextView
+            android:id="@+id/web_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/color_theme_text"
+            android:visibility="gone"
+            android:textSize="@dimen/title_text_size" />
+
+        <!--页面-->
+        <WebView
+            android:visibility="invisible"
+            android:id="@+id/web_view"
+            android:background="@color/color_theme_background"
+            android:layout_width="1448px"
+            android:layout_height="514px"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/margin_38px"
+            android:layout_marginBottom="@dimen/margin_80px"
+            android:layerType="software"
+            android:scrollbarSize="2dp"
+            android:scrollbarThumbVertical="@color/color_white"
+            tools:ignore="WebViewLayout" />
+    </LinearLayout>
+
+</RelativeLayout>

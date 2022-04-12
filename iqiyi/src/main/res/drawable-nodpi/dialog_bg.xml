@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/color_tips_dialog_bg" />
+            <item android:name="android:shadowColor">#4D091B3E</item>
+            <item android:name="android:shadowDx">0</item>
+            <item android:name="android:shadowDy">8</item>
+            <corners android:topLeftRadius="@dimen/radius_20px"
+                android:topRightRadius="@dimen/radius_20px"
+                android:bottomLeftRadius="@dimen/radius_20px"
+                android:bottomRightRadius="@dimen/radius_20px" />
+        </shape>
+    </item>
+
+</layer-list>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/hot_channel_albumpic_width"
+    android:layout_height="@dimen/hot_channel_albumpic_height"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="160px"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/hot_channel_albumpic_skeleton_bg">
+
+        <ImageView
+            android:layout_width="58.02px"
+            android:layout_height="46.87px"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:src="@drawable/ic_hot_channel_album_pic_place_holder" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:id="@+id/skeleton_albumpic_name"
+        android:layout_width="98px"
+        android:layout_height="25px"
+        app:layout_constraintBottom_toTopOf="@id/skeleton_albumpic_focus"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginBottom="@dimen/margin_12px"
+        android:background="@drawable/hot_channel_albumpic_focus_skeleton_bg"/>
+
+    <View
+        android:id="@+id/skeleton_albumpic_focus"
+        android:layout_width="124px"
+        android:layout_height="25px"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/hot_channel_albumpic_focus_skeleton_bg"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

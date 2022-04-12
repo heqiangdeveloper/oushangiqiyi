@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/color_theme_background"
+    android:orientation="vertical">
+
+    <!--搜索历史-->
+    <RelativeLayout
+        android:id="@+id/search_history_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="68px"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="280px"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:id="@+id/search_history_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:text="@string/search_history_label_title"
+            android:textColor="@color/color_search_history_label_text"
+            android:textSize="@dimen/title_text_size" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/search_history_keyword_rv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/search_history_label"
+            android:layout_marginStart="@dimen/margin_38px"
+            android:visibility="visible"/>
+
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/search_history_delete_img"
+        android:layout_width="48px"
+        android:layout_height="48px"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        app:layout_constraintTop_toTopOf="@id/search_history_layout"
+        app:layout_constraintBottom_toBottomOf="@id/search_history_layout"
+        app:layout_constraintStart_toEndOf="@id/search_history_layout"
+        android:layout_marginStart="144px"
+        android:src="@drawable/ic_search_history_delete"
+        android:visibility="visible"
+        tools:ignore="MissingConstraints" />
+
+    <!--热门搜索-->
+    <LinearLayout
+        android:id="@+id/hot_search_layout"
+        android:layout_width="1283px"
+        android:layout_height="435px"
+        app:layout_constraintStart_toStartOf="@id/search_history_layout"
+        app:layout_constraintTop_toBottomOf="@id/search_history_layout"
+        android:layout_marginBottom="36px"
+        android:layout_marginTop="41px"
+        android:orientation="vertical"
+        android:visibility="visible"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:id="@+id/hot_search_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_search_hot_search_label_text"
+            android:textSize="@dimen/title_text_size"
+            android:text="@string/hot_search_label"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/hot_search_content_rv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_40px"
+            android:layout_marginStart="110px"/>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

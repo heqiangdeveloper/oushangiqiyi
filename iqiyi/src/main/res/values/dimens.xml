@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--状态栏高度-->
+    <dimen name="status_bar_height">45dp</dimen>
+
+    <!--免责声明-->
+    <dimen name="disclaimer_content_width">1442px</dimen>
+    <dimen name="disclaimer_content_height">446px</dimen>
+    <dimen name="disclaimer_line_space">10px</dimen>
+
+    <!--字体大小-->
+    <dimen name="app_name_text_size">48px</dimen>
+    <dimen name="title_text_size">30px</dimen>
+    <dimen name="tag_text_size">28px</dimen>
+    <dimen name="album_focus_text_size">24px</dimen>
+    <dimen name="album_name_text_size">21px</dimen>
+    <dimen name="progress_time_text_size">60px</dimen>
+    <dimen name="album_publish_time">18px</dimen>
+
+    <dimen name="record_edit_text_size">24px</dimen>
+    <dimen name="text_size_30px">30px</dimen>
+    <dimen name="text_size_26px">26px</dimen>
+    <dimen name="text_size_42px">42px</dimen>
+    <dimen name="text_size_24px">24px</dimen>
+    <dimen name="text_size_22px">22px</dimen>
+
+    <!--导航栏-->
+    <dimen name="nav_layout_width">420px</dimen>
+    <dimen name="nav_layout_height">481dp</dimen>
+    <dimen name="nav_user_portrait_size">68px</dimen>
+    <dimen name="nav_tab_width">177dp</dimen>
+    <dimen name="nav_tab_height">80px</dimen>
+    <dimen name="nav_separate_width">1dp</dimen>
+
+    <dimen name="logo_icon_width">140px</dimen>
+    <dimen name="logo_icon_height">46.87px</dimen>
+
+    <!--首页banner-->
+    <dimen name="banner_width">758px</dimen>
+    <dimen name="banner_height">352px</dimen>
+    <dimen name="banner_indicator_normal_width">12px</dimen>
+    <dimen name="banner_indicator_space">12px</dimen>
+    <dimen name="banner_indicator_height">3px</dimen>
+    <dimen name="banner_indicator_radius">3px</dimen>
+    <dimen name="banner_indicator_selected_width">36px</dimen>
+    <dimen name="img_more_width">35px</dimen>
+    <dimen name="img_more_height">35px</dimen>
+    <dimen name="network_refresh_btn_width">412px</dimen>
+    <dimen name="network_refresh_btn_height">72px</dimen>
+
+    <!--loading-->
+    <dimen name="loading_width">116.01px</dimen>
+    <dimen name="loading_height">113.98px</dimen>
+
+    <!--金刚区-->
+    <dimen name="transformers_width">560dp</dimen>
+    <dimen name="transformers_height">96dp</dimen>
+    <dimen name="movie_icon_width">70px</dimen>
+    <dimen name="movie_icon_height">70px</dimen>
+    <dimen name="variety_icon_width">70px</dimen>
+    <dimen name="variety_icon_height">70px</dimen>
+    <dimen name="member_icon_width">70px</dimen>
+    <dimen name="member_icon_height">70px</dimen>
+
+    <!--分类-->
+    <dimen name="channel_edit_btn_width">136px</dimen>
+    <dimen name="channel_edit_btn_height">60px</dimen>
+    <dimen name="channel_child_tag_width">136px</dimen>
+    <dimen name="channel_child_tag_height">60px</dimen>
+    <dimen name="channel_common_width">1431px</dimen>
+    <dimen name="channel_common_height">179px</dimen>
+
+    <!--album封面图尺寸 -->
+    <dimen name="hot_channel_albumpic_layout_width">892px</dimen>
+    <dimen name="hot_channel_albumpic_layout_height">584px</dimen>
+    <dimen name="hot_channel_albumpic_width">284px</dimen>
+    <dimen name="hot_channel_albumpic_height">237px</dimen>
+    <dimen name="albumpic_width">270px</dimen>
+    <dimen name="albumpic_height">360px</dimen>
+    <dimen name="albumpic_parent_height">426px</dimen>
+    <dimen name="related_recommend_albumpic_width">160px</dimen>
+    <dimen name="related_recommend_albumpic_height">214px</dimen>
+    <dimen name="synopsis_albumpic_width">210px</dimen>
+    <dimen name="synopsis_albumpic_height">280px</dimen>
+
+    <!--margin-->
+    <dimen name="margin_2dp">2dp</dimen>
+    <dimen name="margin_4dp">4dp</dimen>
+    <dimen name="margin_7dp">7dp</dimen>
+    <dimen name="margin_8dp">8dp</dimen>
+    <dimen name="margin_9dp">9dp</dimen>
+    <dimen name="margin_10dp">10dp</dimen>
+    <dimen name="margin_11dp">11dp</dimen>
+    <dimen name="margin_11.5dp">11.5dp</dimen>
+    <dimen name="margin_12dp">12dp</dimen>
+    <dimen name="margin_13dp">13dp</dimen>
+    <dimen name="margin_14dp">14dp</dimen>
+    <dimen name="margin_15dp">15dp</dimen>
+    <dimen name="margin_15.5dp">15.5dp</dimen>
+    <dimen name="margin_16dp">16dp</dimen>
+    <dimen name="margin_17dp">17dp</dimen>
+    <dimen name="margin_18dp">18dp</dimen>
+    <dimen name="margin_19dp">19dp</dimen>
+    <dimen name="margin_20dp">20dp</dimen>
+    <dimen name="margin_22dp">22dp</dimen>
+    <dimen name="margin_23dp">23dp</dimen>
+    <dimen name="margin_26dp">26dp</dimen>
+    <dimen name="margin_27dp">27dp</dimen>
+    <dimen name="margin_28dp">28dp</dimen>
+    <dimen name="margin_29dp">29dp</dimen>
+    <dimen name="margin_30dp">30dp</dimen>
+    <dimen name="margin_31dp">31dp</dimen>
+    <dimen name="margin_32dp">32dp</dimen>
+    <dimen name="margin_34dp">34dp</dimen>
+    <dimen name="margin_35dp">35dp</dimen>
+    <dimen name="margin_36dp">36dp</dimen>
+    <dimen name="margin_37dp">37dp</dimen>
+    <dimen name="margin_44dp">44dp</dimen>
+    <dimen name="margin_45dp">45dp</dimen>
+    <dimen name="margin_46dp">46dp</dimen>
+    <dimen name="margin_47dp">47dp</dimen>
+    <dimen name="margin_49dp">49dp</dimen>
+    <dimen name="margin_57dp">57dp</dimen>
+    <dimen name="margin_59dp">59dp</dimen>
+    <dimen name="margin_60dp">60dp</dimen>
+    <dimen name="margin_63dp">63dp</dimen>
+    <dimen name="margin_66dp">66dp</dimen>
+    <dimen name="margin_79dp">79dp</dimen>
+    <dimen name="margin_83dp">83dp</dimen>
+    <dimen name="margin_90dp">90dp</dimen>
+    <dimen name="margin_104dp">104dp</dimen>
+    <dimen name="margin_128dp">128dp</dimen>
+    <dimen name="margin_138dp">138dp</dimen>
+    <dimen name="margin_163dp">163dp</dimen>
+    <dimen name="margin_229dp">229dp</dimen>
+    <dimen name="margin_233dp">233dp</dimen>
+    <dimen name="margin_240dp">240dp</dimen>
+    <dimen name="margin_320dp">320dp</dimen>
+
+    <dimen name="margin_590px">590px</dimen>
+    <dimen name="margin_548px">548px</dimen>
+    <dimen name="margin_253px">253px</dimen>
+    <dimen name="margin_204px">204px</dimen>
+    <dimen name="margin_201px">201px</dimen>
+    <dimen name="margin_175px">175px</dimen>
+    <dimen name="margin_170px">170px</dimen>
+    <dimen name="margin_150px">150px</dimen>
+    <dimen name="margin_146px">146px</dimen>
+    <dimen name="margin_145px">145px</dimen>
+    <dimen name="margin_107px">107px</dimen>
+    <dimen name="margin_109px">109px</dimen>
+    <dimen name="margin_104px">104px</dimen>
+    <dimen name="margin_100px">100px</dimen>
+    <dimen name="margin_84px">84px</dimen>
+    <dimen name="margin_80px">80px</dimen>
+    <dimen name="margin_79px">79px</dimen>
+    <dimen name="margin_71px">71px</dimen>
+    <dimen name="margin_72px">72px</dimen>
+    <dimen name="margin_68px">68px</dimen>
+    <dimen name="margin_64px">64px</dimen>
+    <dimen name="margin_62px">62px</dimen>
+    <dimen name="margin_60px">60px</dimen>
+    <dimen name="margin_57px">57px</dimen>
+    <dimen name="margin_56px">56px</dimen>
+    <dimen name="margin_52px">52px</dimen>
+    <dimen name="margin_50px">50px</dimen>
+    <dimen name="margin_48px">48px</dimen>
+    <dimen name="margin_40px">40px</dimen>
+    <dimen name="margin_45px">45px</dimen>
+    <dimen name="margin_44px">44px</dimen>
+    <dimen name="margin_42px">42px</dimen>
+    <dimen name="margin_41px">41px</dimen>
+    <dimen name="margin_38px">38px</dimen>
+    <dimen name="margin_37.7px">37.7px</dimen>
+    <dimen name="margin_37px">37px</dimen>
+    <dimen name="margin_30px">30px</dimen>
+    <dimen name="margin_31px">31px</dimen>
+    <dimen name="margin_32px">32px</dimen>
+    <dimen name="margin_33px">33px</dimen>
+    <dimen name="margin_34px">34px</dimen>
+    <dimen name="margin_35px">35px</dimen>
+    <dimen name="margin_36px">36px</dimen>
+    <dimen name="margin_20px">20px</dimen>
+    <dimen name="margin_23px">23px</dimen>
+    <dimen name="margin_22px">22px</dimen>
+    <dimen name="margin_21px">21px</dimen>
+    <dimen name="margin_25px">25px</dimen>
+    <dimen name="margin_24px">24px</dimen>
+    <dimen name="margin_29px">29px</dimen>
+    <dimen name="margin_28px">28px</dimen>
+    <dimen name="margin_27px">27px</dimen>
+    <dimen name="margin_18px">18px</dimen>
+    <dimen name="margin_17px">17px</dimen>
+    <dimen name="margin_15px">15px</dimen>
+    <dimen name="margin_13px">13px</dimen>
+    <dimen name="margin_12px">12px</dimen>
+    <dimen name="margin_11px">11px</dimen>
+    <dimen name="margin_10px">10px</dimen>
+    <dimen name="margin_8px">8px</dimen>
+    <dimen name="margin_4px">4px</dimen>
+
+    <!--radius-->
+    <dimen name="radius_2dp">2dp</dimen>
+    <dimen name="radius_8dp">8dp</dimen>
+    <dimen name="radius_10dp">10dp</dimen>
+    <dimen name="radius_12dp">12dp</dimen>
+    <dimen name="radius_15dp">15dp</dimen>
+    <dimen name="radius_2px">2px</dimen>
+    <dimen name="radius_6px">6px</dimen>
+    <dimen name="radius_8px">8px</dimen>
+    <dimen name="radius_10px">10px</dimen>
+    <dimen name="radius_20px">20px</dimen>
+
+    <!--padding-->
+    <dimen name="padding_5dp">5dp</dimen>
+    <dimen name="padding_6dp">6dp</dimen>
+    <dimen name="padding_8dp">8dp</dimen>
+    <dimen name="padding_9dp">9dp</dimen>
+    <dimen name="padding_11dp">11dp</dimen>
+    <dimen name="padding_12dp">12dp</dimen>
+    <dimen name="padding_13dp">13dp</dimen>
+    <dimen name="padding_14dp">14dp</dimen>
+    <dimen name="padding_21dp">21dp</dimen>
+    <dimen name="padding_26dp">26dp</dimen>
+    <dimen name="padding_30dp">30dp</dimen>
+    <dimen name="padding_50px">50px</dimen>
+    <dimen name="padding_40px">40px</dimen>
+    <dimen name="padding_28px">28px</dimen>
+    <dimen name="padding_22px">22px</dimen>
+    <dimen name="padding_21px">21px</dimen>
+    <dimen name="padding_18px">18px</dimen>
+    <dimen name="padding_17px">17px</dimen>
+    <dimen name="padding_14px">14px</dimen>
+    <dimen name="padding_35px">35px</dimen>
+    <dimen name="padding_30px">30px</dimen>
+    <dimen name="padding_11px">11px</dimen>
+    <dimen name="padding_10px">10px</dimen>
+    <dimen name="padding_9px">9px</dimen>
+    <dimen name="padding_8px">8px</dimen>
+    <dimen name="padding_5px">5px</dimen>
+    <dimen name="padding_4px">4px</dimen>
+
+
+
+    <!--播放器-->
+    <dimen name="player_width">1280px</dimen>
+    <dimen name="player_height">720px</dimen>
+    <dimen name="player_title_height">96px</dimen>
+    <dimen name="player_video_info_width">481dp</dimen>
+    <dimen name="player_button_width">412px</dimen>
+    <dimen name="player_button_height">72px</dimen>
+    <dimen name="player_driving_safety_bg_width">542px</dimen>
+    <dimen name="player_driving_safety_bg_height">90px</dimen>
+    <dimen name="player_seekbar_thumb_width">28px</dimen>
+    <dimen name="player_seekbar_thumb_height">28px</dimen>
+    <dimen name="player_seekbar_height">4px</dimen>
+    <dimen name="player_favorite_width">40px</dimen>
+    <dimen name="player_favorite_height">40px</dimen>
+    <dimen name="player_full_screen_width">40px</dimen>
+    <dimen name="player_full_screen_height">40px</dimen>
+    <dimen name="player_definition_button_width">320px</dimen>
+    <dimen name="player_definition_button_height">72px</dimen>
+    <dimen name="player_drawer_width">641px</dimen>
+
+    <dimen name="player_full_srceen_4_3_width">722dp</dimen>
+    <dimen name="player_full_srceen_16_9_width">963dp</dimen>
+    <dimen name="player_full_srceen_21_9_width">1264dp</dimen>
+
+    <!--剧集简介-->
+    <dimen name="synopsis_width">421dp</dimen>
+    <dimen name="synopsis_height">265dp</dimen>
+    <dimen name="synopsis_order_border_width">3px</dimen>
+    <dimen name="more_time_slections_albumpic_width">157px</dimen>
+    <dimen name="more_time_slections_albumpic_height">114px</dimen>
+
+    <!--Button-->
+    <dimen name="defination_button_width">241dp</dimen>
+    <dimen name="defination_button_height">54dp</dimen>
+    <dimen name="my_record_button_width">412px</dimen>
+    <dimen name="my_record_button_height">72px</dimen>
+
+    <!--more-->
+    <dimen name="more_width">16px</dimen>
+    <dimen name="more_height">26px</dimen>
+
+    <!--back-->
+    <dimen name="back_width">35px</dimen>
+    <dimen name="back_height">35px</dimen>
+    <dimen name="back_60_width">60px</dimen>
+    <dimen name="back_60_height">60px</dimen>
+
+    <!--close-->
+    <dimen name="close_width">60px</dimen>
+    <dimen name="close_height">60px</dimen>
+
+    <!--我的-->
+    <dimen name="my_tab_menu_bar_width">490dp</dimen>
+    <dimen name="my_tab_menu_bar_height">41dp</dimen>
+    <dimen name="my_tab_indicator_height">4px</dimen>
+    <dimen name="my_edit_width">36dp</dimen>
+    <dimen name="my_edit_height">36dp</dimen>
+    <dimen name="my_history_albumpic_width">203dp</dimen>
+    <dimen name="my_history_albumpic_height">273dp</dimen>
+    <dimen name="my_history_albumpic_edit_width">44px</dimen>
+    <dimen name="my_history_albumpic_edit_height">44px</dimen>
+    <dimen name="my_setting_item_width">840px</dimen>
+    <dimen name="my_setting_item_height">120px</dimen>
+    <dimen name="my_edit_btn_width">136px</dimen>
+    <dimen name="my_edit_btn_height">60px</dimen>
+    <dimen name="my_edit_separator_width">1px</dimen>
+    <dimen name="my_edit_separator_height">40px</dimen>
+
+    <!--账号-->
+    <dimen name="account_circle_size">180px</dimen>
+    <dimen name="account_logout_button_width">412px</dimen>
+    <dimen name="account_logout_button_height">72px</dimen>
+
+    <dimen name="account_back_size">60px</dimen>
+    <dimen name="account_loading_width">116.01px</dimen>
+    <dimen name="account_loading_height">113.98px</dimen>
+
+    <!--会员-->
+    <dimen name="member_qrcode_width">300px</dimen>
+    <dimen name="member_qrcode_height">300px</dimen>
+
+    <!--dialog-->
+    <dimen name="dialog_tips_width">630px</dimen>
+    <dimen name="dialog_tips_height">374px</dimen>
+    <dimen name="dialog_tips_content_width">532px</dimen>
+    <dimen name="dialog_tips_content_height">129px</dimen>
+    <dimen name="dialog_tips_button_height">100px</dimen>
+    <dimen name="dialog_flow_width">630px</dimen>
+    <dimen name="dialog_flow_height">296px</dimen>
+    <dimen name="dialog_flow_button_height">100px</dimen>
+    <dimen name="dialog_clear_cache_width">630px</dimen>
+    <dimen name="dialog_clear_cache_height">296px</dimen>
+    <dimen name="dialog_clear_cache_button_height">100px</dimen>
+    <dimen name="dialog_button_height">75dp</dimen>
+
+    <!--搜索-->
+    <dimen name="search_result_type_btn_width">140px</dimen>
+    <dimen name="search_result_type_btn_height">68px</dimen>
+
+    <!--toast-->
+
+</resources>

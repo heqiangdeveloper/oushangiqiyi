@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="@dimen/hot_channel_albumpic_width"
+    android:layout_height="@dimen/hot_channel_albumpic_height"
+    android:background="@drawable/channel_image_shape">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="160px"
+        android:background="@drawable/hot_channel_albumpic_skeleton_bg">
+
+        <ImageView
+            android:layout_width="58.02px"
+            android:layout_height="46.87px"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="58px"
+            android:src="@drawable/ic_hot_channel_albumpic_skeleton_placeholder" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="73px"
+        android:layout_height="31px"
+        android:layout_above="@id/channel_albumpic_focus_skeleton"
+        android:layout_marginTop="@dimen/margin_12px"
+        android:layout_marginBottom="@dimen/margin_8px"
+        android:gravity="start|center_vertical"
+        android:text="-----"
+        android:textColor="@color/color_album_name" />
+
+    <TextView
+        android:id="@+id/channel_albumpic_focus_skeleton"
+        android:layout_width="124px"
+        android:layout_height="26px"
+        android:layout_alignParentBottom="true"
+        android:gravity="start|center_vertical"
+        android:text="----------"
+        android:textColor="@color/color_focus_name" />
+
+
+</RelativeLayout>

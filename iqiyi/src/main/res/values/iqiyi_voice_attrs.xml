@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="voice">
+        <!--        最高优先级属性,任何一个控件设置了这一属性,则直接使用这一属性的值,不再考虑是否TextView 或Button-->
+        <attr name="voice_cmd" format="string|reference" />
+        <!--        Deprecated-->
+        <attr name="ignore_voice_event" format="boolean" />
+        <!--        可见即可说的作用域,主要用于在界面退出时移除掉对应的控件缓存-->
+        <attr name="cmd_scope" format="string|reference" />
+        <!--        用于标识当前View是否支持可见即可说, true表示支持,false表示不支持,默认为false-->
+        <attr name="speakable" format="boolean" />
+        <!--        是否支持模糊匹配,true表示支持,false表示不支持,默认false-->
+        <attr name="fuzzy_matching" format="boolean" />
+        <!--        不可见即不可说,默认为false, 主要用于有响应相同指令的两个view 当只有一个可见的时候能正确调度  -->
+        <attr name="invisible_as_disable" format="boolean" />
+    </declare-styleable>
+</resources>

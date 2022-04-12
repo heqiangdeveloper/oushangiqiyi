@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="onstyle_activation_tips_title">你还未激活OnStyle智能网联系统！</string>
+    <string name="onstyle_activation_later">稍后激活</string>
+    <string name="onstyle_activation_user_tips">尊敬的用户，根据国家工信部要求，使用车载流量需激活OnStyle智能网联系统。</string>
+    <string name="onstyle_activation_small_tips">（购车后即可激活，无需上牌或上户）</string>
+    <string name="onstyle_activation_method1">方法1</string>
+    <string name="onstyle_activation_method2">方法2</string>
+    <string name="onstyle_activation_method1_content">本人携带身份证、购车发票至4S店激活</string>
+    <string name="onstyle_activation_method2_content1">扫码下载\"欧尚Style\"APP</string>
+    <string name="onstyle_activation_method2_content2">打开 “欧尚Style” App\n点击 “欧尚Style - 激活OnStyle”\n上传购车发票、身份证照片</string>
+    <string name="onstyle_activation_service_tips_title">激活畅享以下服务</string>
+    <string name="onstyle_qrcode_title">添加长安欧尚客服微信</string>
+    <string name="onstyle_qrcode_tips">协助你激活OnStyle智能网联系统</string>
+    <string name="onstyle_service_gaode_navigation">高德导航</string>
+    <string name="onstyle_service_xiaoou_voice">小欧语音</string>
+    <string name="onstyle_service_air_upgrade">空中升级</string>
+    <string name="onstyle_service_remote_control_vehicle">远程控车</string>
+    <string name="onstyle_service_qq_music">QQ音乐</string>
+    <string name="onstyle_service_online_radio">在线电台</string>
+
+
+</resources>

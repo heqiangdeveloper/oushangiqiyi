@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginStart="11px"
+    android:layout_alignParentStart="true"
+    android:orientation="vertical">
+
+    <!--我的功能菜单-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/tab_menu_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        tools:ignore="MissingConstraints">
+
+        <!--用户头像-->
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/nav_user_portrait"
+            android:layout_width="@dimen/nav_user_portrait_size"
+            android:layout_height="@dimen/nav_user_portrait_size"
+            android:src="@drawable/default_avatar"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/my_menu_tab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_30px"
+            android:layout_marginBottom="@dimen/margin_4px"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/nav_user_portrait"
+            app:tabGravity="center"
+            app:tabIndicator="@drawable/tab_indicator_shape"
+            app:tabIndicatorColor="@color/color_my_tab_indicator"
+            app:tabIndicatorFullWidth="false"
+            app:tabIndicatorHeight="@dimen/my_tab_indicator_height"
+            app:tabMode="fixed"
+            app:tabPaddingBottom="@dimen/padding_9px"
+            app:tabPaddingEnd="@dimen/padding_30px"
+            app:tabPaddingStart="@dimen/padding_30px"
+            app:tabTextAppearance="@style/TabLayoutStyle"
+            app:tabTextColor="@color/color_my_tab_text"
+            app:tabSelectedTextColor="@color/color_my_tab_select_text"
+            app:tabBackground="@android:color/transparent"
+            app:tabRippleColor="@android:color/transparent"
+            app:voice_cmd="历史|收藏|设置"/>
+
+        <ImageView
+            android:id="@+id/my_edit"
+            android:layout_width="@dimen/my_edit_width"
+            android:layout_height="@dimen/my_edit_height"
+            android:layout_alignParentEnd="true"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/edit"
+            android:contentDescription="@string/img_my_edit"
+            android:visibility="gone" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--我的设置返回-->
+    <LinearLayout
+        android:id="@+id/my_setting_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="@dimen/back_width"
+            android:layout_height="@dimen/back_height"
+            android:layout_gravity="center"
+            android:background="@drawable/ic_back_60"/>
+
+        <TextView
+            android:id="@+id/my_setting_back_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_12px"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:textSize="@dimen/text_size_30px"
+            android:textColor="@color/color_setting_back_text"
+            android:clickable="true"
+            app:voice_cmd="返回"/>
+
+    </LinearLayout>
+
+    <!--编辑-->
+    <Button
+        android:id="@+id/record_edit_btn"
+        android:layout_width="@dimen/my_edit_btn_width"
+        android:layout_height="@dimen/my_edit_btn_height"
+        android:layout_below="@+id/tab_menu_layout"
+        android:layout_alignParentEnd="true"
+        app:layout_constraintTop_toBottomOf="@+id/tab_menu_layout"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginEnd="@dimen/margin_35px"
+        android:background="@drawable/record_edit_bg"
+        android:text="@string/edit"
+        android:textSize="@dimen/text_size_24px"
+        android:textColor="@color/color_white"
+        android:visibility="gone"
+        tools:ignore="MissingConstraints" />
+
+    <!--编辑布局-->
+    <LinearLayout
+        android:id="@+id/my_record_edit_fun_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tab_menu_layout"
+        android:layout_alignParentEnd="true"
+        app:layout_constraintTop_toBottomOf="@+id/tab_menu_layout"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginEnd="@dimen/margin_35px"
+        android:orientation="horizontal"
+        android:background="@drawable/my_record_edit_layout_bg"
+        android:visibility="gone"
+        tools:ignore="MissingConstraints">
+
+        <Button
+            android:id="@+id/my_record_edit_all_select"
+            android:layout_width="@dimen/my_edit_btn_width"
+            android:layout_height="@dimen/my_edit_btn_height"
+            android:layout_gravity="center"
+            android:background="@null"
+            android:gravity="center"
+            android:text="@string/my_edit_all_select"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/record_edit_text_size" />
+
+        <ImageView
+            android:layout_width="@dimen/my_edit_separator_width"
+            android:layout_height="@dimen/my_edit_separator_height"
+            android:layout_gravity="center"
+            android:background="@drawable/my_record_edit_layout_separator"
+            android:contentDescription="@string/img_my_separator"/>
+
+        <Button
+            android:id="@+id/my_record_edit_delete"
+            android:layout_width="@dimen/my_edit_btn_width"
+            android:layout_height="@dimen/my_edit_btn_height"
+            android:layout_gravity="center"
+            android:background="@null"
+            android:gravity="center"
+            android:text="@string/my_edit_delete_select"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/record_edit_text_size" />
+
+        <ImageView
+            android:layout_width="@dimen/my_edit_separator_width"
+            android:layout_height="@dimen/my_edit_separator_height"
+            android:layout_gravity="center"
+            android:background="@drawable/my_record_edit_layout_separator"
+            android:contentDescription="@string/img_my_separator"/>
+
+        <Button
+            android:id="@+id/my_record_edit_cancel"
+            android:layout_width="@dimen/my_edit_btn_width"
+            android:layout_height="@dimen/my_edit_btn_height"
+            android:layout_gravity="center"
+            android:background="@null"
+            android:gravity="center"
+            android:text="@string/my_edit_cancel_select"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/record_edit_text_size" />
+
+    </LinearLayout>
+
+    <!--我的功能内容-->
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/my_content_vp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="68px"
+        tools:ignore="MissingConstraints"
+        android:visibility="gone"/>
+
+    <FrameLayout
+        android:id="@+id/my_content_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/margin_68px"/>
+
+
+</RelativeLayout>

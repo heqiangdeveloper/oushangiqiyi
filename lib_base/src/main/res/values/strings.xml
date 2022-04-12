@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">lib_base</string>
+    <string name="scope_me">meFragment</string>
+    <string name="scope_my_setting">mySettingFragment</string>
+    <string name="scope_clear_caches">clearChaches</string>
+    <string name="scope_setting_child">settingChild</string>
+    <string name="scope_my_setting_item">mySettingItem</string>
+</resources>

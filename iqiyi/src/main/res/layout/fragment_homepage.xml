@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_gravity="center"
+    android:layout_marginTop="@dimen/margin_15px"
+    android:layout_marginStart="@dimen/margin_11px"
+    android:orientation="vertical">
+
+    <!--内容显示-->
+    <com.oushang.iqiyi.ui.IqiyiRecyclerView
+        android:id="@+id/home_page_rv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+    <!--内容加载进度-->
+    <LinearLayout
+        android:id="@+id/home_data_loading_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="@dimen/margin_590px"
+        android:layout_marginBottom="@dimen/margin_204px"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <!--进度动画-->
+        <ImageView
+            android:id="@+id/data_loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"/>
+
+        <!--进度条(废弃) -->
+        <com.wang.avi.AVLoadingIndicatorView
+            android:id="@+id/home_data_loading"
+            android:layout_width="@dimen/loading_width"
+            android:layout_height="@dimen/loading_height"
+            android:layout_gravity="center"
+            app:indicatorName="@string/BallSpinGradientLoaderIndicator"
+            android:visibility="gone" />
+
+        <!--进度条文本-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_64px"
+            android:text="@string/home_loading_text"
+            android:textColor="@color/color_theme_text"
+            android:textSize="@dimen/title_text_size" />
+
+    </LinearLayout>
+
+    <!--网络异常-->
+    <LinearLayout
+        android:id="@+id/home_net_error_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="@dimen/margin_548px"
+        android:layout_marginBottom="@dimen/margin_150px"
+        android:orientation="vertical"
+        android:visibility="gone"
+        tools:ignore="RtlSymmetry">
+
+        <!--异常图标-->
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/network_error" />
+
+        <!--异常说明-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/margin_17px"
+            android:text="@string/account_login_network_error"
+            android:textColor="@color/color_theme_tips_text"
+            android:textSize="@dimen/title_text_size" />
+
+        <!--刷新按钮-->
+        <Button
+            android:id="@+id/home_network_refresh_btn"
+            android:layout_width="@dimen/network_refresh_btn_width"
+            android:layout_height="@dimen/network_refresh_btn_height"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/margin_48px"
+            android:background="@drawable/error_btn_bg"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/title_text_size"
+            android:text="@string/account_login_network_fresh_button"/>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

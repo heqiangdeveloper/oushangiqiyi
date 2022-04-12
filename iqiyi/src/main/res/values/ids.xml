@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+<!--    <item name="nesting_layout" type="layout">nesting_layout</item>-->
+<!--    <item name="nesting_recyclerview_id" type="id">nesting_rv</item>-->
+
+    <item type="id" name="statusbarutil_fake_status_bar_view" />
+    <item type="id" name="statusbarutil_translucent_view" />
+</resources>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:width="238px">
+        <shape>
+            <corners android:radius="@dimen/radius_20px"/>
+            <solid android:color="@color/color_scroll_track_color"/>
+        </shape>
+    </item>
+</layer-list>

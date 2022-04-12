@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:state_selected="false">
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/radius_10px"/>
+            <stroke android:color="@color/color_skin_synopsis_order_border_notnight" android:width="@dimen/synopsis_order_border_width"/>
+        </shape>
+    </item>
+
+    <item android:state_selected="true">
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/radius_10px"/>
+            <solid android:color="@color/color_episodes_select_bg"/>
+        </shape>
+    </item>
+
+</selector>

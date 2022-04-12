@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CustomSearchView">
+        <attr name="search_text_color" format="color" />
+        <attr name="search_text_hint" format="string" />
+        <attr name="search_text_hint_color" format="color" />
+        <attr name="search_text_size" format="dimension" />
+        <attr name="search_icon" format="reference" />
+        <attr name="search_icon_width" format="dimension" />
+        <attr name="search_icon_height" format="dimension" />
+    </declare-styleable>
+    
+    <declare-styleable name="LinePulseView">
+        <attr name="rail_count" format="integer"/>
+        <attr name="rail_color" format="color"/>
+        <attr name="rail_width" format="dimension"/>
+        <attr name="rail_height" format="dimension"/>
+    </declare-styleable>
+
+    <declare-styleable name="ProgressButton">
+        <attr name="progressBackground" format="reference"/>
+        <attr name="android:background" format="reference"/>
+        <attr name="progressMax" format="integer"/>
+    </declare-styleable>
+
+
+
+</resources>

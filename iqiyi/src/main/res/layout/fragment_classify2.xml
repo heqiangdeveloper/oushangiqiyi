@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/classify2_fragment_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!--编辑按钮-->
+    <Button
+        android:id="@+id/channel_edit_btn"
+        android:layout_width="136px"
+        android:layout_height="60px"
+        android:layout_gravity="end"
+        android:layout_marginTop="@dimen/margin_25px"
+        android:layout_marginEnd="@dimen/margin_40px"
+        android:background="@drawable/edit_btn_bg"
+        android:text="@string/edit"
+        android:textColor="@color/color_channel_tag_edit"
+        android:textSize="@dimen/text_size_24px"
+        tools:ignore="MissingConstraints" />
+
+    <!--常用频道布局-->
+    <RelativeLayout
+        android:id="@+id/common_channel_layout"
+        android:layout_width="match_parent"
+        android:layout_height="163px"
+        android:minHeight="135px"
+        android:layout_marginTop="@dimen/margin_52px"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints">
+
+        <!--常用频道标签-->
+        <TextView
+            android:id="@+id/common_channel_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_11px"
+            android:text="@string/common_channel_tag_title"
+            android:textColor="@color/color_channel_tag_title"
+            android:textSize="@dimen/title_text_size"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <!--常用频道内容-->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/common_channel_rv"
+            android:layout_width="match_parent"
+            android:layout_height="95px"
+            android:layout_below="@id/common_channel_tv"
+            android:layout_marginTop="@dimen/margin_37px"
+            android:orientation="horizontal"
+            android:visibility="visible"
+            app:layout_constraintTop_toBottomOf="@id/common_channel_tv"
+            tools:ignore="MissingConstraints" />
+
+        <!--数据为空-->
+        <TextView
+            android:id="@+id/common_channel_tag_empty"
+            android:layout_width="match_parent"
+            android:layout_marginStart="@dimen/margin_25px"
+            android:layout_height="34px"
+            android:layout_marginBottom="@dimen/margin_32px"
+            android:layout_centerVertical="true"
+            android:layout_alignParentBottom="true"
+            android:gravity="center"
+            android:text="@string/normal_channel_empty"
+            android:textColor="@color/color_common_channel_empty_text"
+            android:textSize="@dimen/title_text_size"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+    <!--所有频道布局-->
+    <RelativeLayout
+        android:id="@+id/all_channel_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/margin_42px"
+        android:layout_marginBottom="@dimen/margin_64px"
+        app:layout_behavior="@string/channelTagBehavior"
+        tools:ignore="MissingConstraints">
+
+        <!--所有频道标签-->
+        <TextView
+            android:id="@+id/all_channel_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_11px"
+            android:text="@string/all_channel_tag_title"
+            android:textColor="@color/color_channel_tag_title"
+            android:textSize="@dimen/title_text_size"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <!--所有频道内容-->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/all_channel_rv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/all_channel_tv"
+            android:layout_marginTop="@dimen/margin_37px"
+            tools:ignore="MissingConstraints" />
+
+    </RelativeLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

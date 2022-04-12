@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <!--频道名称-->
+    <TextView
+        android:id="@+id/hot_recommend_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/hot_recommend"
+        android:textColor="@color/color_channel_name"
+        android:textSize="@dimen/title_text_size"
+        android:textStyle="bold" />
+
+    <RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_20px">
+
+        <com.oushang.iqiyi.ui.IqiyiBanner
+            android:id="@+id/hot_recommend_banner"
+            android:layout_width="@dimen/banner_width"
+            android:layout_height="@dimen/banner_height"
+            app:banner_indicator_gravity="right"
+            app:banner_indicator_height="@dimen/banner_indicator_height"
+            app:banner_indicator_marginBottom="@dimen/margin_20px"
+            app:banner_indicator_marginRight="@dimen/margin_30px"
+            app:banner_indicator_normal_color="@color/color_normal_banner_indicator"
+            app:banner_indicator_normal_width="@dimen/banner_indicator_normal_width"
+            app:banner_indicator_radius="@dimen/banner_indicator_radius"
+            app:banner_indicator_selected_color="@color/color_white"
+            app:banner_indicator_selected_width="@dimen/banner_indicator_selected_width"
+            app:banner_indicator_space="@dimen/banner_indicator_space" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="26px"
+        android:orientation="horizontal">
+
+        <!--电影-->
+        <RelativeLayout
+            android:id="@+id/move_channel"
+            android:layout_width="86.61px"
+            android:layout_height="119px"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_king_movie" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/margin_18px"
+                android:gravity="center"
+                android:text="@string/movie"
+                android:textColor="@color/color_king_name"
+                android:textSize="@dimen/tag_text_size" />
+        </RelativeLayout>
+
+        <!--综艺-->
+        <RelativeLayout
+            android:id="@+id/variety_channel"
+            android:layout_width="75.46px"
+            android:layout_height="119px"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginStart="@dimen/margin_84px"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_king_variety" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/margin_18px"
+                android:gravity="center"
+                android:textColor="@color/color_king_name"
+                android:textSize="@dimen/tag_text_size"
+                android:text="@string/variety"/>
+        </RelativeLayout>
+
+        <!--会员-->
+        <RelativeLayout
+            android:id="@+id/member_apply"
+            android:layout_width="89.38px"
+            android:layout_height="119px"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginStart="@dimen/margin_84px"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/member_icon"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_king_member" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textColor="@color/color_king_name"
+                android:textSize="@dimen/tag_text_size"
+                android:text="@string/member"/>
+        </RelativeLayout>
+
+        <!--收藏-->
+        <RelativeLayout
+            android:id="@+id/favorites_action"
+            android:layout_width="115.13px"
+            android:layout_height="119px"
+            android:layout_marginStart="@dimen/margin_64px"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_king_favorites" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="@string/favorites"
+                android:textColor="@color/color_king_name"
+                android:textSize="@dimen/tag_text_size" />
+        </RelativeLayout>
+
+        <!--最近-->
+        <RelativeLayout
+            android:id="@+id/recent_action"
+            android:layout_width="80.09px"
+            android:layout_height="124px"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginStart="66px"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_king_recent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textColor="@color/color_king_name"
+                android:textSize="@dimen/tag_text_size"
+                android:text="@string/recent"/>
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>

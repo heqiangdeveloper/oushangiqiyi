@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/color_theme_background"
+    android:orientation="vertical">
+
+    <!--返回键-->
+    <LinearLayout
+        android:id="@+id/defination_select_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_40px"
+        android:layout_marginStart="@dimen/margin_40px"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints">
+
+        <ImageView
+            android:id="@+id/defination_select_back_img"
+            android:layout_width="@dimen/back_width"
+            android:layout_height="@dimen/back_height"
+            android:layout_gravity="center"
+            android:background="@drawable/ic_back_60"
+            android:contentDescription="@string/img_back_defination" />
+
+        <TextView
+            android:id="@+id/defination_select_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_12px"
+            android:text="@string/back_title_defination"
+            android:textColor="@color/color_video_info_text"
+            android:textSize="@dimen/title_text_size" />
+
+    </LinearLayout>
+
+    <!--清晰度列表-->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/defination_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_40px"
+        android:layout_below="@id/defination_select_back"
+        android:layout_centerHorizontal="true"
+        app:layout_constraintTop_toBottomOf="@id/defination_select_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:ignore="MissingConstraints" />
+
+</RelativeLayout>

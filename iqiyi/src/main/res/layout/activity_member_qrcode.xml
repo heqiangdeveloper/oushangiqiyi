@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--返回按钮-->
+    <ImageView
+        android:id="@+id/member_back"
+        android:layout_width="@dimen/back_60_width"
+        android:layout_height="@dimen/back_60_height"
+        android:layout_marginStart="@dimen/margin_20px"
+        android:layout_marginTop="@dimen/margin_20px"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_gravity="center"
+        android:background="@drawable/ic_back_60"
+        tools:ignore="MissingConstraints" />
+
+    <!--会员二维码-->
+    <ImageView
+        android:id="@+id/member_qrcode_image"
+        android:layout_width="@dimen/member_qrcode_width"
+        android:layout_height="@dimen/member_qrcode_height"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="@dimen/margin_146px"
+        android:foreground="@drawable/account_login_qr_fg"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/member_qrcode_image"
+        app:layout_constraintEnd_toEndOf="@id/member_qrcode_image"
+        app:layout_constraintTop_toTopOf="@id/member_qrcode_image"
+        app:layout_constraintBottom_toBottomOf="@id/member_qrcode_image"
+        android:text="@string/member_qrcode_tip_provisional"
+        android:textColor="@color/color_theme_text"
+        android:textSize="@dimen/title_text_size"
+        tools:ignore="MissingConstraints" />
+
+    <!--会员二维码提示-->
+    <TextView
+        android:id="@+id/member_qrcode_tip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/margin_71px"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/member_qrcode_image"
+        android:textColor="@color/color_theme_text"
+        android:textSize="@dimen/title_text_size"
+        android:text="@string/member_qrcode_tip"
+        tools:ignore="MissingConstraints" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

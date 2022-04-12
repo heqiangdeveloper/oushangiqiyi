@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="270px"
+    android:layout_height="426px"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!--封面图-->
+    <ImageView
+        android:id="@+id/my_record_albumpic"
+        android:layout_width="270px"
+        android:layout_height="363px"
+        android:background="@drawable/channel_image_shape"
+        android:foreground="@drawable/ic_album_record_fg"
+        android:scaleType="fitXY"
+        tools:ignore="MissingConstraints" />
+
+    <!--播放时间-->
+    <TextView
+        android:id="@+id/my_record_play_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="@dimen/margin_12px"
+        android:layout_marginEnd="@dimen/margin_10px"
+        android:shadowColor="@color/color_my_history_text_shadow"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="3.0"
+        android:text="45:59"
+        android:textColor="@color/color_white"
+        android:textSize="@dimen/record_edit_text_size"
+        android:visibility="visible"
+        tools:ignore="MissingConstraints" />
+
+    <!--剩余播放提示-->
+    <TextView
+        android:id="@+id/my_record_play_remark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@id/my_record_albumpic"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginBottom="@dimen/margin_13px"
+        android:shadowColor="@color/color_my_history_text_shadow"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="3.0"
+        android:text="观看不足1分钟"
+        android:textColor="@color/color_white"
+        android:textSize="@dimen/record_edit_text_size"
+        tools:ignore="MissingConstraints" />
+
+    <!--播放记录，选中/未选状态图标-->
+    <ImageView
+        android:id="@+id/my_history_edit_state"
+        android:layout_width="@dimen/my_history_albumpic_edit_width"
+        android:layout_height="@dimen/my_history_albumpic_edit_height"
+        app:layout_constraintLeft_toLeftOf="@id/my_record_albumpic"
+        app:layout_constraintTop_toTopOf="@id/my_record_albumpic"
+        android:layout_marginTop="@dimen/margin_10px"
+        android:layout_marginStart="@dimen/margin_10px"
+        android:background="@drawable/my_history_albumpic"
+        android:visibility="gone"
+        tools:ignore="MissingConstraints" />
+
+    <!--收藏记录，删除图标-->
+    <ImageView
+        android:id="@+id/my_favorite_edit_state"
+        android:layout_width="@dimen/my_history_albumpic_edit_width"
+        android:layout_height="@dimen/my_history_albumpic_edit_height"
+        app:layout_constraintLeft_toLeftOf="@id/my_record_albumpic"
+        app:layout_constraintTop_toTopOf="@id/my_record_albumpic"
+        android:layout_marginTop="@dimen/margin_10px"
+        android:layout_marginStart="@dimen/margin_10px"
+        android:background="@drawable/my_favorite_albumpic_delete"
+        android:visibility="gone"
+        tools:ignore="MissingConstraints" />
+
+    <!--节目名称-->
+    <TextView
+        android:id="@+id/my_record_albumName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/my_record_albumpic"
+        android:layout_marginTop="@dimen/margin_30px"
+        android:textSize="@dimen/text_size_30px"
+        android:textColor="@color/color_record_album_name"
+        android:maxLines="1"
+        android:maxEms="6"
+        android:ellipsize="end"
+        android:text="好想去看你的世界是的"
+        tools:ignore="MissingConstraints" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

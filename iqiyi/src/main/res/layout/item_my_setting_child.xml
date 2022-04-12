@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="@dimen/my_setting_item_width"
+    android:layout_height="@dimen/my_setting_item_height"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/corners_bg"
+    app:cmd_scope="@string/scope_setting_child">
+
+    <TextView
+        android:id="@+id/my_setting_child_item_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="@dimen/margin_30px"
+        android:textSize="@dimen/title_text_size"
+        android:textColor="@color/color_setting_item_text"/>
+
+    <Switch
+        android:id="@+id/skip_start_end_sw"
+        android:layout_width="88px"
+        android:layout_height="43px"
+        android:layout_alignParentEnd="true"
+        android:layout_centerInParent="true"
+        android:layout_marginEnd="@dimen/margin_32px"
+        android:thumb="@drawable/switch_button_thumb"
+        android:track="@drawable/switch_button_track"
+        app:voice_cmd="自动跳过片头与片尾|打开自动跳过片头与片尾|关闭自动跳过片头与片尾"
+        tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+</RelativeLayout>

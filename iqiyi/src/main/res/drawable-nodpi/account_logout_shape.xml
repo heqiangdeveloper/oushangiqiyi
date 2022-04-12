@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+
+<!--    <solid android:color="@color/color_network_error_refresh_btn_bg"/>-->
+
+    <stroke android:color="@color/color_account_logout_btn" android:width="2px"/>
+
+    <corners android:radius="@dimen/radius_10px"/>
+
+</shape>

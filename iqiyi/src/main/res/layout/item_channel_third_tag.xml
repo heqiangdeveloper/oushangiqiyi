@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/channel_child_childtag_name"
+        android:layout_width="268px"
+        android:layout_height="90px"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textColor="@color/color_channel_third_tag_text"
+        android:textSize="30px"
+        android:background="@drawable/channel_child_tag_childtag_shape" />
+
+
+</LinearLayout>

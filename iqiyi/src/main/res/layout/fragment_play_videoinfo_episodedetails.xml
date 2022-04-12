@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_theme_background"
+    android:orientation="vertical">
+
+    <!--返回键-->
+    <LinearLayout
+        android:id="@+id/episode_details_back_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_40px"
+        android:layout_marginTop="@dimen/margin_40px">
+
+        <ImageView
+            android:id="@+id/episode_details_back"
+            android:layout_width="@dimen/back_width"
+            android:layout_height="@dimen/back_height"
+            android:layout_gravity="center"
+            android:background="@drawable/ic_back_60" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/margin_12px"
+            android:text="@string/play_synopsis_detail"
+            android:textColor="@color/color_video_info_text"
+            android:textSize="@dimen/title_text_size" />
+
+    </LinearLayout>
+
+    <!--剧集-->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_33px"
+        android:layout_marginStart="@dimen/margin_40px"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/episode_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/play_synopsis_label"
+            android:textColor="@color/color_video_info_text"
+            android:textSize="@dimen/title_text_size" />
+
+        <ScrollView
+            android:layout_width="546px"
+            android:layout_height="223px"
+            android:layout_marginTop="@dimen/margin_20px"
+            android:scrollbarSize="4px"
+            android:scrollbarStyle="outsideInset"
+            android:paddingEnd="34px"
+            android:scrollbarThumbVertical="@drawable/scrollbar_thumb_bg"
+            android:scrollbarTrackVertical="@drawable/scrollbar_track_bg"
+            android:scrollbars="vertical">
+
+            <TextView
+                android:id="@+id/episode_details_desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_video_info_text"
+                android:textSize="@dimen/title_text_size" />
+
+        </ScrollView>
+
+
+    </LinearLayout>
+
+    <!--主演-->
+    <LinearLayout
+        android:layout_width="612px"
+        android:layout_height="264px"
+        android:layout_marginTop="54px"
+        android:layout_marginStart="@dimen/margin_40px"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/episode_details_main_actor_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/play_synopsis_main_actor"
+            android:textColor="@color/color_video_info_text"
+            android:textSize="@dimen/title_text_size" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/episode_details_main_actor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_33px"
+            android:orientation="horizontal"
+            android:scrollbarSize="4px"
+            android:scrollIndicators="bottom"
+            android:scrollbarStyle="outsideInset"
+            android:paddingBottom="@dimen/padding_14px"
+            android:scrollbarThumbHorizontal="@color/color_scroll_thumb_color"
+            android:scrollbarTrackHorizontal="@color/color_scroll_track_color"
+            android:scrollbars="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+
+    </LinearLayout>
+
+</LinearLayout>

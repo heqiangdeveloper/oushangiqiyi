@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginStart="@dimen/margin_29px"
+    android:orientation="vertical">
+
+    <!--嵌套fragment标题区-->
+    <RelativeLayout
+        android:id="@+id/nested_title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_11px"
+        android:orientation="horizontal">
+
+        <!--用户头像-->
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/nav_user_portrait"
+            android:layout_width="@dimen/nav_user_portrait_size"
+            android:layout_height="@dimen/nav_user_portrait_size"
+            android:layout_centerVertical="true"
+            android:background="@drawable/default_avatar"
+            android:visibility="visible" />
+
+        <!--搜索框-->
+        <include
+            android:id="@+id/nested_search_view"
+            layout="@layout/search_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/margin_30px"
+            android:layout_toEndOf="@id/nav_user_portrait"
+            android:visibility="visible" />
+
+        <!--返回键-->
+        <LinearLayout
+            android:id="@+id/nested_back_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="@dimen/margin_17px"
+            android:layout_centerVertical="true"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="@dimen/back_width"
+                android:layout_height="@dimen/back_height"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_back_60" />
+
+            <TextView
+                android:id="@+id/nested_back_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/margin_12px"
+                android:gravity="center"
+                android:textColor="@color/color_channel_name"
+                android:textSize="@dimen/title_text_size"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <!--爱奇艺logo-->
+        <ImageView
+            android:id="@+id/nested_logo_icon"
+            android:layout_width="@dimen/logo_icon_width"
+            android:layout_height="@dimen/logo_icon_height"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/margin_52px"
+            android:layout_toEndOf="@id/nested_search_view"
+            android:src="@drawable/ic_iqiyi_logo"
+            android:visibility="visible"/>
+
+    </RelativeLayout>
+
+    <!--嵌套fragment内容区-->
+    <FrameLayout
+        android:id="@+id/nested_fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

@@ -1,0 +1,23 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.oushang.lib_service">
+<application>
+    <provider
+        android:name="com.iqy.iv.database.SDKContentProvider"
+        android:exported="false"
+        android:multiprocess="true"
+        android:authorities="${applicationId}">
+    </provider>
+    <provider
+        android:name="com.iqy.iv.database.SDKPingbackContentProvider"
+        android:exported="false"
+        android:multiprocess="true"
+        android:authorities="${applicationId}.pingback.provider">
+    </provider>
+    <provider
+        android:name="com.iqy.iv.database.SDKPingbackGlobalContentProvider"
+        android:exported="false"
+        android:multiprocess="true"
+        android:authorities="${applicationId}.pingback.global_variable">
+    </provider>
+</application>
+</manifest>

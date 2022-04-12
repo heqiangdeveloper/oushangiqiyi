@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="@dimen/hot_channel_albumpic_layout_width"
+    android:layout_height="@dimen/hot_channel_albumpic_layout_height"
+    android:orientation="vertical">
+
+    <!--频道标题-->
+    <LinearLayout
+        android:id="@+id/hot_channel_more_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        tools:ignore="UseCompoundDrawables">
+
+        <TextView
+            android:id="@+id/hot_channel_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/color_channel_name"
+            android:textSize="@dimen/title_text_size"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/hot_channel_more"
+            android:layout_width="@dimen/img_more_width"
+            android:layout_height="@dimen/img_more_height"
+            android:paddingStart="@dimen/padding_9px"
+            android:paddingEnd="@dimen/padding_10px"
+            android:paddingTop="@dimen/padding_4px"
+            android:paddingBottom="@dimen/padding_5px"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/margin_12px"
+            android:src="@drawable/ic_more"
+            android:contentDescription="@string/img_back_hot_channel"
+            tools:ignore="RtlSymmetry" />
+
+    </LinearLayout>
+
+    <!--频道图片区-->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/hot_channel_albumPic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:overScrollMode="never"
+        android:layout_marginTop="@dimen/margin_18px"
+        android:layout_marginBottom="@dimen/margin_30px"/>
+
+</LinearLayout>

@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--编辑-->
+    <Button
+        android:id="@+id/record_edit_btn"
+        android:layout_width="@dimen/my_edit_btn_width"
+        android:layout_height="@dimen/my_edit_btn_height"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginEnd="@dimen/margin_35px"
+        android:background="@drawable/record_edit_bg"
+        android:text="@string/edit"
+        android:textSize="@dimen/text_size_24px"
+        android:textColor="@color/color_record_edit_text"
+        android:visibility="gone"
+        tools:ignore="MissingConstraints" />
+
+    <!--历史记录-->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/my_history_content_rv"
+        android:layout_width="wrap_content"
+        android:layout_height="0px"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="@dimen/margin_100px"
+        android:orientation="horizontal"
+        android:visibility="visible"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:ignore="MissingConstraints" />
+
+    <!--记录为空或加载错误布局-->
+    <LinearLayout
+        android:id="@+id/my_record_abnormal_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:orientation="vertical"
+        android:visibility="gone"
+        tools:ignore="MissingConstraints">
+
+        <ImageView
+            android:id="@+id/my_record_abnormal_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/my_history_empty" />
+
+        <TextView
+            android:id="@+id/my_record_abnormal_tips"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/margin_2dp"
+            android:text="@string/my_history_empty"
+            android:textColor="@color/color_theme_tips_text"
+            android:textSize="@dimen/title_text_size" />
+
+        <Button
+            android:id="@+id/my_record_abnormal_button"
+            android:layout_width="@dimen/my_record_button_width"
+            android:layout_height="@dimen/my_record_button_height"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/margin_34dp"
+            android:background="@drawable/my_history_button"
+            android:text="@string/my_history_empty_button"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/title_text_size" />
+
+    </LinearLayout>
+
+    <!--编辑布局-->
+    <LinearLayout
+        android:id="@+id/my_record_edit_fun_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginEnd="@dimen/margin_35px"
+        android:orientation="horizontal"
+        android:background="@drawable/my_record_edit_layout_bg"
+        android:visibility="gone"
+        tools:ignore="MissingConstraints">
+
+        <Button
+            android:id="@+id/my_record_edit_all_select"
+            android:layout_width="@dimen/my_edit_btn_width"
+            android:layout_height="@dimen/my_edit_btn_height"
+            android:layout_gravity="center"
+            android:background="@null"
+            android:gravity="center"
+            android:text="@string/my_edit_all_select"
+            android:textColor="@color/color_theme_text"
+            android:textSize="@dimen/record_edit_text_size" />
+
+        <ImageView
+            android:layout_width="@dimen/my_edit_separator_width"
+            android:layout_height="@dimen/my_edit_separator_height"
+            android:layout_gravity="center"
+            android:background="@drawable/my_record_edit_layout_separator"
+            android:contentDescription="@string/img_my_separator"/>
+
+        <Button
+            android:id="@+id/my_record_edit_delete"
+            android:layout_width="@dimen/my_edit_btn_width"
+            android:layout_height="@dimen/my_edit_btn_height"
+            android:layout_gravity="center"
+            android:background="@null"
+            android:gravity="center"
+            android:text="@string/my_edit_delete_select"
+            android:textColor="@color/color_theme_text"
+            android:textSize="@dimen/record_edit_text_size" />
+
+        <ImageView
+            android:layout_width="@dimen/my_edit_separator_width"
+            android:layout_height="@dimen/my_edit_separator_height"
+            android:layout_gravity="center"
+            android:background="@drawable/my_record_edit_layout_separator"
+            android:contentDescription="@string/img_my_separator"/>
+
+        <Button
+            android:id="@+id/my_record_edit_cancel"
+            android:layout_width="@dimen/my_edit_btn_width"
+            android:layout_height="@dimen/my_edit_btn_height"
+            android:layout_gravity="center"
+            android:background="@null"
+            android:gravity="center"
+            android:text="@string/my_edit_cancel_select"
+            android:textColor="@color/color_theme_text"
+            android:textSize="@dimen/record_edit_text_size" />
+
+    </LinearLayout>
+
+    <!--加载动画-->
+    <ImageView
+        android:id="@+id/history_record_loading_anim"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <!--加载进度-->
+    <include android:id="@+id/history_record_loading" layout="@layout/loading" android:visibility="gone"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/hot_channel_albumpic_width"
+    android:layout_height="@dimen/hot_channel_albumpic_height"
+    android:layout_gravity="center">
+
+    <ImageView
+        android:id="@+id/hot_channel_albumPic"
+        android:layout_width="match_parent"
+        android:layout_height="160px"
+        android:layout_marginBottom="@dimen/margin_12px"
+        android:background="@drawable/channel_image_shape"
+        android:contentDescription="@string/img_hot_channel"
+        android:scaleType="fitXY" />
+
+    <ImageView
+        android:id="@+id/hot_channel_remark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="@dimen/margin_30px"
+        android:visibility="visible" />
+
+    <TextView
+        android:id="@+id/hot_channel_video_name"
+        android:layout_width="wrap_content"
+        android:layout_height="31px"
+        android:layout_above="@id/hot_channel_video_focus"
+        android:layout_alignStart="@id/hot_channel_video_focus"
+        android:ellipsize="end"
+        android:maxEms="10"
+        android:maxLines="1"
+        android:text="恋恋剧场"
+        android:textColor="@color/color_album_name"
+        android:textSize="@dimen/tag_text_size" />
+
+    <TextView
+        android:id="@+id/hot_channel_video_focus"
+        android:layout_width="wrap_content"
+        android:layout_height="26px"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="@dimen/margin_8px"
+        android:text="爱奇艺出品"
+        android:textColor="@color/color_focus_name"
+        android:textSize="@dimen/album_focus_text_size" />
+
+</RelativeLayout>

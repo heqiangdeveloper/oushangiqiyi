@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="161px"
+    android:layout_height="252.99px">
+
+    <ImageView
+        android:id="@+id/releated_recommend_album_pic"
+        android:layout_width="@dimen/related_recommend_albumpic_width"
+        android:layout_height="@dimen/related_recommend_albumpic_height"
+        android:background="@drawable/albumpic_shape"/>
+
+    <TextView
+        android:id="@+id/releated_recommend_album_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15px"
+        android:gravity="start"
+        android:textColor="@color/color_video_info_text"
+        android:textSize="@dimen/album_name_text_size"
+        android:text="好想去你的世界"/>
+
+</LinearLayout>

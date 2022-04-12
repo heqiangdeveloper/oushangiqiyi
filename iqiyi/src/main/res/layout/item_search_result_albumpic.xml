@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="270px"
+    android:layout_height="363px"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/search_result_album_pic"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:foreground="@drawable/ic_album_record_fg"
+        android:background="@drawable/albumpic_shape"
+        android:src="@drawable/hot_search_albumpic_test" />
+
+    <ImageView
+        android:id="@+id/search_result_album_exclusive"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="@dimen/margin_30px"
+        android:src="@drawable/hot_search_album_exclusive"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/search_result_album_vip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="@dimen/margin_30px"
+        android:src="@drawable/hot_search_album_vip"
+        android:visibility="visible" />
+
+    <TextView
+        android:id="@+id/search_result_album_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/search_result_album_focus"
+        android:layout_marginStart="@dimen/margin_15dp"
+        android:layout_marginBottom="1dp"
+        android:maxLines="1"
+        android:maxEms="10"
+        android:ellipsize="end"
+        android:textColor="@color/color_white"
+        android:textSize="@dimen/tag_text_size" />
+
+    <TextView
+        android:id="@+id/search_result_album_focus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="@dimen/margin_15dp"
+        android:layout_marginBottom="@dimen/margin_8dp"
+        android:textColor="@color/color_hot_search_album_focus"
+        android:maxLines="1"
+        android:maxEms="10"
+        android:ellipsize="end"
+        android:textSize="@dimen/album_focus_text_size" />
+
+
+</RelativeLayout>

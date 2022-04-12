@@ -1,0 +1,53 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    ext.kotlin_version = '1.4.31'
+    repositories {
+        google()
+        jcenter()
+        maven { url 'https://jitpack.io' }
+        mavenCentral() // add repository
+        maven { url "https://s01.oss.sonatype.org/content/groups/public" }
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.5.2'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'org.greenrobot:greendao-gradle-plugin:3.3.0' // add plugin
+        classpath 'com.google.dagger:hilt-android-gradle-plugin:2.28-alpha'
+        //butterknife插件
+        classpath 'com.jakewharton:butterknife-gradle-plugin:10.2.3'
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven { url 'https://jitpack.io' }
+
+        //在rootProject 的build.gradle 中添加以下配置
+        maven {
+            url 'https://maven.aliyun.com/repository/public'
+        }
+        maven {
+            credentials {
+                username '6196453fdd32cb64449d8caf'
+                password 'FfGYfFlg-8A-'
+            }
+            url 'https://packages.aliyun.com/maven/repository/2157349-release-XCpy6r/'
+        }
+        maven {
+            credentials {
+                username '6196453fdd32cb64449d8caf'
+                password 'FfGYfFlg-8A-'
+            }
+            url 'https://packages.aliyun.com/maven/repository/2157349-snapshot-Q1nKXI/'
+        }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

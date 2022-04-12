@@ -1,0 +1,5 @@
+include ':lib-rhythm'
+include ':iqiyi', ':lib_base', ':lib_service'
+rootProject.name='oushangiqiyi'
+include ':lib_common_component'
+

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <gradient
+        android:angle="135"
+        android:centerColor="#ff1c1c1e"
+        android:endColor="#ff2c2c2e"
+        android:startColor="#ff404040"
+        android:type="linear"
+        android:useLevel="true" />
+    <item android:name="android:shadowColor">#ff1c1c1e</item>
+    <item android:name="android:shadowDx">10</item>
+    <item android:name="android:shadowDy">10</item>
+    <corners
+        android:bottomLeftRadius="15dp"
+        android:bottomRightRadius="15dp"
+        android:topLeftRadius="15dp"
+        android:topRightRadius="15dp" />
+
+</shape>

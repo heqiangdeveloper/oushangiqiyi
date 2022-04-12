@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--实名认证-->
+    <color name="color_activate_later_bg">#1E1E1E</color>
+    <color name="color_activate_tips">#FF9500</color>
+    <color name="color_qrcode_tips">#ff999A9B</color>
+    <color name="color_onstyle_text">#0A84FF</color>
+
+    <color name="color_white">#FFFFFF</color>
+    <color name="color_black">#000000</color>
+    
+</resources>

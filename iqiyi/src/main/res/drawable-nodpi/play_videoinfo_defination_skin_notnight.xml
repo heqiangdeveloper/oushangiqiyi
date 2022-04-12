@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:state_selected="true">
+        <shape android:shape="rectangle">
+            <corners android:radius="10px"/>
+            <gradient android:angle="225" android:endColor="#ff0bbe06" android:startColor="#ff149ecc" android:type="linear" android:useLevel="true" />
+        </shape>
+    </item>
+
+    <item android:state_selected="false">
+        <shape android:shape="rectangle">
+            <corners android:radius="10px"/>
+            <solid android:color="@color/color_skin_select_btn_bg_notnight"/>
+        </shape>
+    </item>
+
+</selector>

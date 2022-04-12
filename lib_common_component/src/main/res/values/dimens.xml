@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin_8dp">8dp</dimen>
+    <dimen name="margin_9dp">9dp</dimen>
+    <dimen name="margin_10dp">10dp</dimen>
+    <dimen name="margin_11dp">11dp</dimen>
+    <dimen name="margin_14dp">14dp</dimen>
+    <dimen name="margin_15dp">15dp</dimen>
+    <dimen name="margin_18dp">18dp</dimen>
+    <dimen name="margin_20dp">20dp</dimen>
+    <dimen name="margin_22dp">22dp</dimen>
+    <dimen name="margin_23dp">23dp</dimen>
+    <dimen name="margin_24dp">24dp</dimen>
+    <dimen name="margin_25dp">25dp</dimen>
+    <dimen name="margin_29dp">29dp</dimen>
+    <dimen name="margin_30dp">30dp</dimen>
+    <dimen name="margin_32dp">32dp</dimen>
+    <dimen name="margin_33dp">33dp</dimen>
+    <dimen name="margin_35dp">35dp</dimen>
+    <dimen name="margin_39dp">39dp</dimen>
+    <dimen name="margin_40dp">40dp</dimen>
+    <dimen name="margin_41dp">41dp</dimen>
+    <dimen name="margin_42dp">42dp</dimen>
+    <dimen name="margin_43dp">43dp</dimen>
+    <dimen name="margin_45dp">45dp</dimen>
+    <dimen name="margin_47dp">47dp</dimen>
+    <dimen name="margin_52dp">52dp</dimen>
+    <dimen name="margin_54dp">54dp</dimen>
+    <dimen name="margin_55dp">55dp</dimen>
+    <dimen name="margin_56dp">56dp</dimen>
+    <dimen name="margin_60dp">60dp</dimen>
+    <dimen name="margin_66dp">66dp</dimen>
+    <dimen name="margin_106dp">106dp</dimen>
+    <dimen name="margin_110dp">110dp</dimen>
+    <dimen name="margin_125dp">125dp</dimen>
+    <dimen name="margin_131dp">131dp</dimen>
+    <dimen name="margin_146dp">146dp</dimen>
+    <dimen name="margin_166dp">166dp</dimen>
+    <dimen name="margin_174dp">174dp</dimen>
+
+    <dimen name="padding_15dp">15dp</dimen>
+    <dimen name="padding_20dp">20dp</dimen>
+    <dimen name="padding_15px">15px</dimen>
+
+    <dimen name="radius_8dp">8dp</dimen>
+    <dimen name="radius_15dp">15dp</dimen>
+
+    <dimen name="onstyle_authentication_title_size">32sp</dimen>
+    <dimen name="onstyle_authentication_text_size">21sp</dimen>
+    <dimen name="onstyle_authentication_text_size_20sp">20sp</dimen>
+    <dimen name="onstyle_authentication_text_size_23sp">23sp</dimen>
+    <dimen name="onstyle_authentication_text_size_30sp">30sp</dimen>
+    <dimen name="onstyle_authentication_text_size_26sp">26sp</dimen>
+    <dimen name="onstyle_authentication_tips_size">18sp</dimen>
+
+    <dimen name="onstyle_app_qrcode_width">126dp</dimen>
+    <dimen name="onstyle_app_qrcode_height">126dp</dimen>
+    <dimen name="onesyle_wx_qrcode_width">226dp</dimen>
+    <dimen name="onesyle_wx_qrcode_height">226dp</dimen>
+    <dimen name="onstyle_service_icon_width">53dp</dimen>
+    <dimen name="onstyle_service_icon_height">53dp</dimen>
+    <dimen name="onstyle_activition_width">662dp</dimen>
+
+</resources>

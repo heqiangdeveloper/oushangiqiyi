@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_theme_background">
+
+    <!--返回键-->
+    <LinearLayout
+        android:id="@+id/more_selections_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="@dimen/margin_40px"
+        android:layout_marginTop="@dimen/margin_40px"
+        android:orientation="horizontal"
+        tools:ignore="MissingConstraints">
+
+        <ImageView
+            android:id="@+id/more_selections_back_img"
+            android:layout_width="@dimen/back_width"
+            android:layout_height="@dimen/back_height"
+            android:layout_gravity="center"
+            android:background="@drawable/ic_back_60" />
+
+        <TextView
+            android:id="@+id/more_selections_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/margin_12px"
+            android:text="@string/play_more_selections"
+            android:textColor="@color/color_video_info_text"
+            android:textSize="@dimen/title_text_size" />
+
+    </LinearLayout>
+
+    <!--排序-->
+    <Button
+        android:id="@+id/more_selections_sort"
+        android:layout_width="140px"
+        android:layout_height="56px"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="@dimen/margin_29px"
+        android:layout_marginEnd="@dimen/margin_40px"
+        android:background="@drawable/video_info_more_selection_sort"
+        android:text="@string/more_selection_forward_sort"
+        android:textColor="@color/color_white"
+        android:textSize="@dimen/tag_text_size"
+        tools:ignore="MissingConstraints" />
+
+    <!--数字型选集-->
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/video_info_select_range"
+        android:layout_width="match_parent"
+        android:layout_height="56px"
+        app:layout_constraintTop_toBottomOf="@id/more_selections_sort"
+        android:layout_marginTop="22px"
+        android:visibility="visible"
+        app:tabMode="scrollable"
+        app:tabSelectedTextColor="@color/color_video_details"
+        app:tabTextAppearance="@style/TabLayoutStyle"
+        app:tabTextColor="@color/color_video_info_text"
+        tools:ignore="MissingConstraints" />
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/video_info_select_divide_episode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/video_info_select_range"
+        android:layout_marginTop="@dimen/margin_30px"
+        android:layout_marginStart="@dimen/margin_45px"
+        android:visibility="visible"
+        tools:ignore="MissingConstraints" />
+
+
+    <!--时间型选集-->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/video_info_select_by_time"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/more_selections_sort"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="22px"
+        android:scrollbarSize="4px"
+        android:scrollbarThumbVertical="@drawable/more_selection_time_scrollbar_thumb_bg"
+        android:scrollbarTrackVertical="@drawable/more_selection_time_scrollbar_track_bg"
+        android:scrollbars="vertical"
+        android:scrollbarStyle="outsideInset"
+        android:paddingEnd="20px"
+        android:visibility="gone"
+        tools:ignore="MissingConstraints" />
+
+    <FrameLayout
+        android:id="@+id/video_info_details_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/more_selections_sort"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:visibility="gone"
+        android:layout_marginTop="22px"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
