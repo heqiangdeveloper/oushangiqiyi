@@ -1,13 +1,18 @@
 package com.oushang.iqiyi.fragments;
 
+import android.annotation.SuppressLint;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -26,6 +31,8 @@ import com.oushang.iqiyi.mvp.view.ISearchResultView;
 import com.oushang.iqiyi.statistics.DataStatistics;
 import com.oushang.iqiyi.statistics.StatConstant;
 import com.oushang.iqiyi.ui.GridItemDecoration;
+import com.oushang.iqiyi.utils.ThemeContentObserver;
+import com.oushang.iqiyi.utils.ThemeManager;
 import com.oushang.lib_base.base.rv.IMultiItem;
 import com.oushang.lib_service.entries.VideoInfo;
 
@@ -40,11 +47,14 @@ import butterknife.OnClick;
  * @Time: 2021/8/6 10:37
  * @Since: 1.0
  */
-public class SearchResultFragment extends BaseLazyFragment<SearchResultPresenter> implements ISearchResultView {
+public class SearchResultFragment extends BaseLazyFragment<SearchResultPresenter> implements ISearchResultView, ThemeManager.OnThemeChangeListener {
     private static final String TAG = "xyj_iqiyi";
 
     @BindView(R.id.search_result_empty_layout)
     LinearLayout mResultEmptyLayout; //暂无搜索结果布局
+
+    @BindView(R.id.search_result_type_label)
+    TextView mResultTypeLabel; //结果类型标签
 
     @BindView(R.id.search_result_relate_btn)
     Button mResultRelateBtn; //相关
@@ -55,8 +65,11 @@ public class SearchResultFragment extends BaseLazyFragment<SearchResultPresenter
     @BindView(R.id.search_result_hottest_btn)
     Button mResultHottestBtn; //最热
 
+    @BindView(R.id.search_source_tips)
+    TextView mResultSourceTips; //片源提示
+
     @BindView(R.id.search_result_content_rv)
-    RecyclerView mResultContentRv; //搜索结果
+    RecyclerView mResultContentRv; //搜索结果列表
 
     @BindView(R.id.search_result_group)
     View mSearchResultGroup;
@@ -74,6 +87,8 @@ public class SearchResultFragment extends BaseLazyFragment<SearchResultPresenter
     private SearchResultAdapter mSearchResultAdapter;
 
     private boolean isloading = false;
+
+    private ThemeContentObserver mThemeContentObserver;
 
     @Override
     protected int setLayout() {
@@ -130,6 +145,10 @@ public class SearchResultFragment extends BaseLazyFragment<SearchResultPresenter
                 }
             }
         });
+
+        ThemeManager.getInstance().registerThemeChangeListener(this);
+        mThemeContentObserver = new ThemeContentObserver(getContext(), new Handler());
+        ThemeContentObserver.register(getContext(), mThemeContentObserver);
     }
 
     @Override
@@ -336,5 +355,45 @@ public class SearchResultFragment extends BaseLazyFragment<SearchResultPresenter
                 }
             }
         }
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.Q)
+    @Override
+    public void onThemeChanged(ThemeManager.ThemeMode themeMode) {
+        updateSkin();
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.Q)
+    @SuppressLint("UseCompatLoadingForDrawables")
+    private void updateSkin() {
+        rootView.setBackgroundColor(getResources().getColor(ThemeManager.getThemeResource(getContext(), R.color.color_skin_background), null));
+        mResultTypeLabel.setTextColor(getResources().getColor(ThemeManager.getThemeResource(getContext(), R.color.color_skin_text), null));
+        mResultSourceTips.setTextColor(getResources().getColor(ThemeManager.getThemeResource(getContext(), R.color.color_skin_search_result_source_tips), null));
+        if (!mResultRelateBtn.isSelected()) {
+            mResultRelateBtn.setTextColor(getResources().getColor(ThemeManager.getThemeResource(getContext(), R.color.color_skin_text), null));
+            mResultRelateBtn.setBackground(getResources().getDrawable(ThemeManager.getThemeResource(getContext(), R.drawable.search_result_button_skin_bg), null));
+        }
+        if (!mResultNewestBtn.isSelected()) {
+            mResultNewestBtn.setTextColor(getResources().getColor(ThemeManager.getThemeResource(getContext(), R.color.color_skin_text), null));
+            mResultNewestBtn.setBackground(getResources().getDrawable(ThemeManager.getThemeResource(getContext(), R.drawable.search_result_button_skin_bg), null));
+        }
+        if (!mResultHottestBtn.isSelected()) {
+            mResultHottestBtn.setTextColor(getResources().getColor(ThemeManager.getThemeResource(getContext(), R.color.color_skin_text), null));
+            mResultHottestBtn.setBackground(getResources().getDrawable(ThemeManager.getThemeResource(getContext(), R.drawable.search_result_button_skin_bg), null));
+        }
+        if (mSearchResultAdapter != null) {
+            mSearchResultAdapter.updateSkin();
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            mResultContentRv.setVerticalScrollbarThumbDrawable(getResources().getDrawable(ThemeManager.getThemeResource(getContext(), R.drawable.scrollbar_thumb_skin_bg), null));
+            mResultContentRv.setVerticalScrollbarTrackDrawable(getResources().getDrawable(ThemeManager.getThemeResource(getContext(), R.drawable.scrollbar_track_skin_bg), null));
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        ThemeContentObserver.register(getContext(), mThemeContentObserver);
+        ThemeManager.getInstance().unRegisterThemeChangeListener(this);
     }
 }

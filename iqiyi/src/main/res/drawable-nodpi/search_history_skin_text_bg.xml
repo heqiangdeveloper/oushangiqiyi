@@ -3,6 +3,6 @@
 
     <corners android:radius="@dimen/radius_10px"/>
 
-    <solid android:color="@color/color_search_result_button_unselected"/>
+    <solid android:color="@color/color_skin_search_history_record_bg"/>
 
 </shape>

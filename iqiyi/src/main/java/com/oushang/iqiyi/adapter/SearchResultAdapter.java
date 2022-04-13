@@ -20,6 +20,7 @@ import com.oushang.iqiyi.entries.SearchResultNoMore;
 import com.oushang.iqiyi.statistics.DataStatistics;
 import com.oushang.iqiyi.statistics.StatConstant;
 import com.oushang.iqiyi.utils.AppUtils;
+import com.oushang.iqiyi.utils.ThemeManager;
 import com.oushang.lib_base.base.rv.BaseMultiAdapter;
 import com.oushang.lib_base.base.rv.BaseViewHolder;
 import com.oushang.lib_base.base.rv.IMultiItem;
@@ -139,7 +140,11 @@ public class SearchResultAdapter <T extends IMultiItem> extends BaseMultiAdapter
         } else if(data instanceof SearchResultNoMore) {
             TextView textView = holder.getView(R.id.search_result_no_more_text);
             textView.setText(((SearchResultNoMore) data).getText());
-
+            if (ThemeManager.getThemeMode() == ThemeManager.ThemeMode.NIGHT) {
+                textView.setTextColor(mContext.getColor(R.color.color_skin_search_text));
+            } else {
+                textView.setTextColor(mContext.getColor(R.color.color_skin_search_text_notnight));
+            }
         }
     }
 
@@ -197,5 +202,15 @@ public class SearchResultAdapter <T extends IMultiItem> extends BaseMultiAdapter
             }
         }
         return null;
+    }
+
+    public void updateSkin() {
+        if (mDatas != null && !mDatas.isEmpty()) {
+            int lastIndex = mDatas.size() - 1;
+            T t = mDatas.get(lastIndex);
+            if (t instanceof SearchResultNoMore) {
+                notifyItemChanged(lastIndex);
+            }
+        }
     }
 }

@@ -476,8 +476,7 @@ public class PlayerActivity extends BasePlayerActivity<PlayerPresenter> implemen
 
             }
         });
-        //监听sp
-        SPUtils.getSP(Constant.SP_LOGIN_SPACE).registerOnSharedPreferenceChangeListener(preferenceChangeListener);
+
     }
 
     //显示进度条
@@ -1454,7 +1453,6 @@ public class PlayerActivity extends BasePlayerActivity<PlayerPresenter> implemen
 
     @Override
     protected void onDestroy() {
-        SPUtils.getSP(Constant.SP_LOGIN_SPACE).unregisterOnSharedPreferenceChangeListener(preferenceChangeListener);
         releasePlayer();
         releaseListener();
         if (rxUtils != null) {
@@ -1616,11 +1614,14 @@ public class PlayerActivity extends BasePlayerActivity<PlayerPresenter> implemen
                 mPlayManager.start();
             }
             EventBusHelper.post(EventBusHelper.newEvent(EventConstant.EVENT_TYPE_HIDE_BASENAVACTIVITY, null));
+            //监听sp
+            SPUtils.getSP(Constant.SP_LOGIN_SPACE).registerOnSharedPreferenceChangeListener(preferenceChangeListener);
         } else {
             CarManager.getInstance().unRegister();//解除mcu事件
             if (mPlayManager.isPlaying()) {
                 mPlayManager.pause();
             }
+            SPUtils.getSP(Constant.SP_LOGIN_SPACE).unregisterOnSharedPreferenceChangeListener(preferenceChangeListener);
         }
     }
 

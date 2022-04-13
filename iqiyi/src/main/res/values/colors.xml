@@ -187,6 +187,12 @@
     <color name="color_skin_search_icon">#999A9B</color>
     <color name="color_skin_search_hint_text">#999A9B</color>
     <color name="color_skin_search_text">#FFFFFF</color>
+    <color name="color_skin_search_history_record_bg">#1A1B1E</color>
+    <color name="color_skin_search_result_source_tips">#999A9B</color>
+    <color name="color_skin_search_result_type_bg">#1A1B1E</color>
+    <!--滚动条-->
+    <color name="color_skin_scrollbar_thumb_bg">#333333</color>
+    <color name="color_skin_scrollbar_track_bg">#FFFFFF</color>
 
     <!-- =====白天模式资源===== -->
     <color name="color_skin_background_notnight">#F8F8F8</color>
@@ -208,5 +214,11 @@
     <color name="color_skin_search_icon_notnight">#8A898D</color>
     <color name="color_skin_search_hint_text_notnight">#8A898D</color>
     <color name="color_skin_search_text_notnight">#000000</color>
+    <color name="color_skin_search_history_record_bg_notnight">#E9E9EB</color>
+    <color name="color_skin_search_result_source_tips_notnight">#434345</color>
+    <color name="color_skin_search_result_type_bg_notnight">#E9E9EB</color>
+    <!--滚动条-->
+    <color name="color_skin_scrollbar_thumb_bg_notnight">#E9E9EB</color>
+    <color name="color_skin_scrollbar_track_bg_notnight">#969499</color>
 
 </resources>

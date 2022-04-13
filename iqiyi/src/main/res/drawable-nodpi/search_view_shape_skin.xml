@@ -3,5 +3,5 @@
 
     <corners android:radius="16px"/>
 
-    <solid android:color="@color/color_search_bg"/>
+    <solid android:color="@color/color_skin_search_bar_bg"/>
 </shape>

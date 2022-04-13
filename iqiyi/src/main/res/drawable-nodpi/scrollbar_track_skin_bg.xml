@@ -3,6 +3,6 @@
 
     <corners android:radius="@dimen/radius_20px"/>
 
-    <solid android:color="@color/color_scroll_track_color"/>
+    <solid android:color="@color/color_skin_scrollbar_track_bg"/>
 
 </shape>

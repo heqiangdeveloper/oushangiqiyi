@@ -3,7 +3,8 @@
 
     <item android:state_selected="true" >
         <shape android:shape="rectangle">
-            <gradient android:type="linear" android:useLevel="true" android:startColor="#ff149ecc" android:endColor="#ff0bbe06" android:angle="180" />
+<!--            <gradient android:type="linear" android:useLevel="true" android:startColor="#ff149ecc" android:endColor="#ff0bbe06" android:angle="180" />-->
+            <solid android:color="@color/color_search_result_button_selected"/>
             <corners android:radius="@dimen/radius_8dp" />
         </shape>
     </item>

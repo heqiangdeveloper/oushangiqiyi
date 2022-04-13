@@ -1,8 +1,10 @@
 package com.oushang.iqiyi.activities;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.IBinder;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -11,11 +13,13 @@ import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SearchView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -33,6 +37,7 @@ import com.oushang.iqiyi.statistics.DataStatistics;
 import com.oushang.iqiyi.statistics.StatConstant;
 import com.oushang.iqiyi.ui.CustomSearchView;
 import com.oushang.iqiyi.utils.StatusBarUtil;
+import com.oushang.iqiyi.utils.ThemeContentObserver;
 import com.oushang.iqiyi.utils.ThemeManager;
 import com.oushang.lib_base.base.mvp.view.BaseActivityMVP;
 import com.oushang.lib_base.utils.SPUtils;
@@ -53,6 +58,12 @@ public class SearchActivity extends BaseActivityMVP<SearchPresenter> implements 
     private static final String TAG = "xyj_iqiyi";
 
     private EventBusHelper mEventBusHelper;
+
+    @BindView(R.id.search_root)
+    ConstraintLayout mSearchRoot;
+
+    @BindView(R.id.search_back)
+    ImageView mSearchBack; //返回键
 
     @BindView(R.id.search_fragment_container)
     FrameLayout mFragmentContainer;
@@ -76,6 +87,8 @@ public class SearchActivity extends BaseActivityMVP<SearchPresenter> implements 
     private static final String SAVE_SEARCH_KEYWORD = "save_key_word";
 
     public static int sMode = 1;
+
+    private ThemeContentObserver mThemeContentObserver;
 
     @Override
     protected int setLayout() {
@@ -128,6 +141,9 @@ public class SearchActivity extends BaseActivityMVP<SearchPresenter> implements 
                 return false;
             }
         });
+        ThemeManager.getInstance().registerThemeChangeListener(this);
+        mThemeContentObserver = new ThemeContentObserver(getApplicationContext(), new Handler());
+        ThemeContentObserver.register(getApplicationContext(), mThemeContentObserver);
     }
 
     /**
@@ -326,8 +342,21 @@ public class SearchActivity extends BaseActivityMVP<SearchPresenter> implements 
         updateSkin();
     }
 
+    /**
+     * 主题换肤
+     */
+    @SuppressLint("UseCompatLoadingForDrawables")
     private void updateSkin() {
-        mSearchView.setBackgroundColor(getResources().getColor(ThemeManager.getThemeResource(getApplicationContext(), R.color.color_skin_search_bar_bg), null));
+        mSearchRoot.setBackgroundColor(getResources().getColor(ThemeManager.getThemeResource(getApplicationContext(), R.color.color_skin_background), null));
+        mSearchBack.setBackground(getResources().getDrawable(ThemeManager.getThemeResource(getApplicationContext(), R.drawable.ic_skin_back_60), null));
+        mSearchView.setBackground(getResources().getDrawable(ThemeManager.getThemeResource(getApplicationContext(), R.drawable.search_view_shape_skin), null));
         mSearchView.getSearchTextView().setTextColor(getResources().getColor(ThemeManager.getThemeResource(getApplicationContext(), R.color.color_skin_search_hint_text), null));
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        ThemeContentObserver.register(getApplicationContext(), mThemeContentObserver);
+        ThemeManager.getInstance().unRegisterThemeChangeListener(this);
     }
 }

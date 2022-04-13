@@ -231,7 +231,7 @@ public class AccountActivity extends BaseActivityMVP<AccountPresenter> implement
                 @Override
                 public void onTokenRenew(String tokenType, String accessToken, String refreshToken) {
                     Log.d(TAG, "onTokenRenew: tokenType:" + tokenType + ",accessToken:" + accessToken + ",refreshToken:" + refreshToken);
-                    mVehicleToken = refreshToken;
+                    mVehicleToken = accessToken;
                 }
 
                 @Override

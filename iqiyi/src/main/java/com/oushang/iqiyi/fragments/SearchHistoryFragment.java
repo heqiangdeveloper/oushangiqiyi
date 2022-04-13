@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -29,6 +30,7 @@ import com.oushang.iqiyi.ui.GridItemDecoration;
 import com.oushang.iqiyi.ui.LineItemDecoration;
 import com.oushang.iqiyi.ui.SimpleFastAdapter;
 import com.oushang.iqiyi.utils.AppUtils;
+import com.oushang.iqiyi.utils.ThemeContentObserver;
 import com.oushang.iqiyi.utils.ThemeManager;
 import com.oushang.lib_base.base.mvp.view.BaseFragmentMVP;
 import com.oushang.lib_base.base.rv.BaseViewHolder;
@@ -75,6 +77,8 @@ public class SearchHistoryFragment extends BaseFragmentMVP<SearchHistoryPresente
 
     private SimpleFastAdapter<String> mSearchHistoryKeyWordAdapter;
 
+    private ThemeContentObserver mThemeContentObserver;
+
     @Override
     protected int setLayout() {
         return R.layout.fragment_search_history;
@@ -97,6 +101,9 @@ public class SearchHistoryFragment extends BaseFragmentMVP<SearchHistoryPresente
     @Override
     protected void initListener() {
         SPUtils.getSP(Constant.SP_SPACE_SEARCH_HISTORY_KEYWORD_RESULT).registerOnSharedPreferenceChangeListener(sharedPreferenceChangeListener);
+        ThemeManager.getInstance().registerThemeChangeListener(this);
+        mThemeContentObserver = new ThemeContentObserver(getContext(), new Handler());
+        ThemeContentObserver.register(getContext(), mThemeContentObserver);
     }
 
     @OnClick(R.id.search_history_delete_img)
@@ -142,8 +149,10 @@ public class SearchHistoryFragment extends BaseFragmentMVP<SearchHistoryPresente
                 textView.setText(data1);
                 if (ThemeManager.getThemeMode() == ThemeManager.ThemeMode.NIGHT) {
                     textView.setTextColor(mContext.getColor(R.color.color_skin_search_text));
+                    textView.setBackground(mContext.getDrawable(R.drawable.search_history_skin_text_bg));
                 } else {
                     textView.setTextColor(mContext.getColor(R.color.color_skin_search_text_notnight));
+                    textView.setBackground(mContext.getDrawable(R.drawable.search_history_skin_text_bg_notnight));
                 }
 
                 holder.getItemView().setOnClickListener(new View.OnClickListener() { //点击缓存的搜索关键字
@@ -243,6 +252,8 @@ public class SearchHistoryFragment extends BaseFragmentMVP<SearchHistoryPresente
     public void onDestroy() {
         super.onDestroy();
         SPUtils.getSP(Constant.SP_SPACE_SEARCH_HISTORY_KEYWORD_RESULT).unregisterOnSharedPreferenceChangeListener(sharedPreferenceChangeListener);
+        ThemeContentObserver.register(getContext(), mThemeContentObserver);
+        ThemeManager.getInstance().unRegisterThemeChangeListener(this);
     }
 
     @Override
@@ -253,9 +264,12 @@ public class SearchHistoryFragment extends BaseFragmentMVP<SearchHistoryPresente
     /**
      * 主题换肤
      */
-    @SuppressLint("NotifyDataSetChanged")
+    @SuppressLint({"NotifyDataSetChanged", "UseCompatLoadingForDrawables"})
     private void updateSkin() {
+        rootView.setBackgroundColor(getResources().getColor(ThemeManager.getThemeResource(getContext(),R.color.color_skin_background), null));
         mSearchHistoryLabel.setTextColor(getResources().getColor(ThemeManager.getThemeResource(getContext(), R.color.color_skin_search_text),null));
+        mSearchHistoryDelete.setBackground(getResources().getDrawable(ThemeManager.getThemeResource(getContext(), R.drawable.ic_search_history_delete_skin), null));
+        mHotSearchLabel.setTextColor(getResources().getColor(ThemeManager.getThemeResource(getContext(), R.color.color_skin_search_text),null));
         if (mSearchHistoryKeyWordAdapter != null) {
             mSearchHistoryKeyWordAdapter.notifyDataSetChanged();
         }

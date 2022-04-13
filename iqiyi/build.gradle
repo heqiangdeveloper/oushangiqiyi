@@ -12,7 +12,7 @@ android {
         applicationId "com.oushang.iqiyi"
         minSdkVersion 26
         targetSdkVersion 30
-        versionCode 100079
+        versionCode 100080
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
         ndk {
