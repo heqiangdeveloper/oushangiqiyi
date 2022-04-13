@@ -130,7 +130,7 @@ public class FragmentHelper {
                 transaction.add(containerViewId, fragment, fragment.getClass().getSimpleName());
             }
             for (Fragment fg : fragmentList) {
-                if (fg.isAdded() && !fg.isHidden() && fg.getClass() != fragment.getClass()) {
+                if (fg.isVisible() && fg.isResumed() && fg.getClass() != fragment.getClass()) {
                     transaction.hide(fg).setMaxLifecycle(fg, Lifecycle.State.STARTED); //隐藏其他fragment
                 }
             }

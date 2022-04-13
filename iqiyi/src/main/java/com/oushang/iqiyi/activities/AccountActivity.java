@@ -876,6 +876,9 @@ public class AccountActivity extends BaseActivityMVP<AccountPresenter> implement
         if (null != mEventBusHelper) {
             mEventBusHelper.unRegister();
         }
+        if (rxUtils != null) {
+            rxUtils.unDisposable();
+        }
         if (qrcodeInvalidDisposable != null && !qrcodeInvalidDisposable.isDisposed()) {
             qrcodeInvalidDisposable.dispose();
         }

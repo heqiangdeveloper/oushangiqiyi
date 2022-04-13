@@ -1082,7 +1082,8 @@ public class PlayerActivity extends BasePlayerActivity<PlayerPresenter> implemen
                             newProgress = mVideoPlayer.getDuration();
                         }
 
-                        mVideoPlayer.seekTo(newProgress);
+                        mPlayManager.seekTo(newProgress);
+                        seekBarProgress(newProgress, 0);
                         mSeekBar.setSelected(true);
 
                         mSeekBarLayout.setVisibility(View.VISIBLE);

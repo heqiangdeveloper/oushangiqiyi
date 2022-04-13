@@ -21,7 +21,7 @@ public abstract class BaseAdapter<T, VH extends BaseViewHolder> extends Recycler
     protected Context mContext;
 
     //数据
-    protected List<T> mDatas;
+    protected volatile List<T> mDatas;
 
     public BaseAdapter(Context context, List<T> datas) {
         this.mContext = context;
