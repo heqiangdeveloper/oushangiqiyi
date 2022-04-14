@@ -3,6 +3,7 @@ package com.oushang.iqiyi.utils;
 import android.annotation.SuppressLint;
 import android.app.ActivityManager;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -393,6 +394,22 @@ public class AppUtils {
             e.printStackTrace();
         }
         return prop;
+    }
+
+    public static boolean isExistActivity(Context context, String packageName, String className) {
+        if (context == null) {
+            return false;
+        }
+        if (packageName == null || className == null) {
+            return false;
+        }
+        if (packageName.isEmpty() || className.isEmpty()) {
+            return false;
+        }
+        Intent intent = new Intent();
+        intent.setClassName(packageName,className);
+        PackageManager packageManager = context.getPackageManager();
+        return packageManager.resolveActivity(intent, 0) != null;
     }
 
 

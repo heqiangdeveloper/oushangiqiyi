@@ -19,6 +19,7 @@ import androidx.annotation.Nullable;
 import com.oushang.iqiyi.R;
 import com.oushang.iqiyi.common.Constant;
 import com.oushang.iqiyi.manager.AppManager;
+import com.oushang.iqiyi.utils.AppUtils;
 
 /**
  * @Author: zeelang
@@ -104,7 +105,11 @@ public class VehicleFlowDialog extends Dialog {
             ComponentName componetName = new ComponentName("com.chinatsp.servicemall", cls);
             intent.setComponent(componetName);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            context.startActivity(intent);
+            if (AppUtils.isExistActivity(context, "com.chinatsp.servicemall", cls)) {
+                context.startActivity(intent);
+            } else {
+                Log.e(TAG, "not found activity!");
+            }
             dismiss();
         } catch (Exception e) {
             e.printStackTrace();

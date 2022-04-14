@@ -34,6 +34,8 @@ public class TtsConstants {
     public static final String IQIYI_C17 = "iqiyiC17"; //想看第几个
     public static final String IQIYI_C18 = "iqiyiC18";//好的/嗯，好了/ok/搞定/没问题/好滴/好勒/
     public static final String IQIYI_C19 = "iqiyiC19";//当前页面仅有#MAXNUM#个结果，选择第几个？
+    public static final String IQIYI_C20 = "iqiyiC20"; //行车播放视频功能未打开，请前往设置界面开启行车播放视频
+    public static final String IQIYI_C21 = "iqiyiC21"; //请先开启用户授权
 
     public static final String MAIN_C14 = "mainC14"; //小欧暂不会这个操作
 

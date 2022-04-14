@@ -170,68 +170,83 @@ public class CmdVoiceHandler extends BaseHandler<CmdVoiceModel> {
                 case CmdVoiceConstants.FIRST_1:
                 case CmdVoiceConstants.FIRST_2:
                 case CmdVoiceConstants.FIRST_3:
-                    selectNumOfVoiceSearch(1);
+                    selectNumOfVoiceSearch(cmdVoiceModel,1);
                     break;
                 case CmdVoiceConstants.SECOND:
                 case CmdVoiceConstants.SECOND_1:
                 case CmdVoiceConstants.SECOND_2:
                 case CmdVoiceConstants.SECOND_3:
-                    selectNumOfVoiceSearch(2);
+                    selectNumOfVoiceSearch(cmdVoiceModel,2);
                     break;
                 case CmdVoiceConstants.THIRD:
                 case CmdVoiceConstants.THIRD_1:
                 case CmdVoiceConstants.THIRD_2:
                 case CmdVoiceConstants.THIRD_3:
-                    selectNumOfVoiceSearch(3);
+                    selectNumOfVoiceSearch(cmdVoiceModel,3);
                     break;
                 case CmdVoiceConstants.FOURTH:
                 case CmdVoiceConstants.FOURTH_1:
                 case CmdVoiceConstants.FOURTH_2:
                 case CmdVoiceConstants.FOURTH_3:
-                    selectNumOfVoiceSearch(4);
+                    selectNumOfVoiceSearch(cmdVoiceModel,4);
                     break;
                 case CmdVoiceConstants.FIFTH:
                 case CmdVoiceConstants.FIFTH_1:
                 case CmdVoiceConstants.FIFTH_2:
                 case CmdVoiceConstants.FIFTH_3:
-                    selectNumOfVoiceSearch(5);
+                    selectNumOfVoiceSearch(cmdVoiceModel,5);
                     break;
                 case CmdVoiceConstants.SIXTH:
                 case CmdVoiceConstants.SIXTH_1:
                 case CmdVoiceConstants.SIXTH_2:
                 case CmdVoiceConstants.SIXTH_3:
-                    selectNumOfVoiceSearch(6);
+                    selectNumOfVoiceSearch(cmdVoiceModel,6);
                     break;
                 case CmdVoiceConstants.SEVENTH:
                 case CmdVoiceConstants.SEVENTH_1:
                 case CmdVoiceConstants.SEVENTH_2:
                 case CmdVoiceConstants.SEVENTH_3:
-                    selectNumOfVoiceSearch(7);
+                    selectNumOfVoiceSearch(cmdVoiceModel,7);
                     break;
                 case CmdVoiceConstants.EIGHTH:
                 case CmdVoiceConstants.EIGHTH_1:
                 case CmdVoiceConstants.EIGHTH_2:
                 case CmdVoiceConstants.EIGHTH_3:
-                    selectNumOfVoiceSearch(8);
+                    selectNumOfVoiceSearch(cmdVoiceModel,8);
                     break;
                 case CmdVoiceConstants.NINTH:
                 case CmdVoiceConstants.NINTH_1:
                 case CmdVoiceConstants.NINTH_2:
                 case CmdVoiceConstants.NINTH_3:
-                    selectNumOfVoiceSearch(9);
+                    selectNumOfVoiceSearch(cmdVoiceModel,9);
                     break;
 
             }
         }
     }
 
-    public void selectNumOfVoiceSearch(int num) {
+    public void selectNumOfVoiceSearch(CmdVoiceModel cmdVoiceModel,int num) {
         Log.d(TAG, "selectNumOfVoiceSearch:" + num);
         Bundle eventParams = new Bundle();
         eventParams.putInt(EventConstant.EVENT_PARAMS_VOICE_SEARCH_RESULT_SELECT, num);
         EventBusHelper.post(EventBusHelper.newEvent(EventConstant.EVENT_TYPE_VOICE_SEARCH_SELECT, eventParams));
         if (!isHide()) {
-            speak(true,false, TtsConstants.IQIYI_C18, null);
+            speak(true,false, TtsConstants.IQIYI_C18, null, new Consumer<String>(){
+                @Override
+                public void accept(String s) throws Exception {
+                    DataStatistics.recordVoiceAsssit(new VoiceAsssit.Builder() //语音埋点
+                            .setAppName(TtsConstants.APP_NAME)
+                            .setScene(TtsConstants.SCENE_SELECT_VIDEO)
+                            .setObject(TtsConstants.INTENT_SELECT_VIDEO)
+                            .setResponse(cmdVoiceModel.response)
+                            .setProvider(TtsConstants.PROVIDER)
+                            .setTts(s)
+                            .setCondition(TtsConstants.CONDITION_SELECT_IN_RANGE)
+                            .setConditionId(TtsConstants.IQIYI_C18)
+                            .setPrimitive(cmdVoiceModel.text)
+                            .build());
+                }
+            }, null);
         }
     }
 }

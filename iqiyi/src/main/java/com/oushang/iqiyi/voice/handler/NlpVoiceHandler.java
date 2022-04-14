@@ -22,6 +22,7 @@ import com.oushang.iqiyi.events.EventConstant;
 import com.oushang.iqiyi.manager.AppManager;
 import com.oushang.iqiyi.statistics.DataStatistics;
 import com.oushang.iqiyi.statistics.VoiceAsssit;
+import com.oushang.iqiyi.utils.AppUtils;
 import com.oushang.iqiyi.voice.constants.NlpVoiceConstants;
 import com.oushang.iqiyi.voice.constants.TtsConstants;
 import com.oushang.lib_base.utils.SPUtils;
@@ -222,17 +223,17 @@ public class NlpVoiceHandler extends BaseHandler<NlpVoiceModel>{
 
                             @Override
                             public void accept(String s) throws Exception {
-//                                DataStatistics.recordVoiceAsssit(new VoiceAsssit.Builder() //语音埋点
-//                                        .setAppName(TtsConstants.APP_NAME)
-//                                        .setScene(TtsConstants.SCENE_SEARCH_VIDEO)
-//                                        .setObject(TtsConstants.INTENT_SEARCH_CHANNEL_NAME)
-////                                        .setResponse(nlpVoiceModel.response)
-//                                        .setProvider(TtsConstants.PROVIDER)
-//                                        .setTts(s)
-//                                        .setCondition(TtsConstants.CONDITION_ONE_SEARCH_RESULTS)
-//                                        .setConditionId(TtsConstants.IQIYI_C3_1)
-////                                        .setPrimitive(nlpVoiceModel.text)
-//                                        .build());
+                                DataStatistics.recordVoiceAsssit(new VoiceAsssit.Builder() //语音埋点
+                                        .setAppName(TtsConstants.APP_NAME)
+                                        .setScene(TtsConstants.SCENE_SEARCH_VIDEO)
+                                        .setObject(TtsConstants.INTENT_SEARCH_CHANNEL_NAME)
+//                                        .setResponse(nlpVoiceModel.response)
+                                        .setProvider(TtsConstants.PROVIDER)
+                                        .setTts(s)
+                                        .setCondition(TtsConstants.CONDITION_ONE_SEARCH_RESULTS)
+                                        .setConditionId(TtsConstants.IQIYI_C3_1)
+//                                        .setPrimitive(nlpVoiceModel.text)
+                                        .build());
                             }
                         }, null);
                     }
@@ -240,24 +241,40 @@ public class NlpVoiceHandler extends BaseHandler<NlpVoiceModel>{
                     if (!isHide()) {
                         speak(true, false, TtsConstants.IQIYI_C3_2, false,null);
                         noticeVoiceSearch(); //不退出，进行二次语音识别
-                        speak(true, false, TtsConstants.IQIYI_C17, false,null);
+                        speak(true, false, TtsConstants.IQIYI_C17, null, new Consumer<String>(){
+                            @Override
+                            public void accept(String s) throws Exception {
+                                DataStatistics.recordVoiceAsssit(new VoiceAsssit.Builder() //语音埋点
+                                        .setAppName(TtsConstants.APP_NAME)
+                                        .setScene(TtsConstants.SCENE_SELECT_VIDEO)
+                                        .setObject(TtsConstants.INTENT_SELECT_GUIDE)
+//                                        .setResponse(nlpVoiceModel.response)
+                                        .setProvider(TtsConstants.PROVIDER)
+                                        .setTts(s)
+                                        .setCondition(TtsConstants.CONDITION_DEFAULT)
+                                        .setConditionId(TtsConstants.IQIYI_C17)
+//                                        .setPrimitive(nlpVoiceModel.text)
+                                        .build());
+
+                            }
+                        }, null);
                     }
                 } else { //无搜索结果
                     if (!isHide()) {
                         speak(true, false, TtsConstants.IQIYI_C4,null, new Consumer<String>(){
                             @Override
                             public void accept(String s) throws Exception {
-//                                DataStatistics.recordVoiceAsssit(new VoiceAsssit.Builder() //语音埋点
-//                                        .setAppName(TtsConstants.APP_NAME)
-//                                        .setScene(TtsConstants.SCENE_SEARCH_VIDEO)
-//                                        .setObject(TtsConstants.INTENT_SEARCH_CHANNEL_NAME)
-////                                        .setResponse(nlpVoiceModel.response)
-//                                        .setProvider(TtsConstants.PROVIDER)
-//                                        .setTts(s)
-//                                        .setCondition(TtsConstants.CONDITION_NO_SEARCH_RESULTS)
-//                                        .setConditionId(TtsConstants.IQIYI_C4)
-////                                        .setPrimitive(nlpVoiceModel.text)
-//                                        .build());
+                                DataStatistics.recordVoiceAsssit(new VoiceAsssit.Builder() //语音埋点
+                                        .setAppName(TtsConstants.APP_NAME)
+                                        .setScene(TtsConstants.SCENE_SEARCH_VIDEO)
+                                        .setObject(TtsConstants.INTENT_SEARCH_CHANNEL_NAME)
+//                                        .setResponse(nlpVoiceModel.response)
+                                        .setProvider(TtsConstants.PROVIDER)
+                                        .setTts(s)
+                                        .setCondition(TtsConstants.CONDITION_NO_SEARCH_RESULTS)
+                                        .setConditionId(TtsConstants.IQIYI_C4)
+//                                        .setPrimitive(nlpVoiceModel.text)
+                                        .build());
                             }
                         }, null);
                     }
@@ -472,7 +489,11 @@ public class NlpVoiceHandler extends BaseHandler<NlpVoiceModel>{
         ComponentName componetName = new ComponentName("com.chinatsp.servicemall", cls);
         intent.setComponent(componetName);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        context.startActivity(intent);
+        if (AppUtils.isExistActivity(context, "com.chinatsp.servicemall", cls)) {
+            context.startActivity(intent);
+        } else {
+            Log.e(TAG, "not found activity!");
+        }
     }
 
 }

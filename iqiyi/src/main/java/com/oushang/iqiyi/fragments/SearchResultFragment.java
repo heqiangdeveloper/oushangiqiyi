@@ -228,10 +228,6 @@ public class SearchResultFragment extends BaseLazyFragment<SearchResultPresenter
             Log.d(TAG, "search by voice");
             GridLayoutManager layoutManager = (GridLayoutManager) mResultContentRv.getLayoutManager();
             if (layoutManager != null) {
-                int firstPos = layoutManager.findFirstCompletelyVisibleItemPosition();
-                int lastPos = layoutManager.findLastCompletelyVisibleItemPosition();
-
-                Log.d(TAG, "firstPos:" + firstPos + ",lastPos:" + lastPos + ",visibleFirst:" + layoutManager.findFirstVisibleItemPosition() + ",VisibleLast:" + layoutManager.findLastVisibleItemPosition());
                 int count = layoutManager.getItemCount();
                 Log.d(TAG, "visiable item count:" + count);
 
@@ -239,6 +235,18 @@ public class SearchResultFragment extends BaseLazyFragment<SearchResultPresenter
                 eventParams.putInt(EventConstant.EVENT_PARAMS_VOICE_SEARCH_RESULT_COUNT, count);
                 EventBusHelper.post(EventBusHelper.newEvent(EventConstant.EVENT_TYPE_VOICE_SEARCH_RESULT, eventParams));
 
+                if (count == 1) { //有结果且只有一个
+                    SearchResultInfo resultInfo = (SearchResultInfo)searchResultInfoList.get(0);
+                    if (resultInfo != null) {
+                        VideoInfo videoInfo = resultInfo.getVideoInfo();
+                        Log.d(TAG, "only one result:" + videoInfo);
+
+                        ARouter.getInstance().build(Constant.PATH_ACTIVITY_PLAYER)
+                                .withLong(Constant.PLAY_VIDEO_ID, videoInfo.getQipuId())
+                                .withLong(Constant.PLAY_ALBUM_ID, videoInfo.getAlbumId())
+                                .navigation();
+                    }
+                }
             }
         }
     }
