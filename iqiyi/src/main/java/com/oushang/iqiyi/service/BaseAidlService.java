@@ -1,6 +1,7 @@
 package com.oushang.iqiyi.service;
 
 import android.app.Service;
+import android.content.Intent;
 import android.util.Log;
 
 import com.alibaba.android.arouter.launcher.ARouter;
@@ -8,7 +9,6 @@ import com.oushang.iqiyi.MainApplication;
 import com.oushang.iqiyi.manager.AppManager;
 import com.oushang.iqiyi.utils.AppUtils;
 import com.oushang.iqiyi.utils.RxUtils;
-import com.oushang.lib_base.log.LogUtils;
 
 import java.util.concurrent.TimeUnit;
 
@@ -17,8 +17,8 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
 /**
- * @Author: aidl服务基础类
- * @Description: ***
+ * @Author: zeelang
+ * @Description: aidl服务基础类
  * @Time: 2021/11/11 0011  18:07
  * @Since: 1.0
  */
@@ -44,6 +44,11 @@ public abstract class BaseAidlService extends Service {
                         AppManager.getAppManager().exitApp();
                     }
                 } ));
+    }
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        return START_NOT_STICKY;//防止重启
     }
 
     @Override
