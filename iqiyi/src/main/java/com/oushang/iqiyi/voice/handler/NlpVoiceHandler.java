@@ -237,11 +237,11 @@ public class NlpVoiceHandler extends BaseHandler<NlpVoiceModel>{
                             }
                         }, null);
                     }
-                } else if (count > 1) { //二次交互-有多个搜索结果
+                } else if (count > 1) { //二次交互-有多个搜索结果0
                     if (!isHide()) {
-                        speak(true, false, TtsConstants.IQIYI_C3_2, false,null);
-                        noticeVoiceSearch(); //不退出，进行二次语音识别
-                        speak(true, false, TtsConstants.IQIYI_C17, null, new Consumer<String>(){
+//                        speak(true, true, TtsConstants.IQIYI_C3_2, false,null);
+                        noticeVoiceSearch(); //不退出小欧形象，进行二次语音识别
+                        speak(true, true, TtsConstants.IQIYI_C17, null, new Consumer<String>(){
                             @Override
                             public void accept(String s) throws Exception {
                                 DataStatistics.recordVoiceAsssit(new VoiceAsssit.Builder() //语音埋点
@@ -451,6 +451,10 @@ public class NlpVoiceHandler extends BaseHandler<NlpVoiceModel>{
             Log.e(TAG, "keyWord is null or empty!");
             return;
         }
+        if (nlpVoiceModel != null) {
+            String operation = nlpVoiceModel.operation;
+        }
+
 //        ARouter.getInstance().build(com.oushang.iqiyi.common.Constant.PATH_ACTIVITY_SEARCH)
 //                .withString(com.oushang.iqiyi.common.Constant.SEARCH_KEYWORD, keyWord)
 //                .withInt(com.oushang.iqiyi.common.Constant.SEARCH_TYPE, com.oushang.iqiyi.common.Constant.SEARCH_TYPE_VOICE)
@@ -465,7 +469,7 @@ public class NlpVoiceHandler extends BaseHandler<NlpVoiceModel>{
             context.startActivity(intent); //跳转到搜索界面
         } else {
             ARouter.getInstance().build(Constant.PATH_ACTIVITY_DISCLAIMERS).navigation();//未同意，转到免责声明界面Activity
-            speak(false,false, TtsConstants.IQIYI_C4, null);
+            speak(true,false, TtsConstants.IQIYI_C21, null);
         }
     }
 
@@ -477,19 +481,20 @@ public class NlpVoiceHandler extends BaseHandler<NlpVoiceModel>{
     private void openServiceMall(Context context, String goodsId) {
         Intent intent = new Intent();
         Bundle bundle = new Bundle();
-        String cls = "com.chinatsp.servicemall.MainActivity";
+        String packageName = "com.chinatsp.servicemall";
+        String activityName = packageName + ".MainActivity";
         if (!TextUtils.isEmpty(goodsId)) {
-            cls = "com.chinatsp.servicemall.activity.GoodsDetailActivity";
+            activityName = packageName + ".activity.GoodsDetailActivity";
             bundle.putString("goods_id", goodsId);
         } else {
             bundle.putInt("type", 1);
         }
         bundle.putString("package", context.getPackageName());
         intent.putExtras(bundle);
-        ComponentName componetName = new ComponentName("com.chinatsp.servicemall", cls);
-        intent.setComponent(componetName);
+        ComponentName componentName = new ComponentName(packageName, activityName);
+        intent.setComponent(componentName);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        if (AppUtils.isExistActivity(context, "com.chinatsp.servicemall", cls)) {
+        if (AppUtils.isExistActivity(context, packageName, activityName)) {
             context.startActivity(intent);
         } else {
             Log.e(TAG, "not found activity!");

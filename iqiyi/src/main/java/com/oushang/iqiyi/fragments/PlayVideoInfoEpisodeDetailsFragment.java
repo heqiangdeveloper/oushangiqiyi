@@ -44,6 +44,9 @@ public class PlayVideoInfoEpisodeDetailsFragment extends BasePlayFragment {
     @BindView(R.id.episode_details_back)
     ImageView mEpisodeDetailsBack; //退出返回
 
+    @BindView(R.id.episode_details_label)
+    TextView mEpisodeDetailsLabel; //剧集详情标签
+
     @BindView(R.id.episode_details_desc)
     TextView mEpisodeDetailsDesc; //剧集描述
 
@@ -149,6 +152,7 @@ public class PlayVideoInfoEpisodeDetailsFragment extends BasePlayFragment {
     private void updateSkin() {
         rootView.setBackgroundColor(getResources().getColor(ThemeManager.getThemeResource(getContext(), R.color.color_skin_background), null));
         mEpisodeDetailsBack.setBackground(getResources().getDrawable(ThemeManager.getThemeResource(getContext(), R.drawable.ic_skin_back_60), null));
+        mEpisodeDetailsLabel.setTextColor(getResources().getColor(ThemeManager.getThemeResource(getContext(), R.color.color_skin_synopsis_detail_text), null));
         mEpisodeLabel.setTextColor(getResources().getColor(ThemeManager.getThemeResource(getContext(), R.color.color_skin_synopsis_detail_text), null));
         mEpisodeDetailsDesc.setTextColor(getResources().getColor(ThemeManager.getThemeResource(getContext(), R.color.color_skin_synopsis_detail_text), null));
         mMainActorLabel.setTextColor(getResources().getColor(ThemeManager.getThemeResource(getContext(), R.color.color_skin_synopsis_detail_text), null));

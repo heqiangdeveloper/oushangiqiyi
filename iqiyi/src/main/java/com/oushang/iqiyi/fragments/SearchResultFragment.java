@@ -84,7 +84,7 @@ public class SearchResultFragment extends BaseLazyFragment<SearchResultPresenter
 
     private volatile int mode = 1; //排序方式， 1 相关， 4 最新， 11 最热(非纪录片)  10 最热(纪录片频道)； 默认排序方式：排序
 
-    private SearchResultAdapter mSearchResultAdapter;
+    private volatile SearchResultAdapter mSearchResultAdapter;
 
     private boolean isloading = false;
 

@@ -281,7 +281,6 @@ public class SearchActivity extends BaseActivityMVP<SearchPresenter> implements 
     public boolean dispatchTouchEvent(MotionEvent ev) {
         if (ev.getAction() == MotionEvent.ACTION_DOWN) {
             View view = getCurrentFocus();
-            Log.d(TAG, "view:" + view);
             if (isHideInput(view, ev)) {
                 view.clearFocus();
                 hideSoftInput(view.getWindowToken());
@@ -323,8 +322,7 @@ public class SearchActivity extends BaseActivityMVP<SearchPresenter> implements 
     protected void hideSoftInput(IBinder token) {
         if (token != null) {
             InputMethodManager manager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-            manager.hideSoftInputFromWindow(token,
-                    InputMethodManager.HIDE_NOT_ALWAYS);
+            manager.hideSoftInputFromWindow(token, InputMethodManager.HIDE_NOT_ALWAYS);
         }
     }
 
