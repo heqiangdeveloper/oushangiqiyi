@@ -15,6 +15,7 @@ import com.oushang.iqiyi.IIqiyiAccountBindLoginCallback;
 import com.oushang.iqiyi.IIqiyiAccountUnbindCallback;
 import com.oushang.iqiyi.IIqiyiLoginStatusCallback;
 import com.oushang.iqiyi.IIqiyiUser;
+import com.oushang.iqiyi.MainApplication;
 import com.oushang.iqiyi.bean.User;
 import com.oushang.iqiyi.common.Constant;
 import com.oushang.lib_base.log.LogUtils;
@@ -42,6 +43,10 @@ public class IqiyiAccountDataService extends BaseAidlService {
     public void onCreate() {
         super.onCreate();
         Log.d(TAG,"onCreate");
+        if(mRxUtils != null) { //取消进程倒计时
+            mRxUtils.unDisposable();
+        }
+        MainApplication.cancelCountDown(); //取消进程倒计时
 
         if (mMyAccountManager == null) {
             Log.d(TAG, "from ARouter");

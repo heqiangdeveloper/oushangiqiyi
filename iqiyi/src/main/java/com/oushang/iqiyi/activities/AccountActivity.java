@@ -33,6 +33,7 @@ import com.chinatsp.drivercenter.server.TokenType;
 import com.chinatsp.drivercenter.server.UserData;
 import com.chinatsp.drivercenter.server.UserManager;
 import com.oushang.iqiyi.IIqiyiUser;
+import com.oushang.iqiyi.MainApplication;
 import com.oushang.iqiyi.R;
 import com.oushang.iqiyi.common.Constant;
 import com.oushang.iqiyi.events.EventBusHelper;
@@ -202,6 +203,7 @@ public class AccountActivity extends BaseActivityMVP<AccountPresenter> implement
             showLoadNetErrorView();
         } else if (driveCenterAction != null && driveCenterAction.equals(Constant.ACTION_BIND)) { //车机驾驶中心，立即绑定
             Log.d(TAG, "driverCenterAction");
+            presenter.logout();
             bindAccount();
         } else {
             int status = SPUtils.getShareInteger(Constant.SP_LOGIN_SPACE, Constant.SP_KEY_LOGIN_STATUS, 0); //本地是否保存登录

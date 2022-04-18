@@ -132,7 +132,7 @@ public class NlpVoiceHandler extends BaseHandler<NlpVoiceModel>{
                                             .setPrimitive(nlpVoiceModel.text)
                                             .build());
                                 }
-                            },null);
+                            });
                             openServiceMall(context, Constant.GOODSID);
                         } else { //爱奇艺车机流量未到期
                             ARouter.getInstance().build(Constant.PATH_ACTIVITY_SPLASH)
@@ -154,7 +154,7 @@ public class NlpVoiceHandler extends BaseHandler<NlpVoiceModel>{
                                             .build());
 
                                 }
-                            }, null);
+                            });
                         }
                     }
 
@@ -235,11 +235,10 @@ public class NlpVoiceHandler extends BaseHandler<NlpVoiceModel>{
 //                                        .setPrimitive(nlpVoiceModel.text)
                                         .build());
                             }
-                        }, null);
+                        });
                     }
-                } else if (count > 1) { //二次交互-有多个搜索结果0
+                } else if (count > 1) { //二次交互-有多个搜索结果
                     if (!isHide()) {
-//                        speak(true, true, TtsConstants.IQIYI_C3_2, false,null);
                         noticeVoiceSearch(); //不退出小欧形象，进行二次语音识别
                         speak(true, true, TtsConstants.IQIYI_C17, null, new Consumer<String>(){
                             @Override
@@ -276,7 +275,7 @@ public class NlpVoiceHandler extends BaseHandler<NlpVoiceModel>{
 //                                        .setPrimitive(nlpVoiceModel.text)
                                         .build());
                             }
-                        }, null);
+                        });
                     }
                 }
                 break;

@@ -162,8 +162,10 @@ public class MyRecordAdapter extends BaseAdapter<HistoryRecord, BaseViewHolder> 
                 }
             }
 
-        } else {
-            historyRecordEdit.setVisibility(View.GONE); ////隐藏勾选
+        } else { //取消编辑
+            historyRecordEdit.setVisibility(View.GONE); //隐藏勾选
+            historyRecordEdit.setSelected(false); //取消选中
+            data.setSelected(false); //取消选中
         }
     }
 

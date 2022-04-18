@@ -17,6 +17,7 @@ import com.iqy.iv.player.RecordSubscriptionManager;
 import com.iqy.iv.player.SDKVideoAlbum;
 import com.iqy.iv.player.SDKViewHistory;
 import com.iqy.iv.sdk.PlayerSdk;
+import com.oushang.lib_base.utils.HandlerUtils;
 import com.oushang.lib_base.utils.RxUtils;
 import com.oushang.lib_service.callback.IDeleteRecordListCallback;
 import com.oushang.lib_service.callback.IDownloadCallback;
@@ -189,7 +190,12 @@ public class PlayManagerService implements PlayManager {
                 if(fromUser) {
                     fromUser = false;
                 } else if(isFrontShow){
-                    start();
+                    HandlerUtils.postDelayOnMainThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            start();
+                        }
+                    }, 100);
                 }
                 break;
             case AudioManager.AUDIOFOCUS_REQUEST_DELAYED:
@@ -1137,6 +1143,7 @@ public class PlayManagerService implements PlayManager {
         }
         mPlayerFullScreenListener = null; //移除全屏监听
         isFullScreen = false;
+        isDoPlay = false;
         mCurrentVideoInfo = null;
         if (mRxUtils != null) {
             mRxUtils.unDisposable();

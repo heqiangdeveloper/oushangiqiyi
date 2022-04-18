@@ -82,7 +82,7 @@ public abstract class BaseHandler<T> implements EventBusHelper.EventListener {
     }
 
     /**
-     * 语音播报
+     * 语音播报,播报完自动退出
      *
      * @param shownIfly   是否显示（语音形象）
      * @param secondsr    是否二次交互
@@ -90,34 +90,35 @@ public abstract class BaseHandler<T> implements EventBusHelper.EventListener {
      * @param data        播报携带数据
      */
     public void speak(boolean shownIfly, boolean secondsr, String conditionId, Map data) {
-        _speak(shownIfly, secondsr, conditionId, data, true, null);
+        _speak(shownIfly, secondsr, conditionId, data, null, new Consumer<Boolean>() {
+            @Override
+            public void accept(Boolean aBoolean) throws Exception {
+                if (aBoolean) {
+                    hideVoice();
+                }
+            }
+        });
     }
 
     /**
-     * 语音播报
-     *
-     * @param shownIfly   是否显示（语音形象）
-     * @param secondsr    是否二次交互
-     * @param conditionId 播报方案id
-     * @param isTtsStop   是否播报完成后自动退出
-     * @param data        播报携带数据
-     */
-    public void speak(boolean shownIfly, boolean secondsr, String conditionId, boolean isTtsStop, Map data) {
-        _speak(shownIfly, secondsr, conditionId, data, isTtsStop, null);
-    }
-
-    /**
-     * 语音播报
-     *
+     * 语音播报,播报完自动退出
      * @param shownIfly   是否显示（语音形象）
      * @param secondsr    是否二次交互
      * @param conditionId 播报方案id
      * @param data        播报携带数据
-     * @param complete    播报完成回调
+     * @param tts         播报文案回调
      */
-    public void speak(boolean shownIfly, boolean secondsr, String conditionId, Map data, Consumer<Boolean> complete) {
-        _speak(shownIfly, secondsr, conditionId, data, true, complete);
+    public void speak(boolean shownIfly, boolean secondsr, String conditionId, Map data, Consumer<String> tts) {
+        _speak(shownIfly, secondsr, conditionId, data, tts, new Consumer<Boolean>() {
+            @Override
+            public void accept(Boolean aBoolean) throws Exception {
+                if (aBoolean) {
+                    hideVoice();
+                }
+            }
+        });
     }
+
 
     /**
      * 语音播报
@@ -216,6 +217,17 @@ public abstract class BaseHandler<T> implements EventBusHelper.EventListener {
     }
 
     /**
+     * 隐藏语音形象
+     */
+    public void hideVoice() {
+        try {
+            SpeechServiceAgent.getInstance().hideVoiceAssistant();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
      * tts方案播报回调
      */
     static class TtxClient extends ISpeechTtsResultListener.Stub {
@@ -253,7 +265,6 @@ public abstract class BaseHandler<T> implements EventBusHelper.EventListener {
         @Override
         public void onPlayStopped() throws RemoteException {
             Log.d(TAG, "onPlayStopped:");
-            SpeechServiceAgent.getInstance().hideVoiceAssistant();
             if (mHideConsumer != null) {
                 try {
                     mHideConsumer.accept(true);

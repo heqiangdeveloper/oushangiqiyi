@@ -59,7 +59,7 @@ public class MainApplication extends Application {
     private static final String TAG = "OUSHANG_IQIYI";
     private static Context sContext;
     private volatile static int sCount = 0;
-    private Disposable countDown;
+    private static Disposable countDown;
     private boolean isBackground = true;
     private static Disposable sBalanceDisposable; //车机流量
 
@@ -408,7 +408,7 @@ public class MainApplication extends Application {
                                                 List<BalanceInfo.Balance> dataBalances = data.getBalances();
                                                 if (dataBalances == null) {
                                                     Log.e(TAG, "balance data is null");
-                                                    long time = AppUtils.getTime("1970-12-31 00:00:00");
+                                                    long time = AppUtils.getTime("2050-12-31 00:00:00");
                                                     SPUtils.putShareValue(Constant.SP_IQIYI_SPACE, Constant.SP_KEY_BALANCE_VALUE, time);
                                                     if (isShowDialog) {
                                                         VehicleFlowDialog.getInstance(MainApplication.getContext()).show();
@@ -520,7 +520,7 @@ public class MainApplication extends Application {
     }
 
     private void countDown() {
-        Log.d(TAG, "后台进程倒计时30s");
+        Log.d(TAG, "后台进程退出倒计时30s");
         countDown = Observable.intervalRange(1, 30, 0, 1, TimeUnit.SECONDS)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -531,6 +531,13 @@ public class MainApplication extends Application {
                     SPUtils.putShareValue(Constant.SP_LOGIN_SPACE, Constant.SP_KEY_LOGIN_STATUS, 0);//登陆状态重置
                     AppManager.getAppManager().exitApp();
                 });
+    }
+
+    public static void cancelCountDown() {
+        if (countDown != null && !countDown.isDisposed()) {
+            Log.d(TAG, "取消后台进程退出倒计时");
+            countDown.dispose();
+        }
     }
 
     public interface OnBalanceListener {

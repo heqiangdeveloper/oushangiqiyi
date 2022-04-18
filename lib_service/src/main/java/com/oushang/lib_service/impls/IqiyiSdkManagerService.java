@@ -59,6 +59,7 @@ public class IqiyiSdkManagerService implements IqiyiSdkManager {
         parameter.setEnableCoreLog(false);
         parameter.setEnableAudioLog(false);
         parameter.setEnablePlayerLog(false);
+        parameter.setEnableControlAudioFocus(false);
         long startTime = System.currentTimeMillis();
         PlayerSdk.getInstance().initialize(MediatorServiceFactory.getInstance().getApplication(), null, parameter, new PlayerSdk.OnInitializedListener() {
             @Override

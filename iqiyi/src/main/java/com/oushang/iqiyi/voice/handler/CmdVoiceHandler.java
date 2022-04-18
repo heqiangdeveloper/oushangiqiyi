@@ -231,7 +231,7 @@ public class CmdVoiceHandler extends BaseHandler<CmdVoiceModel> {
         eventParams.putInt(EventConstant.EVENT_PARAMS_VOICE_SEARCH_RESULT_SELECT, num);
         EventBusHelper.post(EventBusHelper.newEvent(EventConstant.EVENT_TYPE_VOICE_SEARCH_SELECT, eventParams));
         if (!isHide()) {
-            speak(true,false, TtsConstants.IQIYI_C18, null, new Consumer<String>(){
+            speak(true, false, TtsConstants.IQIYI_C18, null, new Consumer<String>() {
                 @Override
                 public void accept(String s) throws Exception {
                     DataStatistics.recordVoiceAsssit(new VoiceAsssit.Builder() //语音埋点
@@ -246,7 +246,14 @@ public class CmdVoiceHandler extends BaseHandler<CmdVoiceModel> {
                             .setPrimitive(cmdVoiceModel.text)
                             .build());
                 }
-            }, null);
+            }, new Consumer<Boolean>() {
+                @Override
+                public void accept(Boolean aBoolean) throws Exception {
+                    if (aBoolean) {
+                        hideVoice();
+                    }
+                }
+            });
         }
     }
 }

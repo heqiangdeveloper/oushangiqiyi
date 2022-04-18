@@ -305,6 +305,7 @@ public class MyRecordFragment extends BaseLazyFragment<MyHistoryPresenter> imple
 
     @Override
     public void onLoadHistoryRecord(List<HistoryRecord> historyRecordList) {
+        Log.d(TAG, "onLoadHistoryRecord:" + historyRecordList);
         if (historyRecordList == null || historyRecordList.isEmpty()) {
             presenter.loadEmptyRecord(Constant.BUNDLE_VALUE_RECORD_TYPE_HISTORY);
         }

@@ -12,7 +12,7 @@ android {
         applicationId "com.oushang.iqiyi"
         minSdkVersion 26
         targetSdkVersion 30
-        versionCode 100082
+        versionCode 100083
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
         ndk {
@@ -187,6 +187,6 @@ dependencies {
     /**
      * voicebridge
      */
-    implementation 'com.oushang:voicebridge:1.0.25-SNAPSHOT'
+    implementation ('com.oushang:voicebridge:1.0.25-SNAPSHOT')
 
 }
