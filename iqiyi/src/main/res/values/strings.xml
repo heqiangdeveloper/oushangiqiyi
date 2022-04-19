@@ -133,6 +133,7 @@
 
     <!--dialog-->
     <string name="service_authentication_dialog_title">服务提醒</string>
+    <string name="service_authentication_dialog_tips">爱奇艺服务已到期，请前往\n欧尚Style App-升级 进行购买</string>
     <string name="service_authentication_dialog_content">爱奇艺服务已到期，请前往服务商城进行购买</string>
     <string name="service_authentication_dialog_goto_servicemall_button">前往商城</string>
     <string name="service_authentication_dialog_cancel_button">取消</string>

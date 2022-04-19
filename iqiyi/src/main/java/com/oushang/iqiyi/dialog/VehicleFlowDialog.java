@@ -1,10 +1,13 @@
 package com.oushang.iqiyi.dialog;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
@@ -31,6 +34,11 @@ public class VehicleFlowDialog extends Dialog {
     private static final String TAG = VehicleFlowDialog.class.getSimpleName();
     private Button mToShopBtn;
     private Button mCancelBtn;
+    private Button mIknowBtn;
+
+    private static final int MSG_UPDATE_TIME = 1;
+    private static final int INTERVAL_TIME = 1000;
+    private int mCountDownTime = 5;
 
     public VehicleFlowDialog(@NonNull Context context) {
         super(context);
@@ -44,6 +52,7 @@ public class VehicleFlowDialog extends Dialog {
         super(context, cancelable, cancelListener);
     }
 
+    @SuppressLint("StaticFieldLeak")
     private volatile static VehicleFlowDialog sVehicleFlowDialog;
 
     public static VehicleFlowDialog getInstance(Context context) {
@@ -56,6 +65,23 @@ public class VehicleFlowDialog extends Dialog {
         }
         return sVehicleFlowDialog;
     }
+
+    private final Handler mHandler = new Handler(new Handler.Callback() {
+        @Override
+        public boolean handleMessage(@NonNull Message msg) {
+            if (msg.what == MSG_UPDATE_TIME) {
+                mCountDownTime--;
+                if (mCountDownTime > 0) {
+                    mIknowBtn.setText("我知道了 ( " + mCountDownTime + "s )");
+                    mHandler.sendEmptyMessageDelayed(MSG_UPDATE_TIME, INTERVAL_TIME);
+                } else {
+                    dismiss();
+                    AppManager.getAppManager().exitApp();
+                }
+            }
+            return true;
+        }
+    });
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +98,7 @@ public class VehicleFlowDialog extends Dialog {
         window.setBackgroundDrawableResource(android.R.color.transparent);
         mToShopBtn = findViewById(R.id.to_shop_btn);
         mCancelBtn = findViewById(R.id.cancel_btn);
+        mIknowBtn = findViewById(R.id.iknow_btn);
         setCanceledOnTouchOutside(false);
         setCancelable(false);
         mToShopBtn.setOnClickListener(v -> {
@@ -82,7 +109,12 @@ public class VehicleFlowDialog extends Dialog {
             dismiss();
             AppManager.getAppManager().exitApp();
         });
-
+        mIknowBtn.setOnClickListener(v -> {
+            dismiss();
+            AppManager.getAppManager().exitApp();
+        });
+        mIknowBtn.setText("我知道了 ( 5s )");
+        mHandler.sendEmptyMessageDelayed(MSG_UPDATE_TIME, INTERVAL_TIME);
     }
 
     /**

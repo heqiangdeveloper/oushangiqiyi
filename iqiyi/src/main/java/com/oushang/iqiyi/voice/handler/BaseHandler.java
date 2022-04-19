@@ -127,39 +127,9 @@ public abstract class BaseHandler<T> implements EventBusHelper.EventListener {
      * @param secondsr    是否二次交互
      * @param conditionId 播报方案id
      * @param data        播报携带数据
-     * @param isTtsStop   是否播报完成后自动退出
-     * @param complete    播报完成回调 （如果 isTtsStop 为 false 时，这个将不会被消费）
+     * @param tts         播报文案回调
+     * @param complete    播报完成回调
      */
-    private void _speak(boolean shownIfly, boolean secondsr, String conditionId, Map data, boolean isTtsStop, Consumer<Boolean> complete) {
-        Log.d(TAG, "speak:" + conditionId);
-        try {
-            if (VoiceManager.getInstance().isBindService()) {
-                Log.d(TAG, "is bind SpeechServiceAgent");
-                SpeechServiceAgent.getInstance().ttsSpeakListener(shownIfly, secondsr, conditionId, data, new SpeechTtsResultListener(new TtxClient()), isTtsStop ? new SpeechTtsStopListener(new TtsStopClient(complete)) : null);
-            } else {
-                Log.d(TAG, "is not bind SpeechServiceAgent, loop wait SpeechServiceAgent connect");
-                rxUtils.executeTimeOut(0, 10, 0, 500, aLong -> {
-                    Log.d(TAG, "along:" + aLong);
-                    return Observable.just(VoiceManager.getInstance().isBindService());
-                }, aBoolean -> {
-                    Log.d(TAG, "takeUtil isBindService:" + aBoolean);
-                    return aBoolean;
-                }, aBoolean -> {
-                    Log.d(TAG, "result isBindService:" + aBoolean);
-                    if (aBoolean) {
-                        try {
-                            SpeechServiceAgent.getInstance().ttsSpeakListener(shownIfly, secondsr, conditionId, data, new SpeechTtsResultListener(new TtxClient()), isTtsStop ? new SpeechTtsStopListener(new TtsStopClient(complete)) : null);
-                        } catch (RemoteException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                });
-            }
-        } catch (Exception e) {
-            Log.e(TAG, "_speak exception:" + Log.getStackTraceString(e));
-        }
-    }
-
     private void _speak(boolean shownIfly, boolean secondsr, String conditionId, Map data, Consumer<String> tts, Consumer<Boolean> complete) {
         try {
             if (VoiceManager.getInstance().isBindService()) {
@@ -189,10 +159,24 @@ public abstract class BaseHandler<T> implements EventBusHelper.EventListener {
         }
     }
 
+    /**
+     * 通知当前在搜索节目页面
+     */
     public void noticeVoiceSearch() {
         noticeShownWithTts(Business.IQIYI, Business.MODEL.IQIYI_SELECT, false,false,null,null,null,null);
     }
 
+    /**
+     * 通知当前所在业务
+     * @param business  app
+     * @param module    业务模块
+     * @param shownIfly  是否显示
+     * @param secondSr   是否二次交互
+     * @param conditionId  播报方案id
+     * @param data       数据
+     * @param listener   播报文案回调
+     * @param listener2  播报完成回调
+     */
     private void noticeShownWithTts(int business, int module, boolean shownIfly, boolean secondSr, String conditionId, Map data, ISpeechTtsResultListener listener, ISpeechTtsStopListener listener2) {
         try {
             SpeechServiceAgent.getInstance().noticeShownWithTts(business, module, shownIfly, secondSr, conditionId, data, listener, listener2);

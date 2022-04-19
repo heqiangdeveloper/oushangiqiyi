@@ -115,6 +115,7 @@ public class EventConstant {
 
     public static final String EVENT_PARAMS_VOICE_SEARCH_RESULT_COUNT = "voice_search_result_count";//语音搜索结果个数
     public static final String EVENT_PARAMS_VOICE_SEARCH_RESULT_SELECT = "voice_search_result_select"; //语音搜索结果选择几个
+    public static final String EVENT_PARAMS_VOICE_SEARCH_VOICE_ASSSIT = "voice_search_voice_asssit"; //语音搜索语音埋点
 
     /**
      * EventParams value

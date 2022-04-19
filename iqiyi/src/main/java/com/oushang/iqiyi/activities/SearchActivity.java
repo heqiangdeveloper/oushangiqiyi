@@ -35,6 +35,7 @@ import com.oushang.iqiyi.mvp.presenter.SearchPresenter;
 import com.oushang.iqiyi.mvp.view.ISearchView;
 import com.oushang.iqiyi.statistics.DataStatistics;
 import com.oushang.iqiyi.statistics.StatConstant;
+import com.oushang.iqiyi.statistics.VoiceAsssit;
 import com.oushang.iqiyi.ui.CustomSearchView;
 import com.oushang.iqiyi.utils.StatusBarUtil;
 import com.oushang.iqiyi.utils.ThemeContentObserver;
@@ -77,6 +78,9 @@ public class SearchActivity extends BaseActivityMVP<SearchPresenter> implements 
     @Autowired(name = Constant.SEARCH_TYPE)
     int mSearchType;
 
+    @Autowired(name = Constant.VIDEO_SEARCH_VOICE_ASSSIT)
+    VoiceAsssit mVoiceAsssit;
+
     private static final int KEYWORD_MAX_SIZE = 5;
 
     private SearchHistoryFragment mSearchHistoryFragment;
@@ -106,7 +110,7 @@ public class SearchActivity extends BaseActivityMVP<SearchPresenter> implements 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         mSearchView.getSearchTextView().setText("");
         mSearchView.showSearchClearButton(false);
-        Log.d(TAG, "SearchKeyword:" + mSearchKeyword + ",SearchType:" + mSearchType);
+        Log.d(TAG, "SearchKeyword:" + mSearchKeyword + ",SearchType:" + mSearchType + ",VoiceAsssit:" + mVoiceAsssit);
         if (mSearchKeyword != null && !mSearchKeyword.isEmpty()) {
             mSearchView.getSearchTextView().setText(mSearchKeyword);
             updateHistoryKeyRecord(mSearchKeyword);
@@ -251,7 +255,7 @@ public class SearchActivity extends BaseActivityMVP<SearchPresenter> implements 
         if (searchType == Constant.SEARCH_TYPE_INPUT) {
             FragmentHelper.loadFragment(R.id.search_fragment_container, getSupportFragmentManager(), SearchResultFragment.newInstance(searchKey, mSearchType, mode), true);
         } else if(searchType == Constant.SEARCH_TYPE_VOICE) {
-            FragmentHelper.loadFragment(R.id.search_fragment_container, getSupportFragmentManager(), SearchResultFragment.newInstance(searchKey, mSearchType, mode), false);
+            FragmentHelper.loadFragment(R.id.search_fragment_container, getSupportFragmentManager(), SearchResultFragment.newInstance(searchKey, mSearchType, mVoiceAsssit), false);
         }
         //数据保存
         mSaveFragmentType = 1;

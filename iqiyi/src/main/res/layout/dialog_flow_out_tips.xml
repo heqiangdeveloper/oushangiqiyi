@@ -30,7 +30,7 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:layout_marginTop="@dimen/margin_24px"
-            android:text="@string/service_authentication_dialog_content"
+            android:text="@string/service_authentication_dialog_tips"
             android:textSize="@dimen/tag_text_size"
             android:textColor="@color/color_theme_text"/>
 
@@ -41,6 +41,7 @@
         android:layout_height="@dimen/dialog_flow_button_height"
         android:layout_alignParentBottom="true"
         android:orientation="horizontal">
+
         <Button
             android:id="@+id/to_shop_btn"
             android:layout_width="0dp"
@@ -49,7 +50,8 @@
             android:background="@drawable/dialog_left_button_bg"
             android:textSize="@dimen/title_text_size"
             android:textColor="@color/color_theme_text"
-            android:text="@string/service_authentication_dialog_goto_servicemall_button"/>
+            android:text="@string/service_authentication_dialog_goto_servicemall_button"
+            android:visibility="gone"/>
 
         <Button
             android:id="@+id/cancel_btn"
@@ -61,7 +63,21 @@
             android:background="@drawable/dialog_right_button_bg"
             android:textSize="@dimen/title_text_size"
             android:textColor="@color/color_theme_text"
-            android:text="@string/service_authentication_dialog_cancel_button"/>
+            android:text="@string/service_authentication_dialog_cancel_button"
+            android:visibility="gone"/>
+
+        <!--我知道了（5s)-->
+        <Button
+            android:id="@+id/iknow_btn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/dialog_bottom_button_bg"
+            android:textSize="@dimen/title_text_size"
+            android:textColor="@color/color_theme_text"
+            android:textAllCaps="false"
+            android:text="@string/dialog_i_known"/>
 
     </LinearLayout>
+
 </RelativeLayout>

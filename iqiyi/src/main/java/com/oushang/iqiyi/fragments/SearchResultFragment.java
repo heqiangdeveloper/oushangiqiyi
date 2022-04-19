@@ -30,6 +30,7 @@ import com.oushang.iqiyi.mvp.presenter.SearchResultPresenter;
 import com.oushang.iqiyi.mvp.view.ISearchResultView;
 import com.oushang.iqiyi.statistics.DataStatistics;
 import com.oushang.iqiyi.statistics.StatConstant;
+import com.oushang.iqiyi.statistics.VoiceAsssit;
 import com.oushang.iqiyi.ui.GridItemDecoration;
 import com.oushang.iqiyi.utils.ThemeContentObserver;
 import com.oushang.iqiyi.utils.ThemeManager;
@@ -90,6 +91,8 @@ public class SearchResultFragment extends BaseLazyFragment<SearchResultPresenter
 
     private ThemeContentObserver mThemeContentObserver;
 
+    private VoiceAsssit mVoiceAsssit; //语音埋点
+
     @Override
     protected int setLayout() {
         return R.layout.fragment_search_result;
@@ -110,6 +113,17 @@ public class SearchResultFragment extends BaseLazyFragment<SearchResultPresenter
         args.putString(Constant.SEARCH_KEYWORD, searchKey);
         args.putInt(Constant.SEARCH_TYPE, searchType);
         args.putInt(Constant.SEARCH_RESULT_MODE, resultMode);
+        resultFragment.setArguments(args);
+        return resultFragment;
+    }
+
+    public static SearchResultFragment newInstance(String searchKey, int searchType, VoiceAsssit voiceAsssit) {
+        SearchResultFragment resultFragment = new SearchResultFragment();
+        Bundle args = new Bundle();
+        args.putString(Constant.SEARCH_KEYWORD, searchKey);
+        args.putInt(Constant.SEARCH_TYPE, searchType);
+        args.putInt(Constant.SEARCH_RESULT_MODE, 1);
+        args.putParcelable(Constant.VIDEO_SEARCH_VOICE_ASSSIT, voiceAsssit);
         resultFragment.setArguments(args);
         return resultFragment;
     }
@@ -158,7 +172,8 @@ public class SearchResultFragment extends BaseLazyFragment<SearchResultPresenter
             mSearchKey = args.getString(Constant.SEARCH_KEYWORD);
             mSearchType = args.getInt(Constant.SEARCH_TYPE);
             mode = args.getInt(Constant.SEARCH_RESULT_MODE, 1);
-            Log.d(TAG, "receive args: searchKey" + mSearchKey + ",searchType:" + mSearchType + ",mode:" + mode);
+            mVoiceAsssit = args.getParcelable(Constant.VIDEO_SEARCH_VOICE_ASSSIT);
+            Log.d(TAG, "receive args: searchKey" + mSearchKey + ",searchType:" + mSearchType + ",mode:" + mode + ",voiceAsssit:" + mVoiceAsssit);
 
             if (mode == 1) {
                 mResultRelateBtn.setSelected(true); //默认相关选中
@@ -233,6 +248,7 @@ public class SearchResultFragment extends BaseLazyFragment<SearchResultPresenter
 
                 Bundle eventParams = new Bundle();
                 eventParams.putInt(EventConstant.EVENT_PARAMS_VOICE_SEARCH_RESULT_COUNT, count);
+                eventParams.putParcelable(EventConstant.EVENT_PARAMS_VOICE_SEARCH_VOICE_ASSSIT, mVoiceAsssit);
                 EventBusHelper.post(EventBusHelper.newEvent(EventConstant.EVENT_TYPE_VOICE_SEARCH_RESULT, eventParams));
 
                 if (count == 1) { //有结果且只有一个

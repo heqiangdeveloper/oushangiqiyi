@@ -31,6 +31,7 @@ public class Constant {
     public static final String SEARCH_KEYWORD = "search_keyword"; //搜索关键词
     public static final String SEARCH_TYPE = "search_type"; //搜索方式
     public static final String SEARCH_RESULT_MODE = "search_result_mode";//搜索结果类型
+    public static final String VIDEO_SEARCH_VOICE_ASSSIT = "video_search_voice_asssit"; //视频搜索语音埋点
 
     public static final int SEARCH_TYPE_INPUT = 0; //输入搜索
     public static final int SEARCH_TYPE_VOICE = 1; //语音搜索
