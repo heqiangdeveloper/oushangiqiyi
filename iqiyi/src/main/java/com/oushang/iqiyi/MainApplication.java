@@ -408,7 +408,7 @@ public class MainApplication extends Application {
                                                 List<BalanceInfo.Balance> dataBalances = data.getBalances();
                                                 if (dataBalances == null) {
                                                     Log.e(TAG, "balance data is null");
-                                                    long time = AppUtils.getTime("1970-12-31 00:00:00");
+                                                    long time = AppUtils.getTime("2050-12-31 00:00:00");
                                                     SPUtils.putShareValue(Constant.SP_IQIYI_SPACE, Constant.SP_KEY_BALANCE_VALUE, time);
                                                     if (isShowDialog) {
                                                         VehicleFlowDialog.getInstance(MainApplication.getContext()).show();
@@ -436,7 +436,7 @@ public class MainApplication extends Application {
                                             });
                                 } else {
                                     Log.e(TAG, "request Vehicle balance error!");
-                                    long time = AppUtils.getTime("1970-12-31 00:00:00");
+                                    long time = AppUtils.getTime("2050-12-31 00:00:00");
                                     currentTime = System.currentTimeMillis();
                                     SPUtils.putShareValue(Constant.SP_IQIYI_SPACE, Constant.SP_KEY_BALANCE_VALUE, time);
                                     if (time <= currentTime && isShowDialog) {

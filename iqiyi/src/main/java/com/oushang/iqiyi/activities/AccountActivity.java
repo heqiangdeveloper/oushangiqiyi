@@ -4,16 +4,13 @@ import android.annotation.SuppressLint;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.ServiceConnection;
-import android.graphics.Bitmap;
 import android.graphics.drawable.AnimationDrawable;
 import android.net.Uri;
 import android.os.IBinder;
-import android.os.RemoteException;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
-import android.view.animation.Animation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -33,7 +30,6 @@ import com.chinatsp.drivercenter.server.TokenType;
 import com.chinatsp.drivercenter.server.UserData;
 import com.chinatsp.drivercenter.server.UserManager;
 import com.oushang.iqiyi.IIqiyiUser;
-import com.oushang.iqiyi.MainApplication;
 import com.oushang.iqiyi.R;
 import com.oushang.iqiyi.common.Constant;
 import com.oushang.iqiyi.events.EventBusHelper;
@@ -43,7 +39,6 @@ import com.oushang.iqiyi.mvp.view.IAccountView;
 import com.oushang.iqiyi.service.IqiyiAccountDataService;
 import com.oushang.iqiyi.statistics.DataStatistics;
 import com.oushang.iqiyi.statistics.StatConstant;
-import com.oushang.iqiyi.ui.BallSpinGradientLoaderIndicator;
 import com.oushang.iqiyi.utils.AppUtils;
 import com.oushang.iqiyi.utils.RxUtils;
 import com.oushang.iqiyi.utils.StatusBarUtil;
@@ -191,9 +186,6 @@ public class AccountActivity extends BaseActivityMVP<AccountPresenter> implement
 
         driveCenterAction = getIntent().getStringExtra("driveCenterAction");
         Log.d(TAG, "driveCenterAction:" + driveCenterAction);
-//        if (mIqiyiUser == null) {
-//            createLoginService();
-//        }
         if (mIqiyiAccountDataService == null) {
             createLoginService();
         }
@@ -208,7 +200,13 @@ public class AccountActivity extends BaseActivityMVP<AccountPresenter> implement
         } else {
             int status = SPUtils.getShareInteger(Constant.SP_LOGIN_SPACE, Constant.SP_KEY_LOGIN_STATUS, 0); //本地是否保存登录
             rxUtils.executeTimeOut(0, 20, 0, 1000, aLong -> {
-                Log.d(TAG, "long:" + aLong);
+                Log.d(TAG, "sdk init long:" + aLong);
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        showLoading();
+                    }
+                });
                 return Observable.just(MediatorServiceFactory.getInstance().getIqiyiSdkManager().isSdkInitialized()); //是否被始化完成
             }, isInit -> isInit, isInit -> {
                 if (isInit) {
@@ -233,7 +231,9 @@ public class AccountActivity extends BaseActivityMVP<AccountPresenter> implement
                 @Override
                 public void onTokenRenew(String tokenType, String accessToken, String refreshToken) {
                     Log.d(TAG, "onTokenRenew: tokenType:" + tokenType + ",accessToken:" + accessToken + ",refreshToken:" + refreshToken);
-                    mVehicleToken = accessToken;
+                    if (TokenType.ON_STYLE.equals(tokenType)) {
+                        mVehicleToken = accessToken;
+                    }
                 }
 
                 @Override
@@ -246,11 +246,6 @@ public class AccountActivity extends BaseActivityMVP<AccountPresenter> implement
 
     @OnClick(R.id.account_back) //点击返回
     public void onClickBack() {
-//        try {
-//            mIqiyiUser.callbackFromSelf();
-//        } catch (Exception e) {
-//            Log.d(TAG, "onClickBack exception: " + e);
-//        }
         if (mIqiyiAccountDataService != null) {
             mIqiyiAccountDataService.remoteCallbackExecute();
         }
@@ -356,7 +351,6 @@ public class AccountActivity extends BaseActivityMVP<AccountPresenter> implement
         @Override
         public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
             Log.d(TAG, "onServiceConnected");
-//            mIqiyiUser = IIqiyiUser.Stub.asInterface(iBinder);
             IqiyiAccountDataService.IqiyiAccountDataServiceStub binder = (IqiyiAccountDataService.IqiyiAccountDataServiceStub) iBinder;
             mIqiyiAccountDataService = binder.getService();
         }
@@ -404,9 +398,6 @@ public class AccountActivity extends BaseActivityMVP<AccountPresenter> implement
     @Override
     public void showLoading() {
         Log.d(TAG, "showLoading");
-//        if (mLoginLoading.getVisibility() == View.GONE) { //显示加载loading
-//            mLoginLoading.setVisibility(View.VISIBLE);
-//        }
         if(mLoadingAnim.getVisibility() == View.GONE) { //显示加载loading动画
             mLoadingAnim.setVisibility(View.VISIBLE);
         }
@@ -414,13 +405,14 @@ public class AccountActivity extends BaseActivityMVP<AccountPresenter> implement
             mLoginQRCodeLayout.setVisibility(View.GONE);
         }
 
-        mLoadingAnim.setImageResource(R.drawable.data_loading_anim_list);
+        if (mLoadingAnim.getDrawable() == null ) {
+            mLoadingAnim.setImageResource(R.drawable.data_loading_anim_list);
+        }
         AnimationDrawable animationDrawable = (AnimationDrawable) mLoadingAnim.getDrawable();
         if (!animationDrawable.isRunning()) {
+            Log.d(TAG, "start loadingAnimation");
             animationDrawable.start();
         }
-//        mLoginLoading.setIndicator(new BallSpinGradientLoaderIndicator());
-//        mLoginLoading.show();
     }
 
     /**
@@ -436,12 +428,9 @@ public class AccountActivity extends BaseActivityMVP<AccountPresenter> implement
         if (mLoadingAnim.getVisibility() == View.VISIBLE && mBindQrcodeLoadFailCount == 0) { //隐藏二维码加载动画
             mLoadingAnim.setVisibility(View.GONE);
         }
-//        mLoginLoading.setVisibility(View.GONE);//隐藏二维码加载
-//        mLogingQRCode.setVisibility(View.VISIBLE);//显示二维码
         if (mLoginQRCodeLayout.getVisibility() == View.GONE) { //显示二维码布局
             mLoginQRCodeLayout.setVisibility(View.VISIBLE);
         }
-//        mLoginLoading.hide();
     }
 
     /**
@@ -517,7 +506,7 @@ public class AccountActivity extends BaseActivityMVP<AccountPresenter> implement
                 .subscribe(new Consumer<Long>() {
                     @Override
                     public void accept(Long aLong) {
-                        Log.d(TAG, "long:" + aLong);
+                        Log.d(TAG, "login qrcode long:" + aLong);
                         if (aLong >= expire) {
                             ShowLoginQrCodeInvalid();
                         }
@@ -600,7 +589,7 @@ public class AccountActivity extends BaseActivityMVP<AccountPresenter> implement
                 .subscribe(new Consumer<Long>() {
                     @Override
                     public void accept(Long aLong) {
-                        Log.d(TAG, "long:" + aLong + ",expire:" + expire + "," + (aLong >= expire));
+                        Log.d(TAG, "bind qrcode long:" + aLong);
                         if (aLong >= expire) {
                             ShowLoginQrCodeInvalid();
                         }
@@ -616,7 +605,6 @@ public class AccountActivity extends BaseActivityMVP<AccountPresenter> implement
     @Override
     public void onLoadQRCodeFail(int qrCodeType, String code, String msg) {
         Log.d(TAG, "onLoadQRCodeFail: qrCodeType:" + qrCodeType + ",code:" + code + ",msg:" + msg);
-//        presenter.showToast("二维码加载失败，重新加载！");
         if (qrCodeType == IAccountView.QRCODE_TYPE_NORMAL) { //普通二维码
             presenter.loadQRCode();
         } else if (qrCodeType == IAccountView.QRCODE_TYPE_BIND) { //绑定二维码
@@ -636,20 +624,12 @@ public class AccountActivity extends BaseActivityMVP<AccountPresenter> implement
     @Override
     public void onNoBind() {
         Log.d(TAG, "onNoBind");
-//        presenter.showToast("授权登录失败，请扫码登录！");
         SPUtils.putShareValue(Constant.SP_LOGIN_SPACE, Constant.SP_KEY_BIND_STATUS, 0);//重置绑定状态
         presenter.loadBindQRCode(false, mVehicleToken, versioncode, "");//加载绑定登录二维码
 
         if (mIqiyiAccountDataService != null) {
             mIqiyiAccountDataService.remoteCallbackExecute();
         }
-//        try {
-//            if (mIqiyiUser != null) {
-//                mIqiyiUser.callbackFromSelf();
-//            }
-//        } catch (RemoteException e) {
-//            e.printStackTrace();
-//        }
     }
 
     /**
@@ -680,13 +660,6 @@ public class AccountActivity extends BaseActivityMVP<AccountPresenter> implement
         } else {
             Log.e(TAG, "mIqiyiAccountDataService is null!");
         }
-//        try {
-//            if (mIqiyiUser != null) {
-//                mIqiyiUser.callbackFromSelf();
-//            }
-//        } catch (RemoteException e) {
-//            e.printStackTrace();
-//        }
 
         if (qrcodeInvalidDisposable != null && !qrcodeInvalidDisposable.isDisposed()) {
             qrcodeInvalidDisposable.dispose();
@@ -741,13 +714,6 @@ public class AccountActivity extends BaseActivityMVP<AccountPresenter> implement
         if (mIqiyiAccountDataService != null) {
             mIqiyiAccountDataService.remoteCallbackExecute();
         }
-//        try {
-//            if (mIqiyiUser != null) {
-//                mIqiyiUser.callbackFromSelf();
-//            }
-//        } catch (RemoteException e) {
-//            e.printStackTrace();
-//        }
     }
 
     /**
@@ -889,9 +855,6 @@ public class AccountActivity extends BaseActivityMVP<AccountPresenter> implement
         }
         //解绑驾驶员中心服务
         UserManager.getInstance().unBindUserService(this);
-//        if (null != mIqiyiUser) {
-//            unbindService(mConn);
-//        }
         if (mIqiyiAccountDataService != null) {
             unbindService(mConn);
         }

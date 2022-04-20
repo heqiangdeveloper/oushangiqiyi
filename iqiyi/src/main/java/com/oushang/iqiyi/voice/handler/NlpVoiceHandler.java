@@ -189,6 +189,7 @@ public class NlpVoiceHandler extends BaseHandler<NlpVoiceModel>{
                             public void accept(Boolean aBoolean) throws Exception {
                                 Log.d(TAG, "isSpeak:" + aBoolean);
                                 if (aBoolean) {
+                                    hideVoice();
                                     AppManager.getAppManager().exitApp();
                                 }
                             }
@@ -447,7 +448,7 @@ public class NlpVoiceHandler extends BaseHandler<NlpVoiceModel>{
             voiceAsssit.setResponse(nlpVoiceModel.response);
             String operation = nlpVoiceModel.operation;
             if (operation.equals(NlpVoiceConstants.OP_SEARCH_VIDEO_NAME)) {
-                voiceAsssit.setObject(TtsConstants.INTENT_SELECT_VIDEO);
+                voiceAsssit.setObject(TtsConstants.INTENT_SEARCH_VIDEO_NAME);
             } else if (operation.equals(NlpVoiceConstants.OP_SEARCH_CHANNEL)) {
                 voiceAsssit.setObject(TtsConstants.INTENT_SEARCH_CHANNEL_NAME);
             }
