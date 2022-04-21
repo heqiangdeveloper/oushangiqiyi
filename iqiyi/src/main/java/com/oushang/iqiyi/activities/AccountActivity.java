@@ -195,8 +195,8 @@ public class AccountActivity extends BaseActivityMVP<AccountPresenter> implement
             showLoadNetErrorView();
         } else if (driveCenterAction != null && driveCenterAction.equals(Constant.ACTION_BIND)) { //车机驾驶中心，立即绑定
             Log.d(TAG, "driverCenterAction");
-            presenter.logout();
-            bindAccount();
+            presenter.logout(true);//先退出，再去绑定
+//            bindAccount();
         } else {
             int status = SPUtils.getShareInteger(Constant.SP_LOGIN_SPACE, Constant.SP_KEY_LOGIN_STATUS, 0); //本地是否保存登录
             rxUtils.executeTimeOut(0, 20, 0, 1000, aLong -> {
@@ -267,7 +267,7 @@ public class AccountActivity extends BaseActivityMVP<AccountPresenter> implement
                 break;
             case R.id.account_logout_btn: //退出登录
                 DataStatistics.recordUiEvent(StatConstant.EVENT_ID_5910);//埋点数据
-                presenter.logout();//退出登录
+                presenter.logout(false);//退出登录
                 break;
             case R.id.network_refresh_btn: //刷新网络
                 initView();
@@ -720,8 +720,12 @@ public class AccountActivity extends BaseActivityMVP<AccountPresenter> implement
      * 退出登录成功
      */
     @Override
-    public void onLogoutSuccess() {
-        loadLoginQRCode(); //退出成功后，显示登录界面
+    public void onLogoutSuccess(boolean autoBind) {
+        if (!autoBind) {
+            loadLoginQRCode(); //退出成功后，显示登录界面
+        } else {
+            bindAccount(); //退出后，token绑定
+        }
     }
 
     /**

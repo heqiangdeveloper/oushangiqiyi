@@ -39,6 +39,7 @@ public abstract class BasePlayFragment <P extends BasePresenter> extends BaseFra
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
+        Log.d(TAG, "onAttach");
         ThemeManager.getInstance().registerThemeChangeListener(this);
         mThemeContentObserver = new ThemeContentObserver(context, new Handler());
         ThemeContentObserver.register(getContext(), mThemeContentObserver);
@@ -54,6 +55,7 @@ public abstract class BasePlayFragment <P extends BasePresenter> extends BaseFra
     @Override
     public void onDestroy() {
         super.onDestroy();
+        Log.d(TAG, "onDestroy");
         if (mEventBusHelper != null) { //有可能未调用onStart,如onCreate之后finish，不会走onStart,此时mEventBusHelper未赋值
             mEventBusHelper.unRegister();
         }

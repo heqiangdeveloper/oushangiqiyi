@@ -81,6 +81,7 @@ public class MoreSelectionsDigitalAdapter extends BaseAdapter<SelectionEntry, Ba
             pulseView.stop();
         }
         Log.d(TAG, "themeMode:" + mThemeMode);
+        mThemeMode = ThemeManager.getThemeMode();
         if(mThemeMode == ThemeManager.ThemeMode.NIGHT) {
             view.setBackground(mContext.getDrawable(R.drawable.video_info_order_skin_selection_shape));
             view.setTextColor(mContext.getColor(R.color.color_skin_synopsis_text));

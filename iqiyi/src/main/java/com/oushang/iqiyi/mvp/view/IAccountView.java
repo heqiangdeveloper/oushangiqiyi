@@ -63,7 +63,7 @@ public interface IAccountView extends IBaseView {
     /**
      * 退出登录成功
      */
-    void onLogoutSuccess();
+    void onLogoutSuccess(boolean autoBind);
 
 
 }

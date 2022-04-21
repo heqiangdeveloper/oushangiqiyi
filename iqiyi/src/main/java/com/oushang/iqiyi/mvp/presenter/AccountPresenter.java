@@ -193,7 +193,7 @@ public class AccountPresenter extends BaseServicePresenter<IAccountView, Account
     /**
      * 退出登录
      */
-    public void logout() {
+    public void logout(boolean autoBind) {
         Log.d(TAG, "logout");
         if (isAttach()) {
             executeTimeOut(0, 20, 0, 1000, aLong -> {
@@ -207,7 +207,7 @@ public class AccountPresenter extends BaseServicePresenter<IAccountView, Account
                         public void onLogoutSuccess() {
                             Log.d(TAG,"onLogoutSuccess");
                             SPUtils.putShareValue(Constant.SP_LOGIN_SPACE, Constant.SP_KEY_LOGIN_STATUS, 0);
-                            getView().onLogoutSuccess();
+                            getView().onLogoutSuccess(autoBind);
                         }
 
                         @Override

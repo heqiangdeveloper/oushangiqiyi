@@ -71,7 +71,7 @@ public class ThemeManager {
      * @return 主题模式
      */
     public static ThemeMode getThemeMode() {
-        return sThemeMode;
+        return Settings.System.getInt(MainApplication.getContext().getContentResolver(), SHOW_MODE, 0) == 1 ? ThemeMode.DAY : ThemeMode.NIGHT;
     }
 
     /**
