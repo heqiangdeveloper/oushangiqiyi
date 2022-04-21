@@ -89,7 +89,7 @@ public class MoreSelectionsTimeAdapter extends BaseAdapter<VideoInfo, BaseViewHo
 
         String desc = data.getDesc();
         CastInfo castInfo = data.getCast();
-
+        mThemeMode = ThemeManager.getThemeMode();
         if(mThemeMode == ThemeManager.ThemeMode.NIGHT) {
             albumName.setTextColor(mContext.getColor(R.color.color_skin_synopsis_text));
             albumSeries.setTextColor(mContext.getColor(R.color.color_skin_synopsis_text));

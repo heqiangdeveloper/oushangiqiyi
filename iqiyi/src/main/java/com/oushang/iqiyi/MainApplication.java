@@ -1,5 +1,6 @@
 package com.oushang.iqiyi;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Application;
 import android.content.BroadcastReceiver;
@@ -62,6 +63,8 @@ public class MainApplication extends Application {
     private static Disposable countDown;
     private boolean isBackground = true;
     private static Disposable sBalanceDisposable; //车机流量
+
+    public static boolean isDebug = true; //是否调试模式
 
     @Override
     public void onCreate() {
@@ -408,7 +411,7 @@ public class MainApplication extends Application {
                                                 List<BalanceInfo.Balance> dataBalances = data.getBalances();
                                                 if (dataBalances == null) {
                                                     Log.e(TAG, "balance data is null");
-                                                    long time = AppUtils.getTime("2050-12-31 00:00:00");
+                                                    long time = isDebug?AppUtils.getTime("2050-12-31 00:00:00"):0L;
                                                     SPUtils.putShareValue(Constant.SP_IQIYI_SPACE, Constant.SP_KEY_BALANCE_VALUE, time);
                                                     if (isShowDialog) {
                                                         VehicleFlowDialog.getInstance(MainApplication.getContext()).show();
@@ -436,7 +439,7 @@ public class MainApplication extends Application {
                                             });
                                 } else {
                                     Log.e(TAG, "request Vehicle balance error!");
-                                    long time = AppUtils.getTime("2050-12-31 00:00:00");
+                                    long time = isDebug?AppUtils.getTime("2050-12-31 00:00:00"):0L;
                                     currentTime = System.currentTimeMillis();
                                     SPUtils.putShareValue(Constant.SP_IQIYI_SPACE, Constant.SP_KEY_BALANCE_VALUE, time);
                                     if (time <= currentTime && isShowDialog) {
