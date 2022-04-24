@@ -96,6 +96,8 @@ public class SearchResultAdapter <T extends IMultiItem> extends BaseMultiAdapter
             long qipuId = videoInfo.getQipuId();
             long albumId = videoInfo.getAlbumId();
 
+            int contentType = videoInfo.getContentType();
+
             if (videoInfo.isAlbum()) {
                 albumId = qipuId;
                 if(videoInfo.getDefaultEpi() != null) {
@@ -128,10 +130,13 @@ public class SearchResultAdapter <T extends IMultiItem> extends BaseMultiAdapter
                     statsValue.put("plate", videoInfo.getChnName());
                     statsValue.put("type", videoInfo.isVip()?"vip":"无");
                     DataStatistics.recordUiEvent(StatConstant.EVENT_ID_5955, statsValue); //埋点数据
-
+                    long _aid = 0;
+                    if (contentType == 1) {
+                        _aid = aid;
+                    }
                     ARouter.getInstance().build(Constant.PATH_ACTIVITY_PLAYER)
                             .withLong(Constant.PLAY_VIDEO_ID, qid)
-                            .withLong(Constant.PLAY_ALBUM_ID, aid)
+                            .withLong(Constant.PLAY_ALBUM_ID, _aid)
                             .withLong(Constant.PLAY_POSITION, 0)
                             .navigation();
                 }

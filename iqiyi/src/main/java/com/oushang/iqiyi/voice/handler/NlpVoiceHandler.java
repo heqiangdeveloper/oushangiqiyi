@@ -138,24 +138,46 @@ public class NlpVoiceHandler extends BaseHandler<NlpVoiceModel>{
                             ARouter.getInstance().build(Constant.PATH_ACTIVITY_SPLASH)
                                     .navigation();
 
-                            speak(true, false, TtsConstants.IQIYI_C1, null, new Consumer<String>() {
-                                @Override
-                                public void accept(String s) throws Exception {
-                                    DataStatistics.recordVoiceAsssit(new VoiceAsssit.Builder() //语音埋点
-                                            .setAppName(TtsConstants.APP_NAME)
-                                            .setScene(TtsConstants.SCENE_OPEN)
-                                            .setObject(TtsConstants.INTENT_OPEN)
-                                            .setResponse(nlpVoiceModel.response)
-                                            .setProvider(TtsConstants.PROVIDER)
-                                            .setTts(s)
-                                            .setCondition(TtsConstants.CONDITION_FLOW_UNEXPIRED)
-                                            .setConditionId(TtsConstants.IQIYI_C1)
-                                            .setPrimitive(nlpVoiceModel.text)
-                                            .build());
+                            boolean isAgree = SPUtils.getShareBoolean(Constant.SP_IQIYI_SPACE, Constant.SP_KEY_USER_AGREE, false);
+                            if (!isAgree) { //用户同意相关协议
+                                speak(true, false, TtsConstants.IQIYI_C21, null, new Consumer<String>() {
+                                    @Override
+                                    public void accept(String s) throws Exception {
+                                        DataStatistics.recordVoiceAsssit(new VoiceAsssit.Builder() //语音埋点
+                                                .setAppName(TtsConstants.APP_NAME)
+                                                .setScene(TtsConstants.SCENE_OPEN)
+                                                .setObject(TtsConstants.INTENT_OPEN)
+                                                .setResponse(nlpVoiceModel.response)
+                                                .setProvider(TtsConstants.PROVIDER)
+                                                .setTts(s)
+                                                .setCondition(TtsConstants.CONDITION_DEFAULT)
+                                                .setConditionId(TtsConstants.IQIYI_C21)
+                                                .setPrimitive(nlpVoiceModel.text)
+                                                .build());
+                                    }
+                                });
+                            } else { //未同意
+                                speak(true, false, TtsConstants.IQIYI_C1, null, new Consumer<String>() {
+                                    @Override
+                                    public void accept(String s) throws Exception {
+                                        DataStatistics.recordVoiceAsssit(new VoiceAsssit.Builder() //语音埋点
+                                                .setAppName(TtsConstants.APP_NAME)
+                                                .setScene(TtsConstants.SCENE_OPEN)
+                                                .setObject(TtsConstants.INTENT_OPEN)
+                                                .setResponse(nlpVoiceModel.response)
+                                                .setProvider(TtsConstants.PROVIDER)
+                                                .setTts(s)
+                                                .setCondition(TtsConstants.CONDITION_FLOW_UNEXPIRED)
+                                                .setConditionId(TtsConstants.IQIYI_C1)
+                                                .setPrimitive(nlpVoiceModel.text)
+                                                .build());
 
-                                }
-                            });
+                                    }
+                                });
+                            }
                         }
+
+
                     }
 
                     break;
@@ -464,7 +486,15 @@ public class NlpVoiceHandler extends BaseHandler<NlpVoiceModel>{
             context.startActivity(intent); //跳转到搜索界面
         } else {
             ARouter.getInstance().build(Constant.PATH_ACTIVITY_DISCLAIMERS).navigation();//未同意，转到免责声明界面Activity
-            speak(true,false, TtsConstants.IQIYI_C21, null);
+            speak(true, false, TtsConstants.IQIYI_C21, null, new Consumer<String>() {
+                @Override
+                public void accept(String s) throws Exception {
+                    voiceAsssit.setTts(s);
+                    voiceAsssit.setCondition(TtsConstants.CONDITION_DEFAULT);
+                    voiceAsssit.setConditionId(TtsConstants.IQIYI_C21);
+                    DataStatistics.recordVoiceAsssit(voiceAsssit);
+                }
+            });
         }
     }
 
