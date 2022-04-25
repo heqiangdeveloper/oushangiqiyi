@@ -432,7 +432,7 @@ public class MyRecordFragment extends BaseLazyFragment<MyHistoryPresenter> imple
     private void updateRecord(){
         Log.d(TAG, "update play record");
         //重置编辑区域
-        if (mRecordEditFunLayout.getVisibility() == View.VISIBLE) {
+        if (mRecordEditFunLayout != null && mRecordEditFunLayout.getVisibility() == View.VISIBLE) {
             mRecordEditFunLayout.setVisibility(View.GONE);
         }
         mRecordEditBtn.setSelected(false);

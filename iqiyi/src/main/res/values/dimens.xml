@@ -256,6 +256,8 @@
     <dimen name="player_seekbar_height">4px</dimen>
     <dimen name="player_favorite_width">40px</dimen>
     <dimen name="player_favorite_height">40px</dimen>
+    <dimen name="player_dts_width">42.75px</dimen>
+    <dimen name="player_dts_height">20.68px</dimen>
     <dimen name="player_full_screen_width">40px</dimen>
     <dimen name="player_full_screen_height">40px</dimen>
     <dimen name="player_definition_button_width">320px</dimen>

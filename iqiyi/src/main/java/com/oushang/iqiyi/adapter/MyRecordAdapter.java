@@ -126,7 +126,7 @@ public class MyRecordAdapter extends BaseAdapter<HistoryRecord, BaseViewHolder> 
                         .withLong(Constant.PLAY_POSITION, videoPlayTime)
                         .withLong(Constant.PLAY_ALBUM_ID, albumId)
                         .navigation();
-                EventBusHelper.postStick(EventBusHelper.newEvent(EventConstant.EVENT_TYPE_UPDATE_PLAY_RECORD)); //通知更新播放记录
+//                EventBusHelper.postStick(EventBusHelper.newEvent(EventConstant.EVENT_TYPE_UPDATE_PLAY_RECORD)); //通知更新播放记录
             }
         });
 

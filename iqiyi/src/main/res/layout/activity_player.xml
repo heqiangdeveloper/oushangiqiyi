@@ -389,14 +389,14 @@
                 <!--DTS-->
                 <TextView
                     android:id="@+id/video_play_dts"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="@dimen/player_dts_width"
+                    android:layout_height="@dimen/player_dts_height"
                     android:layout_centerInParent="true"
                     android:layout_marginEnd="@dimen/margin_50px"
                     android:layout_toStartOf="@id/video_play_full_screen"
-                    android:text="@string/player_dts"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/text_size_26px"/>
+                    android:background="@drawable/dts"
+                    android:textSize="@dimen/text_size_26px" />
 
                 <!--全屏-->
                 <ImageView

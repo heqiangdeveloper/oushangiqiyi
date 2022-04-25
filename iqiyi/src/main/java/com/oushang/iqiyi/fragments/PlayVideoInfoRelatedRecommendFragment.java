@@ -84,7 +84,7 @@ public class PlayVideoInfoRelatedRecommendFragment extends BasePlayFragment<Play
     //点击返回键
     @OnClick(R.id.related_recommend_back)
     public void onClickRelatedRecommendBack() {
-        FragmentHelper.handlerBack(getActivity().getSupportFragmentManager());
+        FragmentHelper.handlerBack(getFragmentManager());
     }
 
     @Override
