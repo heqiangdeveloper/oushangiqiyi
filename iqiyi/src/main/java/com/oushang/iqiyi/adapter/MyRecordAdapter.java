@@ -85,21 +85,23 @@ public class MyRecordAdapter extends BaseAdapter<HistoryRecord, BaseViewHolder> 
             l_alId = Long.parseLong(alId);
         }
 
-        long qipuId = l_tvId;
-        long albumId = l_alId;
-
-        albumName.setText(name);
-        playTime.setText(AppUtils.parseSecond(videoPlayTime));
-
-        if (videoPlayTime < 60) {
-            playRemark.setText("观看不足1分钟");
-        } else if (videoPlayTime == len) {
+        if(videoPlayTime == 0) { //播放完毕
             playRemark.setText("已看完");
+        } else if (videoPlayTime == 1) { //试看完毕（试看时间6分钟）
+            playRemark.setText("已试看完");
+            videoPlayTime = 0;
+        } else if (videoPlayTime < 60) { //观看时间小于1分钟
+            playRemark.setText("观看不足1分钟");
         } else {
             long remainTime = len - videoPlayTime;
             String remain = "剩余" + AppUtils.parseSecond(remainTime);
             playRemark.setText(remain);
         }
+        albumName.setText(name);
+        playTime.setText(AppUtils.parseSecond(videoPlayTime));
+
+        long qipuId = l_tvId;
+        long albumId = l_alId;
 
         if (albumPicUrl != null && !albumPicUrl.isEmpty()) {
             String newAlbumPicUrl = AppUtils.appendImageUrl(albumPicUrl, "_260_360");
@@ -123,7 +125,6 @@ public class MyRecordAdapter extends BaseAdapter<HistoryRecord, BaseViewHolder> 
 
                 ARouter.getInstance().build(Constant.PATH_ACTIVITY_PLAYER)
                         .withLong(Constant.PLAY_VIDEO_ID, qipuId)
-                        .withLong(Constant.PLAY_POSITION, videoPlayTime)
                         .withLong(Constant.PLAY_ALBUM_ID, albumId)
                         .navigation();
 //                EventBusHelper.postStick(EventBusHelper.newEvent(EventConstant.EVENT_TYPE_UPDATE_PLAY_RECORD)); //通知更新播放记录

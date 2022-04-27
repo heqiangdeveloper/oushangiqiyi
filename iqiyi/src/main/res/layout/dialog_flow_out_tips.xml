@@ -31,7 +31,7 @@
             android:gravity="center"
             android:layout_marginTop="@dimen/margin_24px"
             android:text="@string/service_authentication_dialog_tips"
-            android:textSize="@dimen/tag_text_size"
+            android:textSize="@dimen/text_size_30px"
             android:textColor="@color/color_theme_text"/>
 
     </LinearLayout>

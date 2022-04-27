@@ -132,6 +132,7 @@
     <color name="color_my_setting_bg">#1A1A1A</color>
     <color name="color_my_setting_item_divider">#3D3D41</color>
     <color name="color_my_setting_item_tips">#434345</color>
+    <color name="color_my_setting_item_more">#8A898D</color>
     <color name="color_my_setting_switch_track_off">#C4C7CC</color>
     <color name="color_my_setting_switch_track_on">#007AFF</color>
 

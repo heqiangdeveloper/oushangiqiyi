@@ -131,8 +131,12 @@ public class MoreSelectionsDigitalAdapter extends BaseAdapter<SelectionEntry, Ba
                 if(videoInfo.equals(info)) { //如果视频相同
                     entry.setSelected(true); //设置为选中状态
                 } else if (videoInfo.isAlbum()) { //如果视频是专辑视频
-                    long qipuId = videoInfo.getDefaultEpi().getQipuId();
-                    entry.setSelected(info.getQipuId() == qipuId); //如果是相同的视频id,设置为选中状态,否则不选中
+                    if (videoInfo.getDefaultEpi() != null) {
+                        long qipuId = videoInfo.getDefaultEpi().getQipuId();
+                        entry.setSelected(info.getQipuId() == qipuId); //如果是相同的视频id,设置为选中状态,否则不选中
+                    } else {
+                        entry.setSelected(info.getAlbumId() == videoInfo.getAlbumId());
+                    }
                 } else {
                     entry.setSelected(false);
                 }

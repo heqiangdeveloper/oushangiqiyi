@@ -385,7 +385,11 @@ public class PlayManagerService implements PlayManager {
 
                 if (videoInfo.isAlbum()) { //isAlbum 专辑视频
                     alid = qipuId;
-                    qipuId = videoInfo.getDefaultEpi().getQipuId();
+                    if (videoInfo.getDefaultEpi() != null) {
+                        qipuId = videoInfo.getDefaultEpi().getQipuId();
+                    } else {
+                        qipuId = 0;
+                    }
                     rcCheckPolicy = DataSource.ALBUM_CHECK_RC;
                 }
                 String aid = String.valueOf(alid);
