@@ -11,7 +11,7 @@
         android:layout_height="@dimen/account_back_size"
         android:layout_marginStart="@dimen/margin_20px"
         android:layout_marginTop="@dimen/margin_20px"
-        android:background="@drawable/ic_back_60"/>
+        android:background="@drawable/ic_back_60_2"/>
 
     <!--授权登录-->
     <androidx.constraintlayout.widget.ConstraintLayout

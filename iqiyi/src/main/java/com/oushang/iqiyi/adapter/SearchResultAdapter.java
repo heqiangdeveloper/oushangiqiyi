@@ -131,7 +131,7 @@ public class SearchResultAdapter <T extends IMultiItem> extends BaseMultiAdapter
                     statsValue.put("type", videoInfo.isVip()?"vip":"无");
                     DataStatistics.recordUiEvent(StatConstant.EVENT_ID_5955, statsValue); //埋点数据
                     long _aid = 0;
-                    if (contentType == 1) {
+                    if (contentType == 1 || (contentType == 0 && videoInfo.isSeries())) { //如果有contentType字段，则判断是否是正片，如果没有ContentType, 则判断是连续集
                         _aid = aid;
                     }
                     ARouter.getInstance().build(Constant.PATH_ACTIVITY_PLAYER)

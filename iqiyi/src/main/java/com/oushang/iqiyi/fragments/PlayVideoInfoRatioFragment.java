@@ -92,7 +92,7 @@ public class PlayVideoInfoRatioFragment extends BasePlayFragment {
         mVideoScaleType.setAdapter(new SimpleFastAdapter<Integer>(getContext(), R.layout.item_definition_btn, videoScaleType){
             @Override
             public void convert(BaseViewHolder holder, Integer data, int position) {
-                Button scaleType = holder.getView(R.id.definition_name_btn);
+                TextView scaleType = holder.getView(R.id.definition_name_btn);
                 String text = "";
                 switch (data) {
                     case 0:

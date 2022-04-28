@@ -10,6 +10,7 @@ import android.text.style.ImageSpan;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
@@ -54,7 +55,7 @@ public class DefinitionAdapter extends BaseAdapter<VideoRate, BaseViewHolder> {
         int rt = data.getRt();
         String rateName = VideoRateUtil.getRateName(rt);
         boolean vip = data.isVip();
-        Button definitionName = holder.getView(R.id.definition_name_btn);
+        TextView definitionName = holder.getView(R.id.definition_name_btn);
         definitionName.setText(rateName);
         if (vip) {
             Drawable drawable = mContext.getDrawable(R.drawable.account_vip);
