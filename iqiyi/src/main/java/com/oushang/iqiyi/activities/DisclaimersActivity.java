@@ -24,6 +24,7 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.oushang.iqiyi.MainApplication;
 import com.oushang.iqiyi.NavMainActivity;
 import com.oushang.iqiyi.R;
+import com.oushang.iqiyi.base.BaseStksActivityMVP;
 import com.oushang.iqiyi.common.Constant;
 import com.oushang.iqiyi.dialog.IqiyiTipsDialog;
 import com.oushang.iqiyi.dialog.VehicleFlowDialog;
@@ -49,7 +50,7 @@ import butterknife.OnClick;
  * @Since: 1.0
  */
 @Route(path = Constant.PATH_ACTIVITY_DISCLAIMERS)
-public class DisclaimersActivity extends BaseActivityMVP<DisclaimersPresenter> implements IDisclaimersView {
+public class DisclaimersActivity extends BaseStksActivityMVP<DisclaimersPresenter> implements IDisclaimersView {
     private static final String TAG = DisclaimersActivity.class.getSimpleName();
 
     @BindView(R.id.disclaimer_content)

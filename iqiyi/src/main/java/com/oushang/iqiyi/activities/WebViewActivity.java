@@ -2,6 +2,7 @@ package com.oushang.iqiyi.activities;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.res.AssetManager;
 import android.graphics.Color;
 import android.net.Uri;
 import android.provider.Settings;
@@ -25,6 +26,14 @@ import com.oushang.iqiyi.utils.StatusBarUtil;
 import com.oushang.lib_base.base.mvp.presenter.BasePresenter;
 import com.oushang.lib_base.base.mvp.view.BaseActivityMVP;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.io.StringWriter;
+import java.io.UnsupportedEncodingException;
+import java.io.Writer;
 import java.net.URL;
 
 import butterknife.BindView;
@@ -100,10 +109,6 @@ public class WebViewActivity extends BaseActivityMVP {
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
                 Log.d(TAG, "onPageFinished:" + themeMode);
-                //此处指定页面加载完后的背景色
-//                view.loadUrl("javascript:function getSub(){" +
-//                        "document.getElementsByTagName('body')[0].style.background='#FFFFFF'" +
-//                        "};getSub();");
                 String cssPath = themeMode == 0?"service.css":"white.css";
                 Log.d(TAG, "cssPath:" + cssPath);
 
@@ -118,26 +123,41 @@ public class WebViewActivity extends BaseActivityMVP {
             }
         });
         mWebView.setBackgroundColor(0);
-//        mWebView.getBackground().setAlpha(0);
-//        mWebView.setBackground(null);
-//        mWebView.setBackgroundColor(Color.parseColor("#000000"));
         mWebView.setWebChromeClient(new WebChromeClient());
-        //mWebView.loadUrl(mUrl);
-
-//        mWebView.getSettings().setAppCacheEnabled(true);
-//        mWebView.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);//缓存策略
         mWebView.getSettings().setJavaScriptEnabled(true);
         mWebView.setVerticalScrollBarEnabled(true);
-        //mWebView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
+
+        String fileName = "";
         if (mUrl.equals(Constant.AGREEMENT_URL)) {
-            mWebView.loadUrl("file:///android_asset/service.html");
+            fileName = "service.html";
         } else if (mUrl.equals(Constant.PRIVACY_URL)) {
-            mWebView.loadUrl("file:///android_asset/privacy.html");
+            fileName = "privacy.html";
         }
-//        mWebView.loadDataWithBaseURL(null,mUrl,"text/html","utf-8",null);
+
+        AssetManager assetManager = getAssets();
+        try(InputStream inputStream = assetManager.open(fileName, AssetManager.ACCESS_BUFFER)) {
+            String html = streamToString(inputStream);
+            mWebView.loadDataWithBaseURL("file:///android_asset/", html, "text/html", "utf-8", null);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 
+    private String streamToString(InputStream inputStream) {
+        if (inputStream == null) return "";
+        Writer writer = new StringWriter();
+        char[] buffer = new char[1024];
+        try(Reader reader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"))) {
+            int n;
+            while((n = reader.read(buffer)) != -1) {
+                writer.write(buffer, 0, n);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return writer.toString();
+    }
 
 
 }

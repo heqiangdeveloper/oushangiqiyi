@@ -143,6 +143,8 @@
     <string name="dialog_i_known">我知道了</string>
     <string name="dialog_iqiyi_tips_title">温馨提示</string>
     <string name="dialog_iqiyi_tips_content">需同意《爱奇艺PPS用户网络服务使用协议》、《爱奇艺隐私政策》后才可使用爱奇艺APP</string>
+    <string name="dialog_vehicle_warn_title">为保障行车安全，驾驶员禁止观看视频，\n如乘客需观看，请点击继续播放</string>
+    <string name="dialog_vehicle_continue_button">继续播放</string>
 
     <!--用户协议与隐私保护-->
     <string name="user_agreement_and_privacy_protection_title">用户协议与隐私保护</string>

@@ -2,6 +2,7 @@ package com.oushang.iqiyi.base;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.os.RemoteException;
 import android.util.Log;
 import android.view.View;
 
@@ -13,11 +14,17 @@ import com.chinatsp.ifly.aidlbean.CmdVoiceModel;
 import com.chinatsp.ifly.aidlbean.MutualVoiceModel;
 import com.chinatsp.ifly.aidlbean.NlpVoiceModel;
 import com.chinatsp.ifly.voiceadapter.Business;
+import com.chinatsp.ifly.voiceadapter.SpeechServiceAgent;
+import com.google.gson.Gson;
 import com.oushang.lib_base.R;
 import com.oushang.lib_base.base.mvp.presenter.BasePresenter;
 import com.oushang.lib_base.base.mvp.view.IBaseView;
 import com.oushang.lib_base.event.RefreshStksEvent;
+import com.oushang.voicebridge.VisibleData;
+import com.oushang.voicebridge.VisibleDataHandler;
 import com.oushang.voicebridge.VisibleDataProcessor;
+import com.oushang.voicebridge.VoiceEventManager;
+import com.oushang.voicebridge.visibledata.VisibleDataCollection;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -29,7 +36,7 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import io.reactivex.annotations.Nullable;
 
-public abstract class BaseStksActivityMVP<P extends BasePresenter> extends AppCompatActivity implements IBaseView {
+public abstract class BaseStksActivityMVP<P extends BasePresenter> extends AppCompatActivity implements IBaseView, VisibleDataHandler {
     protected P presenter;
 
     private Unbinder unbinder;
@@ -146,10 +153,61 @@ public abstract class BaseStksActivityMVP<P extends BasePresenter> extends AppCo
         super.onResume();
         if(!isInited){
             Log.d("VisibleDataProcessor","BaseStksActivityMVP refresh");
-            visibleDataProcessor.registerStksWords(Business.IQIYI);
+//            visibleDataProcessor.registerStksWords(Business.IQIYI);
+            VisibleDataCollection visibleData = visibleDataProcessor.getVisibleData();
+            registerStks(visibleData);
             isInited = true;
         }
     }
+
+    @Override
+    public void notifyPageTextChanged() {
+        VisibleDataCollection visibleData = visibleDataProcessor.getVisibleData();
+        if (visibleData == null) {
+            return;
+        }
+        registerStks(visibleData);
+    }
+
+    @Override
+    public void removeKeywordsByScope(String scope) {
+        visibleDataProcessor.removeByScope(scope);
+    }
+
+    public VisibleDataCollection getVisibleDataByScope(String scope) {
+        return visibleDataProcessor.getVisibleDataOfScope(scope);
+    }
+
+    public void registerStks(VisibleDataCollection visibleDataCollection) {
+        if (visibleDataCollection == null) {
+            return;
+        }
+        if (visibleDataCollection.visibleData != null) {
+            try {
+                SpeechServiceAgent.getInstance().registerStksCommand(Business.IQIYI, new Gson().toJson(visibleDataCollection.visibleData));
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        }
+        if (visibleDataCollection.wvmVisibleData != null) {
+            try {
+                SpeechServiceAgent.getInstance().registerStksCommandByMvw(Business.IQIYI, new Gson().toJson(visibleDataCollection.wvmVisibleData));
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void unRegisterStks() {
+        try {
+            SpeechServiceAgent.getInstance().unRegisterStksCommand(Business.IQIYI);
+            SpeechServiceAgent.getInstance().unRegisterStksCommandByMvw(Business.IQIYI);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 
     @Override
     protected void onDestroy() {
@@ -165,6 +223,8 @@ public abstract class BaseStksActivityMVP<P extends BasePresenter> extends AppCo
         if(visibleDataProcessor != null){
             visibleDataProcessor.unRegisterVoiceEventListener();
         }
+
+        unRegisterStks();
 
         if(EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().unregister(this);
