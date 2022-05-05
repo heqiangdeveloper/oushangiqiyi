@@ -102,7 +102,8 @@ public class HomePagePresenter extends BaseServicePresenter<IHomePageView, HomeP
             String chnName = recommendInfo.getChnName(); //频道名称
             List<VideoInfo> videoList = recommendInfo.getVideoList(); //获取视频列表
             if(videoList != null && !videoList.isEmpty()) {
-                for(int i = 1; i <= 6; i++) { //遍历获取列表1-6个数据
+                int size = videoList.size();
+                for(int i = 1; i <= 6 && i < size; i++) { //遍历获取列表1-6个数据
                     VideoInfo videoInfo = videoList.get(i); //视频信息
                     long qipuId = videoInfo.getQipuId(); //视频id
                     long albumId = videoInfo.getAlbumId(); //剧集id

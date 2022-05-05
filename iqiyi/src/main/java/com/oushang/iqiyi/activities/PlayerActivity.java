@@ -43,6 +43,7 @@ import com.bumptech.glide.Glide;
 import com.oushang.iqiyi.R;
 import com.oushang.iqiyi.base.BasePlayerActivity;
 import com.oushang.iqiyi.common.Constant;
+import com.oushang.iqiyi.dialog.VehicleWarnDialog;
 import com.oushang.iqiyi.entries.SelectionEntry;
 import com.oushang.iqiyi.events.EventBusHelper;
 import com.oushang.iqiyi.events.EventConstant;
@@ -465,11 +466,15 @@ public class PlayerActivity extends BasePlayerActivity<PlayerPresenter> implemen
 //                    presenter.showToast("全景影像已打开，禁止播放！请退出全景影像，再继续播放");
 //                }
                 if (VideoNoPlay.getInstance().hasNoPlayReason(VideoNoPlay.NO_PLAY_REASON_OVER_SPEED)) { //车速
-                    playerDrivingSafetyTipsTv.setVisibility(View.VISIBLE);
+                    VehicleWarnDialog dialog = VehicleWarnDialog.getInstance(PlayerActivity.this);
+                    if (!dialog.isShowing() && VehicleWarnDialog.videoDisableOnDriving(PlayerActivity.this)) { //行驶观看提醒
+                        dialog.show();
+                    }
+//                    playerDrivingSafetyTipsTv.setVisibility(View.VISIBLE);
                     mPlayerLayout.setEnabled(false);
                     mVideoInfoContainer.setEnabled(false);
                 } else {
-                    playerDrivingSafetyTipsTv.setVisibility(View.GONE);
+//                    playerDrivingSafetyTipsTv.setVisibility(View.GONE);
                     mPlayerLayout.setEnabled(true);
                     mVideoInfoContainer.setEnabled(true);
                 }

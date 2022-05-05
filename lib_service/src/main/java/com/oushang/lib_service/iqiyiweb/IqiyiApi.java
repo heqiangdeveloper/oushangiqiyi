@@ -2,6 +2,7 @@ package com.oushang.lib_service.iqiyiweb;
 
 import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.oushang.lib_base.net.RetrofitClient;
@@ -464,5 +465,79 @@ public class IqiyiApi {
         params.put("pageSize", pageSize);
         params.put("ispurchase", ispurchase);
         return getIqiyiApiService().cartoonEpisodeList(params);
+    }
+
+    /**
+     * 推荐瀑布流 推荐的6大频道(电影、电视剧、综艺、动漫、儿童、纪录片)PPC正片和专辑，分批获取
+     *
+     * @param deviceId      请求的设备ID
+     * @param offSet        分页参数，从0开始，表示截至上次请求已获取的视频数量
+     * @param pageSize      每个分页请求的视频个数
+     * @param session       表示用户一次完整行为的参数，当offset=0时传空；大于0时，传递上次引擎返回的session值
+     * @param wifiMac       例："0E:DD:83:F7"，手机连接的路由器的MAC，如有请传
+     * @param vipType       用户会员状态，1=非会员，99=会员，2=白银会员，3=黄 金会员，4=钻石会员
+     * @param strategyId    创意中心策略id参数，用于控制返回的推荐理由的类型。老策略ID=31，新策略ID=30
+     * @param passportId    账户ID，如有，请传递
+     * @param gps           例:"123.54,45.63",以,分隔经纬度
+     * @param firstBootTs   用户首次启动APP日期的毫秒时间戳，例如：1631254267511
+     * @param filterList    需要过滤的视频列表，以英文逗号分隔，例如： 11,22,33
+     * @param channelIdList 指定瀑布流的channel，多个channel用逗号分隔。频道页瀑布流场景是必填参数
+     * @param appVersion    前端app的版本号
+     * @param actionSeq     用户行为序列，定义如下
+     * 格式：1:1598844642111:2491422400:15;1:1598844642100:241504201:3690;1:1598844642900:141514200:369
+     * 格式解析：通过';'分隔得到为行为数组，行为数组通过':'分 隔，得到对应参数，目前长度固定为4个参数固定顺序为:
+     * action、timestamp、entity、playtime
+     * 以上字段定义为：
+     * message UserAction {
+     *  int32 action = 1; // 1=点击频道，2=点击视频实体，3=搜索，4=收藏，5=预约，6=PUSH点击
+     *  int64 timestamp = 2; // 行为开始时间戳，单位ms
+     *  string entity = 3; // 行为作用实体：收藏、预约= 视频qipuid，点击=视频qipuid、频道id，搜索=query
+     *  int32 playtime = 4; // 播放时间
+     * }
+     * @return
+     */
+    public static Observable<String> getRecFall(@NonNull String deviceId, @NonNull int offSet, @NonNull int pageSize,
+                                                @Nullable String session, @Nullable String wifiMac, @Nullable int vipType,
+                                                @Nullable int strategyId, @Nullable String passportId, @Nullable String gps,
+                                                @Nullable String firstBootTs, @Nullable String filterList, @Nullable String channelIdList,
+                                                @Nullable String appVersion, @Nullable String actionSeq) {
+        WeakHashMap<String, Object> params = new WeakHashMap<>();
+        params.put("deviceId", deviceId);
+        params.put("offset", offSet);
+        params.put("pageSize", pageSize);
+        if (session != null) {
+            params.put("session", session);
+        }
+        if (wifiMac != null) {
+            params.put("wifiMac", wifiMac);
+        }
+        if (vipType != 0) {
+            params.put("vipType", vipType);
+        }
+        if (strategyId != 0) {
+            params.put("strategyId", strategyId);
+        }
+        if (passportId != null) {
+            params.put("passportId", passportId);
+        }
+        if (gps != null) {
+            params.put("gps", gps);
+        }
+        if (firstBootTs != null) {
+            params.put("firstBootTs", firstBootTs);
+        }
+        if (filterList != null) {
+            params.put("filterList", filterList);
+        }
+        if (channelIdList != null) {
+            params.put("channelIdList", channelIdList);
+        }
+        if (appVersion != null) {
+            params.put("appVersion", appVersion);
+        }
+        if (actionSeq != null) {
+            params.put("actionSeq", actionSeq);
+        }
+        return getIqiyiApiService().recFall(params);
     }
 }

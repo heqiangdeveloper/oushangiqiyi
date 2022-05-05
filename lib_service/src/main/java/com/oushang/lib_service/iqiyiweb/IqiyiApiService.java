@@ -204,4 +204,12 @@ public interface IqiyiApiService {
     @GET("ai_cartoon/episodeList")
     Observable<String> cartoonEpisodeList(@QueryMap WeakHashMap<String, Object> params);
 
+    /**
+     * 推荐瀑布流
+     * @param params 请求参数
+     * @return
+     */
+    @GET("recFall")
+    Observable<String> recFall(@QueryMap WeakHashMap<String, Object> params);
+
 }

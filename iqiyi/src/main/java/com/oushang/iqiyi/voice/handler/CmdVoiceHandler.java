@@ -119,7 +119,7 @@ public class CmdVoiceHandler extends BaseHandler<CmdVoiceModel> {
                                             .build());
 
                                 }
-                            }, null);//语音播报
+                            });//语音播报
                         } else {
                             DataStatistics.recordVoiceAsssit(new VoiceAsssit.Builder() //语音埋点
                                     .setAppName(TtsConstants.APP_NAME)
@@ -150,7 +150,7 @@ public class CmdVoiceHandler extends BaseHandler<CmdVoiceModel> {
                                             .setPrimitive(cmdVoiceModel.text)
                                             .build());
                                 }
-                            }, null);//语音播报
+                            });//语音播报
                         } else {
                             DataStatistics.recordVoiceAsssit(new VoiceAsssit.Builder() //语音埋点
                                     .setAppName(TtsConstants.APP_NAME)

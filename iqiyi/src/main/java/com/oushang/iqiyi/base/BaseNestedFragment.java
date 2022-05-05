@@ -177,7 +177,7 @@ public abstract class BaseNestedFragment extends BaseLazyFragment {
     public void onClickLogo() { //显示app信息
         int versionCode = AppUtils.getVersionCode(getContext());
         String versionName = AppUtils.getVersionName(getContext());
-        String date = "2022-04-29";
+        String date = "2022-05-05";
         String appInfo = "Iqiyi appInfo:\n" + "VersionName:"+versionName + "\nVersionCode:" + versionCode + "\nTime:" + date;
         Log.d(TAG, "appInfo:" + appInfo);
         ToastUtils.showToast(R.layout.toast_layout, R.id.toast_content, appInfo);

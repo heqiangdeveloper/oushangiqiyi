@@ -2,6 +2,7 @@ package com.oushang.iqiyi.dialog;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
@@ -78,9 +79,8 @@ public class VehicleWarnDialog extends Dialog implements View.OnClickListener {
         switch (id) {
             case R.id.vehicle_warn_continue_tv:
                 Log.d(TAG, "click continue play");
-//                if(setVehicleDisable(true)) {
-//                    dismiss();
-//                }
+                setVehicleDisable(true);
+                dismiss();
                 break;
             case R.id.vehicle_warn_cancel_tv:
                 Log.d(TAG, "click cancel");
@@ -90,7 +90,14 @@ public class VehicleWarnDialog extends Dialog implements View.OnClickListener {
 
     }
 
-    private boolean setVehicleDisable(boolean disable) {
-       return Settings.System.putInt(MainApplication.getContext().getContentResolver(), "video_disable_on_driving", disable ? 1 : 0);
+    private void setVehicleDisable(boolean disable) {
+        Intent intent = new Intent("com.chinatsp.START_STANDBY");
+        intent.putExtra("video_play_set", disable ? 1 : 0);
+        intent.setPackage("com.chinatsp.settings");
+        getContext().startService(intent);
+    }
+
+    public static boolean videoDisableOnDriving(Context context) {
+        return Settings.System.getInt(context.getContentResolver(), "video_disable_on_driving", 0) == 1;
     }
 }
