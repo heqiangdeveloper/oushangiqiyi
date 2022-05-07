@@ -27,6 +27,7 @@ public class CmdVoiceConstants {
     public static final String PLAY_1 = "开始播放";
 
     public static final String FULL_SCREEN = "全屏播放";
+    public static final String FULL_SCREEN_QUIT = "退出全屏";
 
     public static final String FIRST = "第一个";
     public static final String FIRST_1 = "第一首";

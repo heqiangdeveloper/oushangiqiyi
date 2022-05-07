@@ -22,6 +22,8 @@ public class NlpVoiceConstants {
     public static final String OP_QUERY = "QUERY";
     public static final String OP_EXIT = "EXIT";
 
+    public static final String OP_ESC_SCREEN = "ESC_SCREEN"; //退出全屏
+
 
     public static final String CMD_PLAY = "PLAY";
     public static final String CMD_PAUSE = "PAUSE";

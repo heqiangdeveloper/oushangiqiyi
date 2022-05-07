@@ -30,6 +30,8 @@ public class TtsConstants {
     public static final String IQIYI_C13 = "iqiyiC13"; //好的
     public static final String IQIYI_C14 = "iqiyiC14"; //好的/ok/好勒/没问题
     public static final String IQIYI_C15 = "iqiyiC15"; //已全屏
+    public static final String IQIYI_C15_1 = "iqiyiC15_1"; //好的/嗯，好了/ok/搞定/没问题/好滴/好嘞
+    public static final String IQIYI_C15_2 = "iqiyiC15_2"; //未处于全屏中
     public static final String IQIYI_C16 = "iqiyiC16"; //好的，已关闭
     public static final String IQIYI_C17 = "iqiyiC17"; //想看第几个
     public static final String IQIYI_C18 = "iqiyiC18";//好的/嗯，好了/ok/搞定/没问题/好滴/好勒/

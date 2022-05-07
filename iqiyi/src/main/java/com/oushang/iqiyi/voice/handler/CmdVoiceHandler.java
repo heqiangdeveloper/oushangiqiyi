@@ -166,6 +166,18 @@ public class CmdVoiceHandler extends BaseHandler<CmdVoiceModel> {
                         }
                     }
                     break;
+                case CmdVoiceConstants.FULL_SCREEN_QUIT://退出全屏
+                    if (!mPlayManager.isFullScreen()) { //当前非全屏
+                        if (!isHide()) {
+                            speak(true, false, TtsConstants.IQIYI_C15_2, null);
+                        }
+                    } else {
+                        if (!isHide()) {
+                            speak(true, false, TtsConstants.IQIYI_C15_1, null);
+                        }
+                        mPlayManager.setFullScreen(false); //退出全屏
+                    }
+                    break;
                 case CmdVoiceConstants.FIRST:
                 case CmdVoiceConstants.FIRST_1:
                 case CmdVoiceConstants.FIRST_2:

@@ -91,6 +91,19 @@ public class NlpVoiceHandler extends BaseHandler<NlpVoiceModel>{
                 case NlpVoiceConstants.OP_PLAY_NEXT:
                     playControl(nlpVoiceModel,NlpVoiceConstants.CMD_NEXT);
                     break;
+                case NlpVoiceConstants.OP_ESC_SCREEN:
+                    Log.d(TAG, "ESC_SCREEN");
+                    if (!mPlayManager.isFullScreen()) { //当前非全屏
+                        if (!isHide()) {
+                            speak(true, false, TtsConstants.IQIYI_C15_2, null);
+                        }
+                    } else {
+                        if (!isHide()) {
+                            speak(true, false, TtsConstants.IQIYI_C15_1, null);
+                        }
+                        mPlayManager.setFullScreen(false); //退出全屏
+                    }
+                    break;
                 default: //防呆
                     String aware =  Settings.System.getString(MainApplication.getContext().getContentResolver(),"aware");
                     Map<String, String> map = new HashMap<>();

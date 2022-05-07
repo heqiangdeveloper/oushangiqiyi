@@ -652,6 +652,17 @@ public class AccountActivity extends BaseActivityMVP<AccountPresenter> implement
         SPUtils.putShareValue(Constant.SP_LOGIN_SPACE, Constant.SP_KEY_LOGIN_STATUS, 1); //设置为已登录状态
         if (loginType == LOGIN_TYPE_AUTHORIZED_BIND || loginType == LOGIN_TYPE_SCAN_BIND_QRCODE) { //若授权登录或扫码绑定登录成功
             SPUtils.putShareValue(Constant.SP_LOGIN_SPACE, Constant.SP_KEY_BIND_STATUS, 1); //设置为已绑定状态
+            UserManager.getInstance().saveBindAccountInfo(AccountType.AQIYI, userInfo.toString(), new OnRequestListener() {
+                @Override
+                public void onRequestSucceed(String s) {
+                    Log.d(TAG, "saveBindAccountInfo success");
+                }
+
+                @Override
+                public void onRequestSucceedFailed(String s) {
+                    Log.e(TAG, "saveBindAccountInfo fail: " + s);
+                }
+            });
         }
 
         if (mIqiyiAccountDataService != null) {
@@ -671,17 +682,6 @@ public class AccountActivity extends BaseActivityMVP<AccountPresenter> implement
         //静默绑定后，将用户信息传给驾驶员中心
         if ((driveCenterAction != null && driveCenterAction.equals(Constant.ACTION_BIND)) && UserManager.getInstance().isLogin()) {
             Log.d(TAG, "from driver center");
-            UserManager.getInstance().saveBindAccountInfo(AccountType.AQIYI, userInfo.toString(), new OnRequestListener() {
-                @Override
-                public void onRequestSucceed(String s) {
-                    Log.d(TAG, "saveBindAccountInfo success");
-                }
-
-                @Override
-                public void onRequestSucceedFailed(String s) {
-                    Log.e(TAG, "saveBindAccountInfo fail: " + s);
-                }
-            });
             finish();
         }
     }

@@ -24,7 +24,7 @@
     <application
         android:name=".MainApplication"
         android:allowBackup="false"
-        android:icon="@drawable/ic_iqiyi"
+        android:icon="@drawable/ic_iqiyi_icon"
         android:label="@string/app_name"
         android:roundIcon="@drawable/ic_launcher_round"
         android:supportsRtl="true"
