@@ -63,7 +63,7 @@ public class MainApplication extends Application {
     private boolean isBackground = true;
     private static Disposable sBalanceDisposable; //车机流量
 
-    public static boolean isDebug = true; //是否调试模式
+    public static boolean isDebug = false; //是否调试模式
 
     @Override
     public void onCreate() {

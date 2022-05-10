@@ -187,9 +187,10 @@ public class PlayManagerService implements PlayManager {
                 Log.d(TAG, "AUDIOFOCUS_GAIN");
                 hasAudioFocus = true;
                 Log.d(TAG, "fromUser:" + fromUser + ",isFrontShow:" + isFrontShow);
-                if(fromUser) {
-                    fromUser = false;
-                } else if(isFrontShow){
+//                if(fromUser) {
+//                    fromUser = false;
+//                } else
+                    if(isFrontShow){
                     HandlerUtils.postDelayOnMainThread(new Runnable() {
                         @Override
                         public void run() {

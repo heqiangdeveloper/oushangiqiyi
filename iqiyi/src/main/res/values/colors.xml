@@ -167,6 +167,7 @@
     <color name="color_flow_dialog_bg">#3E3E3E</color>
     <color name="color_flow_dialog_separate_bg">#6E6E6E</color>
     <color name="color_vehicle_warn_dialog_text">#0A84FF</color>
+    <color name="color_dialog_press_status">#2C2C2E</color>
 
     <!-- ===========================自定义白天/黑夜模式切换资源==================================  -->
     <!-- ======黑夜模式资源====== -->

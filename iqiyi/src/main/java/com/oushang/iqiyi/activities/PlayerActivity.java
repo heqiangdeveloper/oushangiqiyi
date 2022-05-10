@@ -2,6 +2,7 @@ package com.oushang.iqiyi.activities;
 
 import android.annotation.SuppressLint;
 import android.content.ComponentName;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
@@ -466,11 +467,12 @@ public class PlayerActivity extends BasePlayerActivity<PlayerPresenter> implemen
 //                    presenter.showToast("全景影像已打开，禁止播放！请退出全景影像，再继续播放");
 //                }
                 if (VideoNoPlay.getInstance().hasNoPlayReason(VideoNoPlay.NO_PLAY_REASON_OVER_SPEED)) { //车速
-                    VehicleWarnDialog dialog = VehicleWarnDialog.getInstance(PlayerActivity.this);
-                    if (!dialog.isShowing() && VehicleWarnDialog.videoDisableOnDriving(PlayerActivity.this)) { //行驶观看提醒
-                        dialog.show();
-                    }
+//                    VehicleWarnDialog dialog = VehicleWarnDialog.getInstance(PlayerActivity.this);
+//                    if (!dialog.isShowing() && VehicleWarnDialog.videoDisableOnDriving(PlayerActivity.this)) { //行驶观看提醒
+//                        dialog.show();
+//                    }
 //                    playerDrivingSafetyTipsTv.setVisibility(View.VISIBLE);
+                    showWarnDialog();
                     mPlayerLayout.setEnabled(false);
                     mVideoInfoContainer.setEnabled(false);
                 } else {
@@ -482,6 +484,31 @@ public class PlayerActivity extends BasePlayerActivity<PlayerPresenter> implemen
             }
         });
 
+    }
+
+    private synchronized void showWarnDialog() {
+        Log.d(TAG, "showWarnDialog");
+        VehicleWarnDialog dialog = VehicleWarnDialog.getInstance(PlayerActivity.this);
+        dialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+            @Override
+            public void onCancel(DialogInterface dialog) {
+                Log.d(TAG, "onCancel");
+                finish();
+            }
+        });
+        dialog.setOnPositiveListener(new VehicleWarnDialog.OnPositiveListener() {
+            @Override
+            public void onPositive(DialogInterface dialog) {
+                Log.d(TAG, "onPositive");
+                if (mPlayManager != null) {
+                    VideoNoPlay.getInstance().release(VideoNoPlay.NO_PLAY_REASON_OVER_SPEED);//解除禁止播放
+                    mPlayManager.start();
+                }
+            }
+        });
+        if (!dialog.isShowing() && !VehicleWarnDialog.videoDisableOnDriving(PlayerActivity.this)) { //行驶观看提醒
+            dialog.show();
+        }
     }
 
     //显示进度条

@@ -2,6 +2,7 @@ package com.oushang.iqiyi.dialog;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -28,6 +29,7 @@ public class VehicleWarnDialog extends Dialog implements View.OnClickListener {
     private static final String TAG = VehicleWarnDialog.class.getSimpleName();
 
     private static VehicleWarnDialog sVehicleWarnDialog;
+    private OnPositiveListener mOnPositiveListener;
 
     public VehicleWarnDialog(@NonNull Context context) {
         this(context, 0);
@@ -55,6 +57,7 @@ public class VehicleWarnDialog extends Dialog implements View.OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d(TAG, "onCreate");
         setContentView(R.layout.dialog_vehicle_warn);
         Window window = getWindow();
         window.getDecorView().setPadding(0,0,0, 0);
@@ -80,17 +83,21 @@ public class VehicleWarnDialog extends Dialog implements View.OnClickListener {
             case R.id.vehicle_warn_continue_tv:
                 Log.d(TAG, "click continue play");
                 setVehicleDisable(true);
+                if (mOnPositiveListener != null) {
+                    mOnPositiveListener.onPositive(this);
+                }
                 dismiss();
                 break;
             case R.id.vehicle_warn_cancel_tv:
                 Log.d(TAG, "click cancel");
-                dismiss();
+                cancel();
                 break;
         }
 
     }
 
     private void setVehicleDisable(boolean disable) {
+        Log.d(TAG, "setVehicleDisable:" + disable);
         Intent intent = new Intent("com.chinatsp.START_STANDBY");
         intent.putExtra("video_play_set", disable ? 1 : 0);
         intent.setPackage("com.chinatsp.settings");
@@ -98,6 +105,16 @@ public class VehicleWarnDialog extends Dialog implements View.OnClickListener {
     }
 
     public static boolean videoDisableOnDriving(Context context) {
+        Log.d(TAG, "videoDisableOnDriving");
         return Settings.System.getInt(context.getContentResolver(), "video_disable_on_driving", 0) == 1;
     }
+
+    public void setOnPositiveListener(OnPositiveListener listener) {
+        this.mOnPositiveListener = listener;
+    }
+
+    public interface OnPositiveListener {
+        void onPositive(DialogInterface dialog);
+    }
+
 }

@@ -160,5 +160,6 @@
     <color name="color_tips_dialog_separate_bg">#D4D7D9</color>
     <color name="color_flow_dialog_bg">#FFFFFF</color>
     <color name="color_flow_dialog_separate_bg">#D4D7D9</color>
+    <color name="color_dialog_press_status">#33000000</color>
 
 </resources>
