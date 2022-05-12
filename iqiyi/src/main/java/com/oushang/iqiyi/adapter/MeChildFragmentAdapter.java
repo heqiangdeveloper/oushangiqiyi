@@ -1,10 +1,13 @@
 package com.oushang.iqiyi.adapter;
 
+import android.view.ViewGroup;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.fragment.app.FragmentStatePagerAdapter;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import com.oushang.iqiyi.common.Constant;
@@ -20,8 +23,13 @@ import com.oushang.iqiyi.fragments.MySettingFragment;
  */
 public class MeChildFragmentAdapter extends FragmentStatePagerAdapter {
 
+    private final FragmentManager mFragmentManager;
+    private FragmentTransaction mCurTransaction = null;
+
     public MeChildFragmentAdapter(@NonNull FragmentManager fm) {
         super(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+        mFragmentManager = fm;
+        mCurTransaction = mFragmentManager.beginTransaction();
     }
 
     @NonNull
@@ -40,5 +48,9 @@ public class MeChildFragmentAdapter extends FragmentStatePagerAdapter {
     @Override
     public int getCount() {
         return 3;
+    }
+
+    public void hideItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
+
     }
 }

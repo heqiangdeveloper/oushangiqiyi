@@ -79,6 +79,7 @@ import com.oushang.lib_service.entries.VideoInfo;
 import com.oushang.lib_service.entries.VideoRate;
 import com.oushang.lib_service.interfaces.PlayManager;
 import com.oushang.lib_service.player.IPlayer;
+import com.oushang.lib_service.player.PlayerState;
 import com.oushang.lib_service.player.iqiyi.IqiyiPlayView;
 import com.oushang.lib_service.player.iqiyi.IqiyiPlayerState;
 import com.oushang.lib_service.response.ReturnCode;
@@ -507,6 +508,9 @@ public class PlayerActivity extends BasePlayerActivity<PlayerPresenter> implemen
             }
         });
         if (!dialog.isShowing() && !VehicleWarnDialog.videoDisableOnDriving(PlayerActivity.this)) { //行驶观看提醒
+            if (mPlayManager != null && (mPlayManager.isPlaying() || mPlayManager.getCurrentPlayState() == PlayerState.MEDIA_PLAYER_STARTED)) {
+                mPlayManager.pause();
+            }
             dialog.show();
         }
     }
@@ -664,6 +668,9 @@ public class PlayerActivity extends BasePlayerActivity<PlayerPresenter> implemen
                 int active = Settings.System.getInt(getContentResolver(), "btphone_active", 0);
                 if (active == 1) {
                     Log.e(TAG, "Bluetooth call! pause");
+                    mPlayManager.pause();
+                }
+                if(VehicleWarnDialog.getInstance(PlayerActivity.this).isShowing()) {
                     mPlayManager.pause();
                 }
                 if (mPreviewFinishLayout.getVisibility() == View.VISIBLE) { //如果显示试看结束弹窗

@@ -489,6 +489,21 @@ public class NlpVoiceHandler extends BaseHandler<NlpVoiceModel>{
             }
         }
 
+        long expirationTime = SPUtils.getShareLong(Constant.SP_IQIYI_SPACE, Constant.SP_KEY_BALANCE_VALUE, 0L);
+        long currentTime = System.currentTimeMillis();
+        if (expirationTime <= currentTime) { //爱奇艺车机流量已到期
+            speak(true, false, TtsConstants.IQIYI_C2, null, new Consumer<String>() {
+                @Override
+                public void accept(String s) throws Exception {
+                    voiceAsssit.setTts(s);
+                    voiceAsssit.setCondition(TtsConstants.CONDITION_DEFAULT);
+                    voiceAsssit.setConditionId(TtsConstants.IQIYI_C2);
+                    DataStatistics.recordVoiceAsssit(voiceAsssit);
+                }
+            });
+            return;
+        }
+
         boolean isAgree = SPUtils.getShareBoolean(Constant.SP_IQIYI_SPACE, Constant.SP_KEY_USER_AGREE, false);
         if (isAgree) {
             Intent intent = new Intent(context, SearchActivity.class);
