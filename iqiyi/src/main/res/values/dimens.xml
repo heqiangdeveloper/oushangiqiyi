@@ -230,6 +230,7 @@
     <dimen name="padding_21px">21px</dimen>
     <dimen name="padding_18px">18px</dimen>
     <dimen name="padding_17px">17px</dimen>
+    <dimen name="padding_16px">16px</dimen>
     <dimen name="padding_14px">14px</dimen>
     <dimen name="padding_35px">35px</dimen>
     <dimen name="padding_30px">30px</dimen>

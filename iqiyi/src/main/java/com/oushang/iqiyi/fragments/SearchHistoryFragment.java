@@ -144,7 +144,7 @@ public class SearchHistoryFragment extends BaseFragmentMVP<SearchHistoryPresente
                 //Added by heqiang on 2021/11/30 for bug1098962
                 String data1 = data;
                 if (data1.length() >= 7) {
-                    data1 = data1.substring(0, 6) + "...";
+                    data1 = data1.substring(0, 5) + "...";
                 }
                 textView.setText(data1);
                 if (ThemeManager.getThemeMode() == ThemeManager.ThemeMode.NIGHT) {
